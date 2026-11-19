@@ -172,6 +172,7 @@ button.mv{font:inherit;text-align:left;cursor:pointer;width:100%}
 .cities button[aria-pressed="true"] small{color:rgba(255,255,255,.85)}
 .cities .en{align-self:stretch;place-content:center}
 footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+.nophotos .head .note,.nophotos .links,.nophotos .filters,.nophotos #gallery{display:none!important}
 </style>
 
 </head>
@@ -202,7 +203,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
     <div class="alerts" id="alerts"><div class="empty" data-i18n="alertsEmpty">搶票、新專輯發行這類重要日期會出現在這裡。</div></div>
   </section>
 
-  <section aria-labelledby="ph-h">
+  <section aria-labelledby="ph-h" id="phsec" class="nophotos">
     <div class="head">
       <div><h2 id="ph-h" class="edw"><em>every day</em> <small>with</small> <span>Taeyeon</span></h2><div class="note" data-i18n="phNote">滑鼠移上去會暫停，點照片可以放大。</div></div>
       <div style="display:grid;gap:6px;justify-items:end"><div class="filters" id="phfilters" role="group" aria-label="篩選照片"></div><div class="filters" id="yrfilters" role="group" aria-label="篩選年代" hidden></div></div>
@@ -412,6 +413,7 @@ function renderPhFilters(){
     b.onclick=()=>{pfilter=k;renderPhFilters();renderGallery()};f.append(b)});
 }
 function renderGallery(){
+  $("phsec").classList.toggle("nophotos",!photos.some(photoSrc));
   const g=$("gallery");shown=photos.filter(p=>(pfilter==="all"||p.category===pfilter)&&(yfilter==="all"||eraOf(p)===yfilter)&&photoSrc(p));
   if(!shown.length){g.replaceChildren(el("div","empty",T("noPhotos")));return}
   const make=(p,i,dup)=>{
