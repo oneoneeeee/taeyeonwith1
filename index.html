@@ -34,7 +34,7 @@
   --glow:rgba(255,40,70,.22); --glow2:rgba(255,40,70,.10); --weave:rgba(255,255,255,.035);
   --ok:#6fd19c; --warn:#f0b263; color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;font-size:15px}
-.cover-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil),url("cover.jpg") center 30%/cover no-repeat,radial-gradient(60vmax 45vmax at 88% -8%,var(--glow),transparent 70%),radial-gradient(40vmax 30vmax at -10% 105%,var(--glow2),transparent 70%),repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg)}
+.cover-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil),url("cover_2.jpg") center 30%/cover no-repeat,radial-gradient(60vmax 45vmax at 88% -8%,var(--glow),transparent 70%),radial-gradient(40vmax 30vmax at -10% 105%,var(--glow2),transparent 70%),repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg)}
 .ticket,.tour,.alert,.mv,.add,.feed,.empty{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .feed{background:var(--pearl);border-radius:14px;padding-inline:14px}
 .filters button{background:var(--surface)}
@@ -253,7 +253,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
         <h2 id="tour-h" data-i18n="tourH">巡演場次</h2>
         <div class="tour" id="tour"><div class="empty">巡演日期會出現在這裡。</div></div>
         <div class="note" data-i18n="tourNote">紅色那列是你選的城市。日期以主辦公告為準。</div>
-        <button class="tourposter" id="tourposter" type="button"><img src="poster.jpg" alt="TAEYEON CONCERT F.L.Y." width="72" height="96"><div><b data-i18n="posterB">F.L.Y. 巡演宣傳圖</b><span data-i18n="posterS">點一下放大看</span></div></button>
+        <button class="tourposter" id="tourposter" type="button"><img src="poster_2.jpg" alt="TAEYEON CONCERT F.L.Y." width="72" height="96"><div><b data-i18n="posterB">F.L.Y. 巡演宣傳圖</b><span data-i18n="posterS">點一下放大看</span></div></button>
         <a class="note" href="https://weverse.io/taeyeon/notice/41091" target="_blank" rel="noopener" data-i18n="notice2">官方公告 ↗</a>
       </section>
 
@@ -480,7 +480,7 @@ async function setupUpload(db){
 }
 function closeLb(){$("lb").hidden=true;$("lbp").hidden=false;$("lbn").hidden=false;if($("lbdel").dataset.h==="")$("lbdel").hidden=false;delete $("lbdel").dataset.h}
 function navShow(on){$("lbp").hidden=!on;$("lbn").hidden=!on}
-$("tourposter").onclick=()=>{$("lbimg").src="poster.jpg";$("lbimg").alt="TAEYEON CONCERT F.L.Y.";$("lbcap").textContent="TAEYEON CONCERT F.L.Y.";navShow(false);$("lbdel").dataset.h=$("lbdel").hidden?"1":"";$("lbdel").hidden=true;$("lb").hidden=false;$("lbx").focus()};
+$("tourposter").onclick=()=>{$("lbimg").src="poster_2.jpg";$("lbimg").alt="TAEYEON CONCERT F.L.Y.";$("lbcap").textContent="TAEYEON CONCERT F.L.Y.";navShow(false);$("lbdel").dataset.h=$("lbdel").hidden?"1":"";$("lbdel").hidden=true;$("lb").hidden=false;$("lbx").focus()};
 $("lbx").onclick=closeLb;$("lbp").onclick=()=>openLb(cur-1);$("lbn").onclick=()=>openLb(cur+1);
 $("lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb()});
 document.addEventListener("keydown",e=>{if($("lb").hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")openLb(cur-1);if(e.key==="ArrowRight")openLb(cur+1)});
