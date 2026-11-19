@@ -4,206 +4,506 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d0a0b">
-<title>every day with Taeyeon · MV</title>
+<meta name="description" content="泰妍應援站：最新消息、F.L.Y. 巡演倒數、MV 播放器與年表。">
+<title>泰妍應援站</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;1,6..96,400&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Thai:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Thai:wght@400;700&family=JetBrains+Mono:wght@500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,400&display=swap">
 <style>
+*{box-sizing:border-box}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: a concert-ticket hero with the countdown as its stub, then a news feed beside the tour setlist-style table */
 :root{
-  --bg:#f6f2f0; --surface:rgba(255,255,255,.88); --ink:#1f1416; --muted:#6f5c60;
-  --red:#c8102e; --red-soft:#fbe1e5; --line:rgba(60,20,28,.14);
-  --glow:rgba(200,16,46,.10); --weave:rgba(60,20,28,.035);
-  --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --bg:#f6f2f0; --surface:rgba(255,255,255,.86); --ink:#1f1416; --muted:#6f5c60;
+  --rose:#c8102e; --rose-soft:rgba(251,225,229,.9); --line:rgba(60,20,28,.14); --pearl:rgba(248,242,241,.88);
+  --veil:linear-gradient(180deg,rgba(246,242,240,.80),rgba(246,242,240,.90) 40%,rgba(246,242,240,.94));
+  --glow:rgba(200,16,46,.10); --glow2:rgba(200,16,46,.06); --weave:rgba(60,20,28,.035);
+  --ok:#2f8a5b; --warn:#b86a12;
+  --display:"Bricolage Grotesque","Noto Sans TC",system-ui,sans-serif;
   --body:"Noto Sans TC","Noto Sans KR","Noto Sans JP","Noto Sans Thai",system-ui,-apple-system,"PingFang TC",sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace; color-scheme:light;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0d0a0b; --surface:rgba(24,18,19,.86); --ink:#f5ecec; --muted:#b7a1a4;
-  --red:#ff3b54; --red-soft:rgba(80,14,26,.8); --line:rgba(255,220,225,.12);
-  --glow:rgba(255,40,70,.22); --weave:rgba(255,255,255,.035); color-scheme:dark}}
+  --bg:#0d0a0b; --surface:rgba(22,16,17,.80); --ink:#f5ecec; --muted:#b7a1a4;
+  --rose:#ff3b54; --rose-soft:rgba(70,12,22,.78); --line:rgba(255,220,225,.12); --pearl:rgba(30,22,23,.80);
+  --veil:linear-gradient(180deg,rgba(13,10,11,.35),rgba(13,10,11,.70) 45%,rgba(13,10,11,.86));
+  --glow:rgba(255,40,70,.22); --glow2:rgba(255,40,70,.10); --weave:rgba(255,255,255,.035);
+  --ok:#6fd19c; --warn:#f0b263; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0d0a0b; --surface:rgba(24,18,19,.86); --ink:#f5ecec; --muted:#b7a1a4;
-  --red:#ff3b54; --red-soft:rgba(80,14,26,.8); --line:rgba(255,220,225,.12);
-  --glow:rgba(255,40,70,.22); --weave:rgba(255,255,255,.035); color-scheme:dark}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html,body{margin:0}
-body{font-family:var(--body);color:var(--ink);line-height:1.6;min-height:100vh;
-  background:radial-gradient(70vmax 50vmax at 90% -10%,var(--glow),transparent 70%),
-  repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),
-  repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg);background-attachment:fixed}
-button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-.wrap{max-width:1140px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left));display:grid;gap:22px}
-header{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:12px}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,6vw,3.5rem);line-height:1;margin:0;display:flex;flex-wrap:wrap;gap:0 .3em;align-items:baseline}
-h1 em{font-style:italic}
-h1 small{font-family:var(--body);font-size:.22em;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-h1 span{font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82em}
-h1 span::first-letter{color:var(--red)}
-.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.pill,select{font-size:.82rem;border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:99px;cursor:pointer;color:var(--ink)}
-.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-a{color:var(--red)}
-.stage{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;align-items:start}
-@media (max-width:880px){.stage{grid-template-columns:1fr}}
-.player{display:grid;gap:12px;min-width:0;position:sticky;top:12px}
-@media (max-width:880px){.player{position:static}}
-.frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
-.frame>div,.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.blocked{position:absolute;inset:0;display:grid;place-content:center;gap:10px;text-align:center;color:#fff;background:rgba(0,0,0,.85);padding:16px}
-.now h2{margin:0;font-size:1.25rem;line-height:1.3}
-.now .yr{font-family:var(--mono);color:var(--muted);font-size:.85rem;margin-left:8px;font-weight:500}
-.now p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
-.ctrl{display:flex;gap:8px;flex-wrap:wrap}
-.ctrl button{border:1px solid var(--line);background:var(--surface);padding:7px 14px;border-radius:99px;cursor:pointer}
-.ctrl button.main{background:var(--red);border-color:var(--red);color:#fff;min-width:96px}
-.ctrl button[aria-pressed="true"]{border-color:var(--red);color:var(--red)}
-.side{display:grid;gap:10px;min-width:0}
-.search{width:100%;font:inherit;font-size:.9rem;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.tabs{display:flex;gap:6px}
-.list{display:grid;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);backdrop-filter:blur(10px)}
-.song{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line)}
-.song:last-child{border-bottom:0}
-.song[aria-current="true"]{background:var(--red-soft)}
-.song .th{width:52px;height:30px;border-radius:6px;object-fit:cover;background:#000;display:block}
-.song .th.q{display:grid;place-items:center;font-size:.7rem;color:var(--muted);background:var(--red-soft)}
-.song .info{all:unset;cursor:pointer;min-width:0;display:grid}
-.song .info b{font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song .info small{color:var(--muted);font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song .acts{display:flex;gap:2px}
-.song .acts button,.song .acts a{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;font-size:.95rem;color:var(--muted);text-decoration:none}
-.song .acts button:hover,.song .acts a:hover{background:var(--red-soft);color:var(--red)}
-.song .acts .fav[aria-pressed="true"]{color:var(--red)}
-.empty{padding:20px;text-align:center;color:var(--muted);font-size:.9rem}
-.note{font-size:.78rem;color:var(--muted)}
-.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:99px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
-.toast.on{opacity:1}
-@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+  --bg:#0d0a0b; --surface:rgba(22,16,17,.80); --ink:#f5ecec; --muted:#b7a1a4;
+  --rose:#ff3b54; --rose-soft:rgba(70,12,22,.78); --line:rgba(255,220,225,.12); --pearl:rgba(30,22,23,.80);
+  --veil:linear-gradient(180deg,rgba(13,10,11,.35),rgba(13,10,11,.70) 45%,rgba(13,10,11,.86));
+  --glow:rgba(255,40,70,.22); --glow2:rgba(255,40,70,.10); --weave:rgba(255,255,255,.035);
+  --ok:#6fd19c; --warn:#f0b263; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;font-size:15px}
+.cover-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil),url("cover.jpg") center 30%/cover no-repeat,radial-gradient(60vmax 45vmax at 88% -8%,var(--glow),transparent 70%),radial-gradient(40vmax 30vmax at -10% 105%,var(--glow2),transparent 70%),repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg)}
+.ticket,.tour,.alert,.mv,.add,.feed,.empty{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.feed{background:var(--pearl);border-radius:14px;padding-inline:14px}
+.filters button{background:var(--surface)}
+.stop.me{background:var(--rose-soft)}
+.chip{color:#fff}.btn{color:#fff}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;display:grid;gap:36px}
+a{color:var(--rose)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0}
+h2{font-size:1.35rem;font-weight:800;letter-spacing:-.01em}
+.label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ticket hero */
+.tourposter{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:zoom-in;font:inherit;color:var(--ink);text-align:left;width:100%;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tourposter img{width:72px;height:96px;object-fit:cover;border-radius:8px;display:block}
+.tourposter b{display:block;font-size:.9rem}
+.tourposter span{font-size:.78rem;color:var(--muted)}
+.ticket{display:grid;grid-template-columns:1fr auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.ticket-main{padding:28px;display:grid;gap:10px;min-width:0}
+.ticket-main h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:800;line-height:1;letter-spacing:-.03em}
+.ticket-main h1 span{color:var(--rose)}
+.ticket-main p{margin:0;color:var(--muted);max-width:52ch}
+.stub{border-left:2px dashed var(--line);padding:24px 28px;display:grid;align-content:center;gap:4px;min-width:200px;background:var(--rose-soft);position:relative}
+.stub::before,.stub::after{content:"";position:absolute;left:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+.stub::before{top:-11px}.stub::after{bottom:-11px}
+.stub .days{font-family:var(--display);font-size:3.4rem;font-weight:800;line-height:1;color:var(--rose)}
+.stub .where{font-weight:700}
+@media (max-width:640px){.ticket{grid-template-columns:1fr}.stub{border-left:0;border-top:2px dashed var(--line);min-width:0}.stub::before,.stub::after{display:none}}
+
+.updated{font-size:.82rem;color:var(--muted)}
+.alerts{display:grid;gap:10px}
+.alert{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--pearl);border:1px solid var(--line)}
+.chip{flex:none;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--rose);color:var(--surface);margin-top:2px}
+.chip.ok{background:var(--ok)}.chip.warn{background:var(--warn)}
+.alert div{min-width:0}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+section{display:grid;gap:14px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:4px 12px;border-radius:99px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.feed{display:grid;gap:0;border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:86px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.item time{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:3px}
+.item h3{margin:0 0 4px;font-size:1rem;line-height:1.45}
+.item p{margin:0;color:var(--muted);font-size:.92rem}
+.item .meta{margin-top:6px;font-size:.78rem;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tag{color:var(--rose);font-weight:700}
+@media (max-width:480px){.item{grid-template-columns:1fr;gap:4px}}
+
+.tour{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.stop{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.stop:last-child{border-bottom:0}
+.stop.me{background:var(--rose-soft)}
+.stop .d{font-family:var(--mono);font-size:.82rem;font-variant-numeric:tabular-nums}
+.stop .c{font-weight:700}.stop .v{font-size:.8rem;color:var(--muted)}
+.stop .s{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.stop .s.past{opacity:.6}
+.note{font-size:.8rem;color:var(--muted)}
+
+.empty{padding:22px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:.92rem}
+
+.timeline{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.t{position:relative;padding:0 0 14px 18px}
+.t::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--rose)}
+.t b{font-family:var(--mono);font-size:.82rem;color:var(--rose);display:block;line-height:1.4}
+.t ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:3px;font-size:.88rem}
+.t li{color:var(--ink)}
+.t li i{font-style:normal;color:var(--muted);font-size:.8rem;margin-left:4px}
+.t.big::before{background:var(--rose)}
+.tl-era{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:6px 0 10px 18px}
+.edw{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-weight:400;font-size:clamp(2.2rem,6.5vw,3.6rem);line-height:1;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .3em;padding-bottom:10px;border-bottom:1px solid var(--ink)}
+.edw em{font-style:italic;font-weight:400;letter-spacing:-.02em}
+.edw span{font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82em}
+.edw span::first-letter{color:var(--rose)}
+.edw small{font-family:var(--body);font-size:.22em;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);align-self:center}
+.mvs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.mv{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s}
+.mv:hover{border-color:var(--rose);transform:translateY(-2px)}
+.mv .play{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--rose-soft);color:var(--rose);font-size:1rem}
+.mv .tt{font-weight:700;line-height:1.35}
+.mv .yr{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-left:6px;font-weight:500}
+.mv .bl{font-size:.82rem;color:var(--muted);line-height:1.5;margin-top:2px}
+.mv .src{font-size:.72rem;color:var(--rose);margin-top:4px}
+@media (prefers-reduced-motion:reduce){.mv{transition:none}.mv:hover{transform:none}}
+.mvplayer{display:grid;gap:10px}
+.mvframe{position:relative;width:100%;max-width:880px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 20px 50px -24px rgba(0,0,0,.6)}
+.mvframe>div,.mvframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mvbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;max-width:880px}
+.mvnow{display:grid;min-width:0}.mvnow b{font-size:1.05rem}.mvnow span{font-size:.82rem;color:var(--muted)}
+.mvctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mvctrl button{font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;min-width:40px;height:36px;padding:0 12px;cursor:pointer}
+.mvctrl button.main{background:var(--rose);border-color:var(--rose);color:#fff;min-width:56px}
+.mvctrl a{font-size:.85rem}
+button.mv{font:inherit;text-align:left;cursor:pointer;width:100%}
+.mv.on{border-color:var(--rose);background:var(--rose-soft)}
+.mv img.thumb{width:64px;height:36px;border-radius:6px;object-fit:cover;display:block}
+.gallery{overflow:hidden;border-radius:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;gap:12px;width:max-content;animation:marquee var(--dur,80s) linear infinite}
+.gallery:hover .track,.gallery:focus-within .track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 6px))}}
+.ph{flex:none;position:relative;border-radius:12px;overflow:hidden;background:var(--pearl);cursor:zoom-in;border:0;padding:0;display:block;height:clamp(200px,34vw,300px)}
+.ph img{display:block;height:100%;width:auto;max-width:none;transition:transform .4s ease}
+@media (prefers-reduced-motion:reduce){.gallery{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.track{animation:none}}
+.ph:hover img{transform:scale(1.03)}
+.ph span{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font-size:.78rem;color:#fff;background:linear-gradient(transparent,rgba(20,8,14,.7));text-align:left;opacity:0;transition:opacity .2s}
+.ph:hover span,.ph:focus-visible span{opacity:1}
+@media (hover:none){.ph span{opacity:1}}
+.lb{position:fixed;inset:0;z-index:20;background:rgba(14,6,10,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb figure{margin:0;display:grid;gap:10px;justify-items:center;max-width:100%}
+.lb img{max-width:100%;max-height:82vh;border-radius:10px}
+.lb figcaption{color:#f6eaf0;font-size:.9rem;text-align:center}
+.lb .del{position:static;width:auto;height:auto;padding:6px 14px;font-size:.82rem;border-radius:99px}
+.add{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border:1px dashed var(--line);border-radius:12px;background:var(--surface)}
+.add select,.add input[type=text]{font:inherit;font-size:.85rem;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);min-width:0}
+.add input[type=text]{flex:1 1 160px}
+.btn{font:inherit;font-size:.85rem;font-weight:700;padding:7px 14px;border-radius:99px;border:0;background:var(--rose);color:var(--surface);cursor:pointer}
+.btn:disabled{opacity:.5;cursor:default}
+.links{display:flex;gap:14px;flex-wrap:wrap;font-size:.85rem}
+.lb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:99px;width:44px;height:44px;font-size:1.3rem;cursor:pointer}
+.lb .x{top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(12px,env(safe-area-inset-left,0px));top:50%}.lb .nx{right:max(12px,env(safe-area-inset-right,0px));top:50%}
+@media (prefers-reduced-motion:reduce){.ph img{transition:none}}
+.citybar{display:grid;gap:8px}
+.cities{display:flex;gap:6px;flex-wrap:wrap}
+.cities button{font:inherit;display:grid;gap:0;text-align:left;padding:6px 12px 7px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);cursor:pointer;line-height:1.25;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.cities button b{font-family:"Bodoni Moda",Georgia,serif;font-size:.86rem;letter-spacing:.08em}
+.cities button small{font-size:.72rem;color:var(--muted)}
+.cities button[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+.cities button[aria-pressed="true"] small{color:rgba(255,255,255,.85)}
+.cities .en{align-self:stretch;place-content:center}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 </style>
+
 </head>
 <body>
+<div class="cover-bg" aria-hidden="true"></div>
 <div class="wrap">
-  <header>
-    <h1><em>every day</em> <small>with</small> <span>Taeyeon</span></h1>
-    <div class="tools">
-      <select id="lang" aria-label="Language"><option value="zh">繁體中文</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="th">ภาษาไทย</option><option value="en">English</option></select>
-      <button class="pill" id="theme" type="button"></button>
-      <a href="https://claude.ai/artifact/Epe72DCKrHX51rw8FxPXv7" target="_blank" rel="noopener" id="back"></a>
+  <nav class="citybar" aria-label="City and language">
+    <div class="label" data-i18n="pick">選擇城市與語言</div>
+    <div class="cities" id="cities"></div>
+  </nav>
+  <div class="ticket" data-i18n-aria="ticketAria" aria-label="下一場演唱會">
+    <div class="ticket-main">
+      <div class="label">KIM TAEYEON · 김태연 · SONE</div>
+      <h1>TAEYEON <span>F.L.Y.</span></h1>
+      <p id="headline">最新消息載入中…</p>
+      <div class="updated" id="updated"></div>
     </div>
-  </header>
-
-  <div class="stage">
-    <section class="player" aria-labelledby="nowT">
-      <div class="frame"><div id="yt"></div><div class="blocked" id="blocked" hidden><div id="blockedMsg"></div><a id="blockedLink" target="_blank" rel="noopener"></a></div></div>
-      <div class="now"><h2 id="nowT"></h2><p id="nowB"></p></div>
-      <div class="ctrl">
-        <button type="button" id="prev"></button>
-        <button type="button" id="play" class="main"></button>
-        <button type="button" id="next"></button>
-        <button type="button" id="shuf" aria-pressed="false"></button>
-        <button type="button" id="rep" aria-pressed="false"></button>
-        <button type="button" id="share"></button>
-      </div>
-      <div class="note" id="queueInfo"></div>
-    </section>
-
-    <section class="side" aria-label="Playlist">
-      <input class="search" id="q" type="search">
-      <div class="row">
-        <div class="tabs" id="tabs"></div>
-        <select id="sort" aria-label="Sort"></select>
-      </div>
-      <div class="list" id="list"></div>
-      <div class="note" id="foot"></div>
-    </section>
+    <div class="stub" id="stub">
+      <div class="label" id="cdlabel">距離台北場</div>
+      <div class="days mono" id="days">—</div>
+      <div class="where" id="where">台北大巨蛋</div>
+      <div class="note mono" id="when"></div>
+    </div>
   </div>
+
+  <section aria-labelledby="alerts-h">
+    <h2 id="alerts-h" data-i18n="alertsH">要注意的事</h2>
+    <div class="alerts" id="alerts"><div class="empty" data-i18n="alertsEmpty">搶票、新專輯發行這類重要日期會出現在這裡。</div></div>
+  </section>
+
+  <section aria-labelledby="ph-h">
+    <div class="head">
+      <div><h2 id="ph-h" class="edw"><em>every day</em> <small>with</small> <span>Taeyeon</span></h2><div class="note" data-i18n="phNote">滑鼠移上去會暫停，點照片可以放大。</div></div>
+      <div style="display:grid;gap:6px;justify-items:end"><div class="filters" id="phfilters" role="group" aria-label="篩選照片"></div><div class="filters" id="yrfilters" role="group" aria-label="篩選年代" hidden></div></div>
+    </div>
+    <div class="links"><a href="https://www.facebook.com/share/1Rpze9ewD1/" target="_blank" rel="noopener" data-i18n="fb">前往泰妍粉專 ↗</a><a href="https://www.instagram.com/taeyeon_ss/" target="_blank" rel="noopener">Instagram @taeyeon_ss ↗</a></div>
+    <div class="add" id="addbox" hidden>
+      <select id="addcat" aria-label="照片分類"><option value="daily">日常</option><option value="stage">舞台</option><option value="shoot">寫真</option></select>
+      <input type="text" id="addcap" placeholder="照片說明（可不填）" aria-label="照片說明">
+      <label class="note" style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="addpub">公開顯示（有 CC 授權才勾）</label>
+      <input type="file" id="addfile" accept="image/*" multiple hidden>
+      <button class="btn" id="addbtn" type="button">＋ 加照片</button>
+      <span class="note" id="addmsg"></span>
+    </div>
+    <div class="gallery" id="gallery"><div class="empty">照片載入中…</div></div>
+  </section>
+
+  <section aria-labelledby="mv-h">
+    <div class="head">
+      <div><h2 id="mv-h" data-i18n="mvH">MV 歌單</h2><div class="note" data-i18n="mvNote">點卡片就會在上方播放，播完自動接下一首。</div></div>
+      <div class="filters" id="mvfilters" role="group" aria-label="篩選 MV"></div>
+    </div>
+    <div class="mvplayer">
+      <div class="mvframe"><div id="ytp"></div></div>
+      <div class="mvbar"><div class="mvnow"><b id="mvT"></b><span id="mvB"></span></div>
+        <div class="mvctrl"><button type="button" id="mvprev" aria-label="prev">‹</button><button type="button" id="mvplay" class="main">▶</button><button type="button" id="mvnext" aria-label="next">›</button><a href="mv.html" id="mvfull" data-i18n="mvFull">完整播放器 ↗</a></div></div>
+    </div>
+    <div class="mvs" id="mvs"><div class="empty">MV 載入中…</div></div>
+  </section>
+
+  <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="照片">
+    <button class="x" id="lbx" type="button" aria-label="關閉">×</button>
+    <button class="pv" id="lbp" type="button" aria-label="上一張">‹</button>
+    <figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption><button class="del" id="lbdel" type="button" hidden>從相簿移除</button></figure>
+    <button class="nx" id="lbn" type="button" aria-label="下一張">›</button>
+  </div>
+
+  <div class="grid">
+    <section aria-labelledby="news-h">
+      <div class="head">
+        <div><h2 id="news-h" data-i18n="newsH">最新消息</h2><div class="note" id="newsnote" data-i18n="newsNote" hidden></div></div>
+        <div class="filters" id="filters" role="group" aria-label="篩選消息"></div>
+      </div>
+      <div class="feed" id="feed"><div class="empty">消息每天會自動更新，第一批正在整理中。</div></div>
+    </section>
+
+    <div style="display:grid;gap:36px;min-width:0">
+      <section aria-labelledby="tour-h">
+        <h2 id="tour-h" data-i18n="tourH">巡演場次</h2>
+        <div class="tour" id="tour"><div class="empty">巡演日期會出現在這裡。</div></div>
+        <div class="note" data-i18n="tourNote">紅色那列是你選的城市。日期以主辦公告為準。</div>
+        <button class="tourposter" id="tourposter" type="button"><img src="poster.jpg" alt="TAEYEON CONCERT F.L.Y." width="72" height="96"><div><b data-i18n="posterB">F.L.Y. 巡演宣傳圖</b><span data-i18n="posterS">點一下放大看</span></div></button>
+        <a class="note" href="https://weverse.io/taeyeon/notice/41091" target="_blank" rel="noopener" data-i18n="notice2">官方公告 ↗</a>
+      </section>
+
+      <section aria-labelledby="tl-h">
+        <h2 id="tl-h" data-i18n="tlH">一路走來</h2>
+        <div class="timeline" id="timeline"></div>
+      </section>
+    </div>
+  </div>
+
 </div>
-<div class="toast" id="toast" role="status"></div>
 
 <script src="songs.js"></script>
 <script>
-const L={
-zh:{back:"回到應援站 ↗",light:"淺色",dark:"深色",auto:"自動",prev:"‹ 上一首",next:"下一首 ›",play:"▶ 播放",pause:"❚❚ 暫停",shuf:"隨機",rep:"單曲重複",share:"分享",search:"搜尋歌名…",all:"全部",soft:"睡前溫柔",bright:"輕快帥氣",fav:"我的最愛",sNew:"最新",sOld:"最舊",sAz:"A–Z",playNext:"下一首播放",queue:"加入佇列",favT:"加入最愛",yt:"到 YouTube 搜尋",none:"沒有符合的歌。",noFav:"還沒有最愛，點 ♡ 收藏喜歡的歌。",queued:n=>`佇列裡還有 ${n} 首`,addedNext:"會在下一首播放",addedQ:"已加入佇列",copied:"連結已複製",blocked:"這支影片的官方設定不允許在其他網站播放",openYt:"到 YouTube 觀看 ↗",foot:"影片皆由 YouTube 播放，版權屬於原權利人。標「搜尋」的歌還沒確認到官方影片。",pick:"選一首歌開始播放"},
-ko:{back:"응원 사이트로 ↗",light:"라이트",dark:"다크",auto:"자동",prev:"‹ 이전",next:"다음 ›",play:"▶ 재생",pause:"❚❚ 일시정지",shuf:"셔플",rep:"한 곡 반복",share:"공유",search:"곡 검색…",all:"전체",soft:"잔잔한 밤",bright:"신나고 멋지게",fav:"즐겨찾기",sNew:"최신순",sOld:"오래된순",sAz:"A–Z",playNext:"다음에 재생",queue:"대기열에 추가",favT:"즐겨찾기",yt:"YouTube에서 검색",none:"맞는 곡이 없어요.",noFav:"아직 즐겨찾기가 없어요. ♡를 눌러 보세요.",queued:n=>`대기열 ${n}곡`,addedNext:"다음 곡으로 재생돼요",addedQ:"대기열에 추가했어요",copied:"링크를 복사했어요",blocked:"이 영상은 다른 사이트에서 재생할 수 없도록 설정되어 있어요",openYt:"YouTube에서 보기 ↗",foot:"영상은 YouTube에서 재생되며 저작권은 원권리자에게 있어요.",pick:"곡을 선택하세요"},
-ja:{back:"応援サイトへ ↗",light:"ライト",dark:"ダーク",auto:"自動",prev:"‹ 前へ",next:"次へ ›",play:"▶ 再生",pause:"❚❚ 一時停止",shuf:"シャッフル",rep:"1曲リピート",share:"共有",search:"曲名で検索…",all:"すべて",soft:"おやすみ前に",bright:"アップテンポ",fav:"お気に入り",sNew:"新しい順",sOld:"古い順",sAz:"A–Z",playNext:"次に再生",queue:"キューに追加",favT:"お気に入り",yt:"YouTubeで検索",none:"該当する曲がありません。",noFav:"お気に入りはまだありません。♡をタップしてください。",queued:n=>`キューにあと${n}曲`,addedNext:"次に再生します",addedQ:"キューに追加しました",copied:"リンクをコピーしました",blocked:"この動画は外部サイトでの再生が許可されていません",openYt:"YouTubeで見る ↗",foot:"動画はYouTubeで再生され、著作権は権利者に帰属します。",pick:"曲を選んでください"},
-th:{back:"กลับไปเว็บแฟนไซต์ ↗",light:"สว่าง",dark:"มืด",auto:"อัตโนมัติ",prev:"‹ ก่อนหน้า",next:"ถัดไป ›",play:"▶ เล่น",pause:"❚❚ หยุด",shuf:"สุ่ม",rep:"เล่นซ้ำเพลงเดียว",share:"แชร์",search:"ค้นหาเพลง…",all:"ทั้งหมด",soft:"ฟังก่อนนอน",bright:"สนุกและเท่",fav:"รายการโปรด",sNew:"ใหม่สุด",sOld:"เก่าสุด",sAz:"A–Z",playNext:"เล่นถัดไป",queue:"เพิ่มในคิว",favT:"รายการโปรด",yt:"ค้นหาใน YouTube",none:"ไม่พบเพลง",noFav:"ยังไม่มีรายการโปรด แตะ ♡ เพื่อเก็บเพลง",queued:n=>`ในคิวอีก ${n} เพลง`,addedNext:"จะเล่นเป็นเพลงถัดไป",addedQ:"เพิ่มในคิวแล้ว",copied:"คัดลอกลิงก์แล้ว",blocked:"วิดีโอนี้ไม่อนุญาตให้เล่นบนเว็บอื่น",openYt:"ดูบน YouTube ↗",foot:"วิดีโอเล่นผ่าน YouTube ลิขสิทธิ์เป็นของเจ้าของผลงาน",pick:"เลือกเพลงเพื่อเริ่มเล่น"},
-en:{back:"Back to fan site ↗",light:"Light",dark:"Dark",auto:"Auto",prev:"‹ Prev",next:"Next ›",play:"▶ Play",pause:"❚❚ Pause",shuf:"Shuffle",rep:"Repeat one",share:"Share",search:"Search songs…",all:"All",soft:"Soft & calm",bright:"Upbeat",fav:"Favorites",sNew:"Newest",sOld:"Oldest",sAz:"A–Z",playNext:"Play next",queue:"Add to queue",favT:"Favorite",yt:"Search on YouTube",none:"No matching songs.",noFav:"No favorites yet. Tap ♡ to save songs.",queued:n=>`${n} in queue`,addedNext:"Plays next",addedQ:"Added to queue",copied:"Link copied",blocked:"This video's owner doesn't allow playback on other sites",openYt:"Watch on YouTube ↗",foot:"Videos play from YouTube; rights belong to their owners.",pick:"Pick a song to start"}};
-const $=id=>document.getElementById(id);
-const store={get(k,d){try{const v=localStorage.getItem("tyv-"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem("tyv-"+k,JSON.stringify(v))}catch(e){}}};
-let lang=store.get("lang",(navigator.language||"zh").slice(0,2));if(!L[lang])lang="zh";
-let theme=store.get("theme","auto"),tab="all",sort="new",favs=new Set(store.get("favs",[])),queue=[],cur=-1,shuffle=false,repeat=false,player=null,ready=false,playing=false;
-const T=k=>L[lang][k];
-const playable=()=>SONGS.map((s,i)=>i).filter(i=>SONGS[i].id);
-function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),1800)}
-function applyTheme(){if(theme==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.dataset.theme=theme;$("theme").textContent="◐ "+T(theme)}
-function filtered(){
-  const q=$("q").value.trim().toLowerCase();
-  let list=SONGS.map((s,i)=>i).filter(i=>{const s=SONGS[i];if(tab==="fav"&&!favs.has(s.t))return false;if((tab==="soft"||tab==="bright")&&s.m!==tab)return false;return !q||(s.t+" "+s.y+" "+(s.b||"")).toLowerCase().includes(q)});
-  list.sort((a,b)=>sort==="az"?SONGS[a].t.localeCompare(SONGS[b].t):sort==="old"?SONGS[a].y-SONGS[b].y||a-b:SONGS[b].y-SONGS[a].y||b-a);
-  return list;
+const LANGS={zh:"zh-Hant-TW",hk:"zh-Hant-HK",ko:"ko",th:"th",ja:"ja",en:"en"};
+const STOPS=[["seoul","SEOUL","한국어","ko"],["macau","MACAU","繁體中文","hk"],["bangkok","BANGKOK","ภาษาไทย","th"],["hongkong","HONG KONG","繁體中文","hk"],["taipei","TAIPEI","繁體中文","zh"],["tokyo","TOKYO","日本語","ja"]];
+const CITY={seoul:{zh:"首爾",ko:"서울",th:"โซล",ja:"ソウル",en:"Seoul"},macau:{zh:"澳門",ko:"마카오",th:"มาเก๊า",ja:"マカオ",en:"Macau"},bangkok:{zh:"曼谷",ko:"방콕",th:"กรุงเทพฯ",ja:"バンコク",en:"Bangkok"},hongkong:{zh:"香港",ko:"홍콩",th:"ฮ่องกง",ja:"香港",en:"Hong Kong"},taipei:{zh:"台北",ko:"타이베이",th:"ไทเป",ja:"台北",en:"Taipei"},tokyo:{zh:"東京",ko:"도쿄",th:"โตเกียว",ja:"東京",en:"Tokyo"}};
+const VENUE={"紅磡體育館":{ko:"홍콩 콜로세움",th:"Hong Kong Coliseum",ja:"香港コロシアム",en:"Hong Kong Coliseum"},"台北大巨蛋":{ko:"타이베이 돔",th:"Taipei Dome",ja:"台北ドーム",en:"Taipei Dome"}};
+const STATUS={"即將登場":{ko:"곧 공연",th:"เร็ว ๆ นี้",ja:"まもなく",en:"Coming up"},"售票待公布":{ko:"예매 일정 미정",th:"รอประกาศขายบัตร",ja:"チケット情報待ち",en:"Tickets TBA"},"日期待確認":{ko:"날짜 확인 중",th:"รอยืนยันวันที่",ja:"日程確認中",en:"Date TBC"},"已結束":{ko:"종료",th:"จบแล้ว",ja:"終了",en:"Ended"}};
+const SALE={ko:d=>d+" 예매 오픈",th:d=>"เปิดขาย "+d,ja:d=>d+" 発売",en:d=>"On sale "+d};
+const S={
+zh:{pick:"選擇城市與語言",ticketAria:"下一場演唱會",cd:c=>`距離${c}場`,days:n=>n+" 天",today:"就是今天",ended:"已結束",loading:"最新消息載入中…",fail:"暫時連不上資料，請稍後再開一次。",nodb:"登入 claude.ai 後就能看到最新消息。",updated:"最後更新：",alertsH:"要注意的事",alertsEmpty:"搶票、新專輯發行這類重要日期會出現在這裡。",notice:"看公告",note:"注意",phNote:"滑鼠移上去會暫停，點照片可以放大。",fb:"前往泰妍粉專 ↗",all:"全部",pc:{stage:"舞台",shoot:"寫真",daily:"日常"},noPhotos:"還沒有照片。",yr:{all:"所有年代",early:"2007–2014 少女時代",solo:"2015–2019 個人出道",recent:"2020–現在"},photo:"照片",mvH:"MV 歌單",mvNote:"點卡片就會在上方播放，播完自動接下一首。",mvFull:"完整播放器 ↗",mood:{soft:"睡前溫柔",bright:"輕快帥氣"},official:"官方 MV",search:"在 YouTube 搜尋",noMv:"還沒有 MV。",newsH:"最新消息",newsNote:"",cat:{tour:"演唱會",ticket:"售票",music:"音樂",tv:"綜藝",sns:"社群",other:"其他"},noNews:"消息每天會自動更新，第一批正在整理中。",tourH:"巡演場次",tourNote:"紅色那列是你選的城市。日期以主辦公告為準。",noTour:"巡演日期會出現在這裡。",posterB:"F.L.Y. 巡演宣傳圖",notice2:"官方公告 ↗",posterS:"點一下放大看",tlH:"一路走來",era:["出道前","少女時代隊長","個人歌手"],close:"關閉",prev:"上一張",next:"下一張"},
+ko:{pick:"도시와 언어 선택",ticketAria:"다음 공연",cd:c=>`${c} 공연까지`,days:n=>n+"일",today:"바로 오늘",ended:"종료",loading:"최신 소식을 불러오는 중…",fail:"지금은 데이터에 연결할 수 없어요. 잠시 후 다시 열어 주세요.",nodb:"claude.ai에 로그인하면 최신 소식을 볼 수 있어요.",updated:"마지막 업데이트: ",alertsH:"체크할 일정",alertsEmpty:"티켓 오픈, 앨범 발매 같은 중요한 날짜가 여기에 표시돼요.",notice:"공지 보기",note:"알림",phNote:"마우스를 올리면 멈추고, 사진을 누르면 크게 볼 수 있어요.",fb:"태연 팬페이지 ↗",all:"전체",pc:{stage:"무대",shoot:"화보",daily:"일상"},noPhotos:"아직 사진이 없어요.",yr:{all:"전체 시기",early:"2007–2014 소녀시대",solo:"2015–2019 솔로 데뷔",recent:"2020–현재"},photo:"사진",mvH:"MV 플레이리스트",mvNote:"카드를 누르면 위에서 바로 재생돼요.",mvFull:"전체 플레이어 ↗",mood:{soft:"잔잔한 밤",bright:"신나고 멋지게"},official:"공식 MV",search:"YouTube에서 검색",noMv:"아직 MV가 없어요.",newsH:"최신 소식",newsNote:"소식 내용은 중국어로 정리돼요.",cat:{tour:"콘서트",ticket:"티켓",music:"음악",tv:"예능",sns:"SNS",other:"기타"},noNews:"소식은 매일 자동으로 업데이트돼요.",tourH:"투어 일정",tourNote:"빨간 줄이 선택한 도시예요. 날짜는 주최 측 공지를 기준으로 해요.",noTour:"투어 일정이 여기에 표시돼요.",posterB:"F.L.Y. 투어 포스터",notice2:"공식 공지 ↗",posterS:"눌러서 크게 보기",tlH:"걸어온 길",era:["데뷔 전","소녀시대 리더","솔로 가수"],close:"닫기",prev:"이전",next:"다음"},
+th:{pick:"เลือกเมืองและภาษา",ticketAria:"คอนเสิร์ตถัดไป",cd:c=>`นับถอยหลังถึง${c}`,days:n=>n+" วัน",today:"วันนี้แล้ว!",ended:"จบแล้ว",loading:"กำลังโหลดข่าวล่าสุด…",fail:"ยังเชื่อมต่อข้อมูลไม่ได้ ลองเปิดใหม่อีกครั้งภายหลัง",nodb:"เข้าสู่ระบบ claude.ai เพื่อดูข่าวล่าสุด",updated:"อัปเดตล่าสุด: ",alertsH:"สิ่งที่ต้องจับตา",alertsEmpty:"วันสำคัญ เช่น เปิดขายบัตรหรือวางจำหน่ายอัลบั้ม จะแสดงที่นี่",notice:"ดูประกาศ",note:"แจ้งเตือน",phNote:"วางเมาส์เพื่อหยุด แตะรูปเพื่อขยาย",fb:"แฟนเพจแทยอน ↗",all:"ทั้งหมด",pc:{stage:"บนเวที",shoot:"ถ่ายแบบ",daily:"ชีวิตประจำวัน"},noPhotos:"ยังไม่มีรูป",yr:{all:"ทุกช่วงเวลา",early:"2007–2014 Girls' Generation",solo:"2015–2019 เดบิวต์เดี่ยว",recent:"2020–ปัจจุบัน"},photo:"รูปภาพ",mvH:"เพลย์ลิสต์ MV",mvNote:"แตะการ์ดเพื่อเล่นด้านบนได้ทันที",mvFull:"เครื่องเล่นเต็ม ↗",mood:{soft:"ฟังก่อนนอน",bright:"สนุกและเท่"},official:"MV ทางการ",search:"ค้นหาใน YouTube",noMv:"ยังไม่มี MV",newsH:"ข่าวล่าสุด",newsNote:"เนื้อหาข่าวสรุปเป็นภาษาจีน",cat:{tour:"คอนเสิร์ต",ticket:"บัตร",music:"เพลง",tv:"วาไรตี้",sns:"โซเชียล",other:"อื่น ๆ"},noNews:"ข่าวจะอัปเดตอัตโนมัติทุกวัน",tourH:"ตารางทัวร์",tourNote:"แถวสีแดงคือเมืองที่เลือก วันที่อิงตามประกาศของผู้จัด",noTour:"ตารางทัวร์จะแสดงที่นี่",posterB:"โปสเตอร์ทัวร์ F.L.Y.",notice2:"ประกาศทางการ ↗",posterS:"แตะเพื่อขยาย",tlH:"เส้นทางที่ผ่านมา",era:["ก่อนเดบิวต์","ลีดเดอร์ Girls' Generation","ศิลปินเดี่ยว"],close:"ปิด",prev:"ก่อนหน้า",next:"ถัดไป"},
+ja:{pick:"都市と言語を選ぶ",ticketAria:"次の公演",cd:c=>`${c}公演まで`,days:n=>"あと"+n+"日",today:"今日です",ended:"終了",loading:"最新ニュースを読み込み中…",fail:"今はデータに接続できません。しばらくしてから開き直してください。",nodb:"claude.ai にログインすると最新ニュースが見られます。",updated:"最終更新：",alertsH:"チェックしておくこと",alertsEmpty:"チケット発売やアルバム発売など大事な日付がここに表示されます。",notice:"告知を見る",note:"お知らせ",phNote:"マウスを乗せると止まり、写真をタップすると拡大できます。",fb:"テヨン ファンページ ↗",all:"すべて",pc:{stage:"ステージ",shoot:"グラビア",daily:"日常"},noPhotos:"まだ写真がありません。",yr:{all:"すべての年代",early:"2007–2014 少女時代",solo:"2015–2019 ソロデビュー",recent:"2020–現在"},photo:"写真",mvH:"MVリスト",mvNote:"カードをタップすると上で再生されます。",mvFull:"フルプレーヤー ↗",mood:{soft:"おやすみ前に",bright:"アップテンポ"},official:"公式MV",search:"YouTubeで検索",noMv:"まだMVがありません。",newsH:"最新ニュース",newsNote:"ニュースの内容は中国語でまとめています。",cat:{tour:"コンサート",ticket:"チケット",music:"音楽",tv:"バラエティ",sns:"SNS",other:"その他"},noNews:"ニュースは毎日自動で更新されます。",tourH:"ツアー日程",tourNote:"赤い行が選んだ都市です。日程は主催者の発表に準じます。",noTour:"ツアー日程がここに表示されます。",posterB:"F.L.Y. ツアーポスター",notice2:"公式告知 ↗",posterS:"タップで拡大",tlH:"これまでの歩み",era:["デビュー前","少女時代のリーダー","ソロ歌手"],close:"閉じる",prev:"前へ",next:"次へ"},
+en:{pick:"Choose your city & language",ticketAria:"Next concert",cd:c=>`Countdown to ${c}`,days:n=>n+(n===1?" day":" days"),today:"Today!",ended:"Ended",loading:"Loading the latest news…",fail:"Can't reach the data right now. Please reopen later.",nodb:"Sign in to claude.ai to see the latest news.",updated:"Last updated: ",alertsH:"Heads-up",alertsEmpty:"Key dates like ticket sales and album releases show up here.",notice:"See notice",note:"Note",phNote:"Hover to pause, tap a photo to enlarge.",fb:"Taeyeon fan page ↗",all:"All",pc:{stage:"Stage",shoot:"Photoshoot",daily:"Daily"},noPhotos:"No photos yet.",yr:{all:"All years",early:"2007–2014 Girls' Generation",solo:"2015–2019 Solo debut",recent:"2020–now"},photo:"Photo",mvH:"MV playlist",mvNote:"Tap a card to play it above; the next one starts automatically.",mvFull:"Full player ↗",mood:{soft:"Soft & calm",bright:"Upbeat"},official:"Official MV",search:"Search on YouTube",noMv:"No MVs yet.",newsH:"Latest news",newsNote:"News items are written in Chinese.",cat:{tour:"Concert",ticket:"Tickets",music:"Music",tv:"TV",sns:"Social",other:"Other"},noNews:"News updates automatically every day.",tourH:"Tour dates",tourNote:"The red row is your selected city. Dates follow the organizers' announcements.",noTour:"Tour dates will show up here.",posterB:"F.L.Y. tour poster",notice2:"Official notice ↗",posterS:"Tap to enlarge",tlH:"The journey",era:["Before debut","Girls' Generation leader","Solo artist"],close:"Close",prev:"Previous",next:"Next"}};
+S.hk=Object.assign({},S.zh,{pick:"選擇城市與語言",tourNote:"紅色嗰行係你揀嘅城市。日期以主辦公佈為準。",cd:c=>`距離${c}場`});
+const TL=[
+{era:0},
+{d:"1989.03.09",i:{zh:["出生於韓國全州"],ko:["전주에서 태어남"],th:["เกิดที่เมืองช็อนจู ประเทศเกาหลีใต้"],ja:["韓国・全州で生まれる"],en:["Born in Jeonju, South Korea"]}},
+{d:"2004",i:{zh:["在 SM 青少年選秀大賽拿下冠軍，成為 SM 練習生"],ko:["SM 청소년 베스트 선발대회 1위, SM 연습생이 됨"],th:["ชนะการประกวดเยาวชนของ SM และเป็นเด็กฝึกของ SM"],ja:["SMの青少年オーディションで優勝し、練習生に"],en:["Won SM's youth contest and became an SM trainee"]}},
+{era:1},
+{d:"2007.08",big:1,i:{zh:["少女時代以〈再次重逢的世界〉出道，擔任隊長兼主唱"],ko:["소녀시대 「다시 만난 세계」로 데뷔, 리더 겸 메인보컬"],th:["เดบิวต์กับ Girls' Generation ด้วยเพลง \"Into the New World\" ในฐานะลีดเดอร์และเมนโวคอล"],ja:["少女時代「また逢える世界」でデビュー、リーダー兼メインボーカル"],en:["Debuted with Girls' Generation's \"Into the New World\" as leader and main vocalist"]}},
+{d:"2008",i:{zh:["《快刀洪吉童》OST〈If〉，拿下金唱片獎人氣獎","主持 MBC 電台《泰妍的親親電台》到 2010 年"],ko:["드라마 「쾌도 홍길동」 OST 「If」로 골든디스크 인기상","MBC 라디오 「태연의 친한친구」 DJ (2010년까지)"],th:["OST \"If\" จากซีรีส์ Hong Gil-dong คว้ารางวัลขวัญใจที่ Golden Disc","ดีเจรายการวิทยุ MBC \"Chin Chin Radio\" (ถึงปี 2010)"],ja:["ドラマ『快刀ホン・ギルドン』OST「If」でゴールデンディスク人気賞","MBCラジオ「テヨンの親しい友達」DJ（2010年まで）"],en:["Drama OST \"If\" (Hong Gil-dong) won a Golden Disc popularity award","Hosted MBC radio \"Chin Chin Radio\" (until 2010)"]}},
+{d:"2009",i:{zh:["少女時代〈Gee〉爆紅，成為國民女團"],ko:["「Gee」 대히트로 국민 걸그룹이 됨"],th:["\"Gee\" ฮิตถล่มทลาย กลายเป็นเกิร์ลกรุ๊ประดับชาติ"],ja:["「Gee」が大ヒットし、国民的ガールズグループに"],en:["\"Gee\" became a smash hit, making them the nation's girl group"]}},
+{d:"2010–2011",i:{zh:["與 The One 合唱〈Like a Star〉、與金範洙合唱〈Different〉，兩首都衝上榜首"],ko:["더원과 「Like a Star」, 김범수와 「Different」 듀엣, 모두 차트 1위"],th:["ดูเอ็ต \"Like a Star\" กับ The One และ \"Different\" กับคิมบอมซู ขึ้นอันดับ 1 ทั้งคู่"],ja:["The One「Like a Star」、キム・ボムス「Different」とのデュエットがともに1位"],en:["Duets \"Like a Star\" (with The One) and \"Different\" (with Kim Bum-soo) both hit No. 1"]}},
+{d:"2012",i:{zh:["小分隊 TaeTiSeo（太蒂徐）以〈Twinkle〉出道"],ko:["유닛 태티서 「Twinkle」로 데뷔"],th:["ยูนิต TaeTiSeo เดบิวต์ด้วย \"Twinkle\""],ja:["ユニットTaeTiSeo「Twinkle」でデビュー"],en:["Sub-unit TaeTiSeo debuted with \"Twinkle\""]}},
+{d:"2014",i:{zh:["與鐘鉉合唱〈Breath〉"],ko:["종현과 「Breath」 듀엣"],th:["ดูเอ็ต \"Breath\" กับจงฮยอน"],ja:["ジョンヒョンとのデュエット「Breath」"],en:["Duet \"Breath\" with Jonghyun"]}},
+{era:2},
+{d:"2015.10",big:1,i:{zh:["迷你專輯《I》個人出道，主打〈I〉拿下各大音源冠軍"],ko:["미니앨범 「I」로 솔로 데뷔, 타이틀곡 음원 차트 1위"],th:["เดบิวต์เดี่ยวด้วยมินิอัลบั้ม \"I\" เพลงไตเติ้ลขึ้นอันดับ 1"],ja:["ミニアルバム『I』でソロデビュー、タイトル曲がチャート1位"],en:["Solo debut with mini album \"I\"; the title track topped the charts"]}},
+{d:"2016",i:{zh:["SM STATION〈Rain〉","迷你二輯《Why》，收錄〈Why〉、〈Starlight〉","首場個人演唱會《Butterfly Kiss》","〈11:11〉"],ko:["SM STATION 「Rain」","미니 2집 「Why」 (「Why」, 「Starlight」)","첫 단독 콘서트 「Butterfly Kiss」","「11:11」"],th:["SM STATION \"Rain\"","มินิอัลบั้มที่ 2 \"Why\" (\"Why\", \"Starlight\")","คอนเสิร์ตเดี่ยวครั้งแรก \"Butterfly Kiss\"","\"11:11\""],ja:["SM STATION「Rain」","2ndミニ『Why』（「Why」「Starlight」）","初の単独コンサート「Butterfly Kiss」","「11:11」"],en:["SM STATION \"Rain\"","2nd mini album \"Why\" (\"Why\", \"Starlight\")","First solo concert \"Butterfly Kiss\"","\"11:11\""]}},
+{d:"2017",i:{zh:["第一張正規專輯《My Voice》，主打〈Fine〉","冬季單曲〈This Christmas〉"],ko:["정규 1집 「My Voice」, 타이틀곡 「Fine」","겨울 싱글 「This Christmas」"],th:["สตูดิโออัลบั้มแรก \"My Voice\" เพลงไตเติ้ล \"Fine\"","ซิงเกิลฤดูหนาว \"This Christmas\""],ja:["1stフルアルバム『My Voice』、タイトル曲「Fine」","冬のシングル「This Christmas」"],en:["1st full album \"My Voice\", title track \"Fine\"","Winter single \"This Christmas\""]}},
+{d:"2018",i:{zh:["迷你三輯《Something New》","成為綜藝《驚人的星期六》固定班底"],ko:["미니 3집 「Something New」","예능 「놀라운 토요일」 고정 멤버"],th:["มินิอัลบั้มที่ 3 \"Something New\"","สมาชิกประจำรายการ \"Amazing Saturday\""],ja:["3rdミニ『Something New』","バラエティ『驚きの土曜日』のレギュラーに"],en:["3rd mini album \"Something New\"","Became a regular on \"Amazing Saturday\""]}},
+{d:"2019",i:{zh:["〈四季〉橫掃韓國音源榜，隔年拿下 Circle Chart 年度數位音源獎","第二張正規專輯《Purpose》，主打〈Spark〉"],ko:["「사계」 음원 차트 석권, 이듬해 써클차트 디지털 음원상","정규 2집 「Purpose」, 타이틀곡 「불티」"],th:["\"Four Seasons\" กวาดชาร์ตเกาหลี ปีถัดมาคว้ารางวัลดิจิทัลจาก Circle Chart","สตูดิโออัลบั้มที่ 2 \"Purpose\" เพลงไตเติ้ล \"Spark\""],ja:["「四季」が韓国の音源チャートを席巻、翌年Circle Chartデジタル音源賞","2ndフルアルバム『Purpose』、タイトル曲「Spark」"],en:["\"Four Seasons\" swept the Korean charts and won a Circle Chart digital award the next year","2nd full album \"Purpose\", title track \"Spark\""]}},
+{d:"2020",i:{zh:["單曲〈Happy〉","迷你四輯《What Do I Call You》"],ko:["싱글 「Happy」","미니 4집 「What Do I Call You」"],th:["ซิงเกิล \"Happy\"","มินิอัลบั้มที่ 4 \"What Do I Call You\""],ja:["シングル「Happy」","4thミニ『What Do I Call You』"],en:["Single \"Happy\"","4th mini album \"What Do I Call You\""]}},
+{d:"2021",i:{zh:["單曲〈Weekend〉"],ko:["싱글 「Weekend」"],th:["ซิงเกิล \"Weekend\""],ja:["シングル「Weekend」"],en:["Single \"Weekend\""]}},
+{d:"2022",i:{zh:["SM 跨團女子組合 Got the Beat 出道〈Step Back〉","第三張正規專輯《INVU》","少女時代出道 15 週年，以完整體回歸《FOREVER 1》"],ko:["SM 프로젝트 그룹 GOT the beat 「Step Back」 데뷔","정규 3집 「INVU」","소녀시대 데뷔 15주년 완전체 컴백 「FOREVER 1」"],th:["เดบิวต์กับยูนิตพิเศษ GOT the beat ด้วย \"Step Back\"","สตูดิโออัลบั้มที่ 3 \"INVU\"","ครบรอบ 15 ปี Girls' Generation คัมแบ็กครบทีมกับ \"FOREVER 1\""],ja:["SMのプロジェクトグループGOT the beat「Step Back」でデビュー","3rdフルアルバム『INVU』","少女時代デビュー15周年、完全体カムバック『FOREVER 1』"],en:["Debuted with SM project group GOT the beat (\"Step Back\")","3rd full album \"INVU\"","Girls' Generation's 15th anniversary comeback \"FOREVER 1\""]}},
+{d:"2023",i:{zh:["首次 Arena 巡演《The Odd of Love》，成為第一位以個人與團體身分都在 KSPO DOME 開唱的韓國女歌手","迷你五輯《To. X》"],ko:["첫 아레나 투어 「The Odd of Love」, 솔로와 그룹 모두 KSPO DOME에 선 한국 여성 가수","미니 5집 「To. X」"],th:["ทัวร์อารีน่าครั้งแรก \"The Odd of Love\" ศิลปินหญิงเกาหลีคนแรกที่ขึ้น KSPO DOME ทั้งในฐานะศิลปินเดี่ยวและวง","มินิอัลบั้มที่ 5 \"To. X\""],ja:["初のアリーナツアー「The Odd of Love」、ソロとグループの両方でKSPO DOMEに立った初の韓国女性歌手に","5thミニ『To. X』"],en:["First arena tour \"The Odd of Love\" — the first Korean female singer to headline KSPO DOME both solo and with her group","5th mini album \"To. X\""]}},
+{d:"2024",i:{zh:["迷你六輯《Letter to Myself》"],ko:["미니 6집 「Letter to Myself」"],th:["มินิอัลบั้มที่ 6 \"Letter to Myself\""],ja:["6thミニ『Letter to Myself』"],en:["6th mini album \"Letter to Myself\""]}},
+{d:"2025",i:{zh:["《The Tense》亞洲巡演，3 月首爾連開三場、生日當天在台上吹蠟燭，一路唱到 6 月香港","個人出道 10 週年精選輯《Panorama : The Best of TAEYEON》"],ko:["아시아 투어 「The Tense」, 3월 서울 3회 공연과 생일 무대, 6월 홍콩까지","솔로 데뷔 10주년 베스트 앨범 「Panorama : The Best of TAEYEON」"],th:["ทัวร์เอเชีย \"The Tense\" เริ่มโซล 3 รอบในเดือนมีนาคม เป่าเค้กวันเกิดบนเวที ไปจนถึงฮ่องกงในเดือนมิถุนายน","อัลบั้มรวมฮิตครบรอบ 10 ปี \"Panorama : The Best of TAEYEON\""],ja:["アジアツアー「The Tense」、3月にソウル3公演と誕生日ステージ、6月の香港まで","ソロデビュー10周年ベスト『Panorama : The Best of TAEYEON』"],en:["\"The Tense\" Asia tour: three Seoul shows in March including her birthday, through Hong Kong in June","10th solo anniversary best-of \"Panorama : The Best of TAEYEON\""]}},
+{d:"2026",i:{zh:["上《驚人的星期六》時，後輩 RESCENE Woni 當面演唱〈11:11〉","個人出道 11 週年","第四張正規專輯《Unspecial》（11/30 發行）"],ko:["「놀라운 토요일」에서 후배 RESCENE 원이가 「11:11」을 불러 줌","솔로 데뷔 11주년","정규 4집 「Unspecial」 (11/30 발매)"],th:["ในรายการ \"Amazing Saturday\" รุ่นน้อง Woni จาก RESCENE ร้อง \"11:11\" ต่อหน้า","ครบรอบ 11 ปีการเดบิวต์เดี่ยว","สตูดิโออัลบั้มที่ 4 \"Unspecial\" (วางจำหน่าย 30/11)"],ja:["『驚きの土曜日』で後輩RESCENEのウォニが目の前で「11:11」を披露","ソロデビュー11周年","4thフルアルバム『Unspecial』（11/30発売）"],en:["On \"Amazing Saturday\", RESCENE's Woni sang \"11:11\" right in front of her","11th solo anniversary","4th full album \"Unspecial\" (out 11/30)"]}},
+{d:"2027",big:1,i:{zh:["《F.L.Y.》亞洲巡演，1 月首爾開跑","4/3 台北大巨蛋"],ko:["아시아 투어 「F.L.Y.」, 1월 서울에서 시작","4/3 타이베이 돔"],th:["ทัวร์เอเชีย \"F.L.Y.\" เริ่มที่โซลเดือนมกราคม","3/4 ไทเปโดม"],ja:["アジアツアー「F.L.Y.」、1月ソウルからスタート","4/3 台北ドーム"],en:["\"F.L.Y.\" Asia tour kicks off in Seoul in January","Apr 3 — Taipei Dome"]}}
+];
+let lang="zh",city="taipei",lastStops=[];
+try{const v=JSON.parse(localStorage.getItem("ty-city")||"null");if(v&&S[v.lang]&&CITY[v.city]){lang=v.lang;city=v.city}}catch(e){}
+function T(k){return (S[lang]&&S[lang][k]!==undefined)?S[lang][k]:S.zh[k]}
+function cityName(id,fallback){const c=CITY[id];if(!c)return fallback||"";return c[lang==="hk"?"zh":lang]||c.zh}
+function venueName(v){const m=VENUE[v];return m&&m[lang]?m[lang]:v}
+function statusText(s){if(lang==="zh"||lang==="hk"||!s)return s;const m=STATUS[s];if(m&&m[lang])return m[lang];const sm=/^(\d+\/\d+)\s*開賣$/.exec(s);if(sm&&SALE[lang])return SALE[lang](sm[1]);return s}
+function renderCities(){
+  const box=document.getElementById("cities");box.replaceChildren();
+  STOPS.forEach(([id,en,lname,lg])=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed",String(city===id&&lang===lg));
+    const t=document.createElement("b");t.textContent=en;const s=document.createElement("small");s.textContent=lname;b.append(t,s);b.lang=LANGS[lg];
+    b.onclick=()=>setLang(lg,id);box.append(b)});
+  const e=document.createElement("button");e.type="button";e.className="en";e.setAttribute("aria-pressed",String(lang==="en"));e.lang="en";
+  const t=document.createElement("b");t.textContent="EN";const s=document.createElement("small");s.textContent="English";e.append(t,s);e.onclick=()=>setLang("en",city);box.append(e);
 }
-function render(){
-  document.documentElement.lang={zh:"zh-Hant-TW",ko:"ko",ja:"ja",th:"th",en:"en"}[lang];
-  $("back").textContent=T("back");$("q").placeholder=T("search");$("prev").textContent=T("prev");$("next").textContent=T("next");
-  $("play").textContent=playing?T("pause"):T("play");$("shuf").textContent="⤨ "+T("shuf");$("rep").textContent="↻ "+T("rep");$("share").textContent="↗ "+T("share");
-  $("shuf").setAttribute("aria-pressed",String(shuffle));$("rep").setAttribute("aria-pressed",String(repeat));
-  $("foot").textContent=T("foot");$("blockedMsg").textContent=T("blocked");$("blockedLink").textContent=T("openYt");applyTheme();
-  const tabs=$("tabs");tabs.replaceChildren();["all","soft","bright","fav"].forEach(k=>{const b=document.createElement("button");b.type="button";b.className="pill";b.textContent=(k==="fav"?"♡ ":"")+T(k);b.setAttribute("aria-pressed",String(tab===k));b.onclick=()=>{tab=k;render()};tabs.append(b)});
-  const so=$("sort");so.replaceChildren();[["new","sNew"],["old","sOld"],["az","sAz"]].forEach(([v,k])=>{const o=document.createElement("option");o.value=v;o.textContent=T(k);so.append(o)});so.value=sort;
-  const box=$("list");box.replaceChildren();const list=filtered();
-  if(!list.length){const e=document.createElement("div");e.className="empty";e.textContent=tab==="fav"?T("noFav"):T("none");box.append(e)}
-  list.forEach(i=>{const s=SONGS[i];const r=document.createElement("div");r.className="song";if(i===cur)r.setAttribute("aria-current","true");
-    let th;if(s.id){th=document.createElement("img");th.className="th";th.loading="lazy";th.alt="";th.src="https://i.ytimg.com/vi/"+s.id+"/mqdefault.jpg"}else{th=document.createElement("span");th.className="th q";th.textContent="YT"}
-    const info=document.createElement(s.id?"button":"a");info.className="info";
-    if(s.id){info.type="button";info.onclick=()=>{queue=[];playIdx(i,true)}}else{info.href="https://www.youtube.com/results?search_query="+encodeURIComponent(s.q);info.target="_blank";info.rel="noopener"}
-    const b=document.createElement("b");b.textContent=s.t;const sm=document.createElement("small");sm.textContent=s.y+(s.id?"":" · "+T("yt"))+(s.b?" · "+s.b:"");info.append(b,sm);
-    const acts=document.createElement("div");acts.className="acts";
-    const fav=document.createElement("button");fav.type="button";fav.className="fav";fav.textContent=favs.has(s.t)?"♥":"♡";fav.setAttribute("aria-pressed",String(favs.has(s.t)));fav.setAttribute("aria-label",T("favT"));fav.title=T("favT");
-    fav.onclick=()=>{favs.has(s.t)?favs.delete(s.t):favs.add(s.t);store.set("favs",[...favs]);render()};acts.append(fav);
-    if(s.id){const nx=document.createElement("button");nx.type="button";nx.textContent="↪";nx.title=T("playNext");nx.setAttribute("aria-label",T("playNext"));nx.onclick=()=>{queue.unshift(i);toast(T("addedNext"));render()};
-      const qq=document.createElement("button");qq.type="button";qq.textContent="＋";qq.title=T("queue");qq.setAttribute("aria-label",T("queue"));qq.onclick=()=>{queue.push(i);toast(T("addedQ"));render()};acts.append(nx,qq)}
-    r.append(th,info,acts);box.append(r)});
-  $("queueInfo").textContent=queue.length?T("queued")(queue.length):"";
-  if(cur<0){$("nowT").textContent=T("pick");$("nowB").textContent=""}
+function renderTimeline(){
+  const box=document.getElementById("timeline");box.replaceChildren();const L=(lang==="hk")?"zh":lang;
+  TL.forEach(r=>{if(r.era!==undefined){const d=document.createElement("div");d.className="tl-era";d.textContent=T("era")[r.era];box.append(d);return}
+    const d=document.createElement("div");d.className="t"+(r.big?" big":"");const b=document.createElement("b");b.textContent=r.d;const ul=document.createElement("ul");
+    (r.i[L]||r.i.zh).forEach(x=>{const li=document.createElement("li");li.textContent=x;ul.append(li)});d.append(b,ul);box.append(d)});
 }
-function showNow(){const s=SONGS[cur];$("nowT").textContent=s.t;const y=document.createElement("span");y.className="yr";y.textContent=s.y;$("nowT").append(y);$("nowB").textContent=s.b||"";
-  if("mediaSession" in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:s.t,artist:"TAEYEON",artwork:[{src:"https://i.ytimg.com/vi/"+s.id+"/hqdefault.jpg",sizes:"480x360",type:"image/jpeg"}]})}catch(e){}}
-  try{history.replaceState(null,"","#"+s.id)}catch(e){}}
-function playIdx(i,auto){cur=i;$("blocked").hidden=true;showNow();render();
-  if(ready){auto?player.loadVideoById(SONGS[i].id):player.cueVideoById(SONGS[i].id)}}
-function nextIdx(d){
-  if(d>0&&queue.length)return queue.shift();
-  const order=filtered().filter(i=>SONGS[i].id);const pool=order.length?order:playable();
-  if(shuffle&&d>0){const c=pool.filter(i=>i!==cur);return c.length?c[Math.floor(Math.random()*c.length)]:cur}
-  let p=pool.indexOf(cur);if(p<0)return pool[0];return pool[(p+d+pool.length)%pool.length];
+function applyStatic(){
+  document.documentElement.lang=LANGS[lang];
+  document.querySelectorAll("[data-i18n]").forEach(e=>{const v=T(e.dataset.i18n);if(typeof v==="string")e.textContent=v});
+  document.querySelectorAll("[data-i18n-aria]").forEach(e=>e.setAttribute("aria-label",T(e.dataset.i18nAria)));
+  const nn=document.getElementById("newsnote");nn.hidden=!T("newsNote");
+  const lb={lbx:"close",lbp:"prev",lbn:"next"};for(const k in lb){const e=document.getElementById(k);if(e)e.setAttribute("aria-label",T(lb[k]))}
+  document.getElementById("cdlabel").textContent=T("cd")(cityName(city));
 }
-function step(d){playIdx(nextIdx(d),true)}
-$("prev").onclick=()=>step(-1);$("next").onclick=()=>step(1);
-$("play").onclick=()=>{if(!ready)return;if(cur<0){step(1);return}playing?player.pauseVideo():player.playVideo()};
-$("shuf").onclick=()=>{shuffle=!shuffle;render()};$("rep").onclick=()=>{repeat=!repeat;render()};
-$("share").onclick=async()=>{const url=location.href.split("#")[0]+(cur>=0?"#"+SONGS[cur].id:"");
-  if(navigator.share){try{await navigator.share({title:cur>=0?SONGS[cur].t+" · TAEYEON":document.title,url});return}catch(e){if(e&&e.name==="AbortError")return}}
-  try{await navigator.clipboard.writeText(url);toast(T("copied"))}catch(e){prompt("",url)}};
-$("q").oninput=render;$("sort").onchange=e=>{sort=e.target.value;render()};
-$("lang").value=lang;$("lang").onchange=e=>{lang=e.target.value;store.set("lang",lang);render();if(cur>=0)showNow()};
-$("theme").onclick=()=>{theme={auto:"light",light:"dark",dark:"auto"}[theme];store.set("theme",theme);render()};
-if("mediaSession" in navigator){try{navigator.mediaSession.setActionHandler("nexttrack",()=>step(1));navigator.mediaSession.setActionHandler("previoustrack",()=>step(-1))}catch(e){}}
-document.addEventListener("keydown",e=>{if(e.target.matches("input,select"))return;if(e.key===" "){e.preventDefault();$("play").click()}if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
 
-// YouTube IFrame API
+const $=id=>document.getElementById(id);
+let news=[],filter="all";
+
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+function safeUrl(u){try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:null}catch(e){return null}}
+function today(){const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+function parseDay(s){const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s||"");return m?new Date(+m[1],m[2]-1,+m[3]):null}
+function fmt(s){const d=parseDay(s);return d?`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,"0")}.${String(d.getDate()).padStart(2,"0")}`:(s||"")}
+
+function renderFilters(){
+  const f=$("filters");f.replaceChildren();
+  const cats=["all",...Object.keys(T("cat")).filter(k=>news.some(n=>n.category===k))];
+  cats.forEach(k=>{const b=el("button",null,k==="all"?T("all"):T("cat")[k]);b.type="button";b.setAttribute("aria-pressed",String(filter===k));b.onclick=()=>{filter=k;renderFilters();renderNews()};f.append(b)});
+}
+function renderNews(){
+  const feed=$("feed");const list=news.filter(n=>filter==="all"||n.category===filter);
+  if(!list.length){feed.replaceChildren(el("div","empty",T("noNews")));return}
+  feed.replaceChildren(...list.map(n=>{
+    const it=el("article","item");
+    const t=el("time",null,fmt(n.date));t.dateTime=n.date||"";
+    const body=el("div");
+    const h=el("h3");const u=safeUrl(n.url);
+    if(u){const a=el("a",null,n.title);a.href=u;a.target="_blank";a.rel="noopener";h.append(a)}else h.textContent=n.title||"";
+    body.append(h);
+    if(n.summary)body.append(el("p",null,n.summary));
+    const m=el("div","meta");m.append(el("span","tag",T("cat")[n.category]||T("cat").other));if(n.source)m.append(el("span",null,n.source));body.append(m);
+    it.append(t,body);return it;
+  }));
+}
+function renderTour(stops){
+  lastStops=stops;const box=$("tour");
+  if(!stops.length){box.replaceChildren(el("div","empty",T("noTour")));return}
+  const now=today();
+  box.replaceChildren(...stops.map(s=>{
+    const r=el("div","stop"+(s._id===city?" me":""));
+    r.append(el("div","d",s.dateLabel||fmt(s.date)));
+    const mid=el("div");mid.append(el("div","c",cityName(s._id,s.city)),el("div","v",venueName(s.venue||"")));r.append(mid);
+    const end=parseDay(s.endDate||s.date);const past=end&&end<now;
+    r.append(el("span","s"+(past?" past":""),past?T("ended"):statusText(s.status||"即將登場")));
+    return r;
+  }));
+  const tp=stops.find(s=>s._id===city);$("cdlabel").textContent=T("cd")(cityName(city));
+  if(tp){
+    const d=parseDay(tp.date);
+    if(d){const n=Math.round((d-now)/864e5);$("days").textContent=n>0?T("days")(n):n===0?T("today"):T("ended");$("when").textContent=fmt(tp.date)}
+    $("where").textContent=[cityName(tp._id,tp.city),venueName(tp.venue||"")].filter(Boolean).join(" · ");
+  }
+}
+function renderMeta(m){
+  if(!m)return;
+  $("headline").dataset.loaded="1";if(m.headline)$("headline").textContent=m.headline;
+  if(m.updatedAt)$("updated").textContent=T("updated")+m.updatedAt;
+  const a=Array.isArray(m.alerts)?m.alerts:[];
+  if(!a.length)return;
+  $("alerts").replaceChildren(...a.map(x=>{
+    const r=el("div","alert");const c=el("span","chip"+(x.level==="ok"?" ok":x.level==="warn"?" warn":""),x.when||T("note"));
+    const d=el("div");d.append(el("div",null,x.text||""));
+    const u=safeUrl(x.url);if(u){const l=el("a",null,T("notice"));l.href=u;l.target="_blank";l.rel="noopener";l.style.fontSize=".82rem";d.append(l)}
+    r.append(c,d);return r;
+  }));
+}
+
+let photos=[],pfilter="all",yfilter="all",shown=[],cur=0;
+function eraOf(p){const y=+p.year;if(!y)return null;return y<=2014?"early":y<=2019?"solo":"recent"}
+function renderYrFilters(){const f=$("yrfilters");f.replaceChildren();const eras=["early","solo","recent"].filter(k=>photos.some(p=>eraOf(p)===k));f.hidden=!eras.length;if(!eras.length)return;
+  ["all",...eras].forEach(k=>{const b=el("button",null,T("yr")[k]);b.type="button";b.setAttribute("aria-pressed",String(yfilter===k));b.onclick=()=>{yfilter=k;renderYrFilters();renderGallery()};f.append(b)})}
+let liveOwner=false;
+function capOf(p){return [p.caption,p.credit,(liveOwner&&p.public!==true)?"🔒 只有你看得到":""].filter(Boolean).join(" · ")}
+function photoSrc(p){if(p.url&&/^\/_blob\/|^https:\/\//.test(p.url))return p.url;if(p.assetId&&/^[0-9a-f]{32}$/.test(p.assetId))return "/_blob/"+p.assetId;return null}
+function renderPhFilters(){
+  const f=$("phfilters");f.replaceChildren();
+  ["all",...Object.keys(T("pc")).filter(k=>photos.some(p=>p.category===k))].forEach(k=>{
+    const b=el("button",null,k==="all"?T("all"):T("pc")[k]);b.type="button";b.setAttribute("aria-pressed",String(pfilter===k));
+    b.onclick=()=>{pfilter=k;renderPhFilters();renderGallery()};f.append(b)});
+}
+function renderGallery(){
+  const g=$("gallery");shown=photos.filter(p=>(pfilter==="all"||p.category===pfilter)&&(yfilter==="all"||eraOf(p)===yfilter)&&photoSrc(p));
+  if(!shown.length){g.replaceChildren(el("div","empty",T("noPhotos")));return}
+  const make=(p,i,dup)=>{
+    const b=el("button","ph");b.type="button";b.setAttribute("aria-label",p.caption||T("photo"));
+    if(dup){b.tabIndex=-1;b.setAttribute("aria-hidden","true")}
+    const im=new Image();im.src=photoSrc(p);im.alt=dup?"":(p.caption||"");if(p.w&&p.h){im.width=p.w;im.height=p.h}
+    b.append(im,el("span",null,p.caption||""));b.onclick=()=>openLb(i);return b};
+  const track=el("div","track");
+  track.append(...shown.map((p,i)=>make(p,i,false)),...shown.map((p,i)=>make(p,i,true)));
+  track.style.setProperty("--dur",Math.max(25,shown.length*5)+"s");
+  g.replaceChildren(track);
+}
+function openLb(i){cur=(i+shown.length)%shown.length;const p=shown[cur];$("lbimg").src=photoSrc(p);$("lbimg").alt=p.caption||"";$("lbcap").textContent=capOf(p);$("lbdel").textContent="從相簿移除";$("lb").hidden=false;$("lbx").focus()}
+let mvs=[],mvf="all";
+function renderMvFilters(){const f=$("mvfilters");f.replaceChildren();["all",...Object.keys(T("mood")).filter(k=>mvs.some(m=>m.mood===k))].forEach(k=>{const b=el("button",null,k==="all"?T("all"):T("mood")[k]);b.type="button";b.setAttribute("aria-pressed",String(mvf===k));b.onclick=()=>{mvf=k;renderMvFilters();renderMvs()};f.append(b)})}
+let ytp=null,ytReady=false,mvCur=null,mvPlaying=false;
+function renderMvs(){
+  const box=$("mvs");const list=mvs.filter(m=>mvf==="all"||m.mood===mvf);
+  if(!list.length){box.replaceChildren(el("div","empty",T("noMv")));return}
+  box.replaceChildren(...list.map(m=>{let a;
+    if(m.vid){a=el("button","mv"+(mvCur===m?" on":""));a.type="button";a.onclick=()=>playMv(m,true)}
+    else{const u=safeUrl(m.url);a=el(u?"a":"div","mv");if(u){a.href=u;a.target="_blank";a.rel="noopener"}}
+    let p;if(m.vid){p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+m.vid+"/mqdefault.jpg";p.alt="";p.loading="lazy"}else{p=el("div","play","▶");p.setAttribute("aria-hidden","true")}
+    const d=el("div");d.style.minWidth="0";
+    const t=el("div","tt",m.title||"");if(m.year)t.append(el("span","yr",String(m.year)));d.append(t);
+    if(m.blurb)d.append(el("div","bl",m.blurb));d.append(el("div","src",m.vid?T("official"):T("search")));a.append(p,d);return a}));
+  if(mvCur){$("mvT").textContent=mvCur.title;$("mvB").textContent=[mvCur.year,mvCur.blurb].filter(Boolean).join(" · ")}
+  $("mvplay").textContent=mvPlaying?"❚❚":"▶";
+}
+function playable(){return mvs.filter(m=>m.vid&&(mvf==="all"||m.mood===mvf))}
+function playMv(m,auto){mvCur=m;renderMvs();if(ytReady){auto?ytp.loadVideoById(m.vid):ytp.cueVideoById(m.vid)}}
+function stepMv(d){const p=playable();if(!p.length)return;let i=p.indexOf(mvCur);i=i<0?0:(i+d+p.length)%p.length;playMv(p[i],true)}
+$("mvprev").onclick=()=>stepMv(-1);$("mvnext").onclick=()=>stepMv(1);
+$("mvplay").onclick=()=>{if(!ytReady)return;if(!mvCur){stepMv(1);return}mvPlaying?ytp.pauseVideo():ytp.playVideo()};
 window.onYouTubeIframeAPIReady=function(){
-  const start=SONGS.findIndex(s=>s.id&&s.id===location.hash.slice(1));
-  const first=start>=0?start:SONGS.findIndex(s=>s.id==="4HG_CJzyX6A");
-  cur=first;showNow();render();
-  player=new YT.Player("yt",{host:"https://www.youtube-nocookie.com",videoId:SONGS[first].id,playerVars:{rel:0,playsinline:1,modestbranding:1},
-    events:{onReady:()=>{ready=true},
-      onStateChange:e=>{playing=e.data===YT.PlayerState.PLAYING;render();
-        if(e.data===YT.PlayerState.ENDED){repeat?player.seekTo(0)||player.playVideo():step(1)}},
-      onError:e=>{if(e.data===101||e.data===150||e.data===100){$("blockedLink").href="https://www.youtube.com/watch?v="+SONGS[cur].id;$("blocked").hidden=false}}}});
+  const first=mvs.find(m=>m.vid==="4HG_CJzyX6A")||mvs.find(m=>m.vid);if(!first)return;mvCur=first;renderMvs();
+  ytp=new YT.Player("ytp",{host:"https://www.youtube-nocookie.com",videoId:first.vid,playerVars:{rel:0,playsinline:1},
+    events:{onReady:()=>{ytReady=true},onStateChange:e=>{mvPlaying=e.data===YT.PlayerState.PLAYING;$("mvplay").textContent=mvPlaying?"❚❚":"▶";if(e.data===YT.PlayerState.ENDED)stepMv(1)},
+      onError:()=>{stepMv(1)}}});
 };
-render();
-const tag=document.createElement("script");tag.src="https://www.youtube.com/iframe_api";document.head.append(tag);
+function loadYT(){if(window.YT||document.getElementById("ytapi"))return;const t=document.createElement("script");t.id="ytapi";t.src="https://www.youtube.com/iframe_api";document.head.append(t)}
+function dims(file){return new Promise(r=>{const u=URL.createObjectURL(file);const im=new Image();im.onload=()=>{r({w:im.naturalWidth,h:im.naturalHeight});URL.revokeObjectURL(u)};im.onerror=()=>{r({});URL.revokeObjectURL(u)};im.src=u})}
+async function setupUpload(db){
+  const user=await (window.claude?.use?.("user")??null);
+  const assets=await (window.claude?.use?.("assets")??null);
+  if(!user||!assets||!user.canEdit())return;
+  $("addbox").hidden=false;$("lbdel").hidden=false;
+  $("addbtn").onclick=()=>$("addfile").click();
+  $("addfile").onchange=async e=>{
+    const files=[...e.target.files];if(!files.length)return;
+    $("addbtn").disabled=true;let ok=0;
+    for(const f of files){
+      $("addmsg").textContent=`上傳中 ${ok+1}/${files.length}…`;
+      try{const d=await dims(f);const a=await assets.upload(f);
+        await db.collection("photos").doc().set({category:$("addcat").value,caption:$("addcap").value.trim(),order:-Date.now(),assetId:a.id,url:a.url,w:d.w||null,h:d.h||null,fileName:(f.name||"").slice(0,200),public:$("addpub").checked});ok++}
+      catch(err){$("addmsg").textContent="有一張沒上傳成功："+(err&&err.message?err.message:"請換一張試試");}
+    }
+    if(ok)$("addmsg").textContent=`已加入 ${ok} 張，會出現在跑馬燈最前面`;
+    $("addcap").value="";e.target.value="";$("addbtn").disabled=false;
+  };
+  $("lbdel").onclick=async()=>{
+    const p=shown[cur];if(!p||!p._id)return;
+    if($("lbdel").textContent!=="確定移除？再按一次"){$("lbdel").textContent="確定移除？再按一次";return}
+    try{await db.doc("photos/"+p._id).delete();closeLb()}catch(err){$("lbdel").textContent="移除失敗，請再試一次"}
+  };
+}
+function closeLb(){$("lb").hidden=true;$("lbp").hidden=false;$("lbn").hidden=false;if($("lbdel").dataset.h==="")$("lbdel").hidden=false;delete $("lbdel").dataset.h}
+function navShow(on){$("lbp").hidden=!on;$("lbn").hidden=!on}
+$("tourposter").onclick=()=>{$("lbimg").src="poster.jpg";$("lbimg").alt="TAEYEON CONCERT F.L.Y.";$("lbcap").textContent="TAEYEON CONCERT F.L.Y.";navShow(false);$("lbdel").dataset.h=$("lbdel").hidden?"1":"";$("lbdel").hidden=true;$("lb").hidden=false;$("lbx").focus()};
+$("lbx").onclick=closeLb;$("lbp").onclick=()=>openLb(cur-1);$("lbn").onclick=()=>openLb(cur+1);
+$("lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb()});
+document.addEventListener("keydown",e=>{if($("lb").hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")openLb(cur-1);if(e.key==="ArrowRight")openLb(cur+1)});
+
+function setLang(lg,c){lang=lg;city=c;try{localStorage.setItem("ty-city",JSON.stringify({lang,city}))}catch(e){}
+  renderCities();applyStatic();renderTimeline();renderTour(lastStops);renderFilters();renderNews();renderPhFilters();renderYrFilters();renderGallery();renderMvFilters();renderMvs()}
+renderCities();applyStatic();renderTimeline();$("headline").textContent=T("loading");
+(async()=>{
+  const timer=setTimeout(()=>{if($("headline").dataset.loaded!=="1")$("headline").textContent=T("fail")},10000);
+  try{const r=await fetch("data.json?v="+Date.now());if(r.ok){const D=await r.json();clearTimeout(timer);
+    renderMeta(D.meta||null);renderTour(D.tour||[]);news=D.news||[];renderFilters();renderNews();mvs=(typeof SONGS!=="undefined"?SONGS:[]).slice().sort((a,b)=>b.y-a.y).map(x=>({title:x.t,year:x.y,mood:x.m,blurb:x.b,vid:x.id||null,url:x.id?null:"https://www.youtube.com/results?search_query="+encodeURIComponent(x.q||x.t)}));if(!mvs.length)mvs=D.mvs||[];renderMvFilters();renderMvs();loadYT();
+    photos=D.photos||[];renderPhFilters();renderYrFilters();renderGallery()}}catch(e){}
+  const db=await (window.claude?.use?.("db")??null);
+  if(!db)return;
+  const user=await (window.claude?.use?.("user")??null);
+  db.doc("meta/status").onSnapshot(s=>{clearTimeout(timer);renderMeta(s.exists?s.data():null)},()=>clearTimeout(timer));
+  db.collection("tour").orderBy("date","asc").onSnapshot(s=>renderTour(s.docs.map(d=>Object.assign({_id:d.id},d.data()))),()=>{});
+  if(user&&user.isOwner()){liveOwner=true;
+    db.collection("photos").orderBy("order","asc").onSnapshot(s=>{photos=s.docs.map(d=>Object.assign({_id:d.id},d.data()));renderPhFilters();renderYrFilters();renderGallery()},()=>{});
+    setupUpload(db);}
+  db.collection("mvs").orderBy("year","desc").onSnapshot(s=>{mvs=s.docs.map(d=>d.data());renderMvFilters();renderMvs()},()=>{});
+  db.collection("news").orderBy("date","desc").limit(60).onSnapshot(s=>{news=s.docs.map(d=>d.data());renderFilters();renderNews()},()=>{});
+})();
 </script>
 </body>
 </html>
