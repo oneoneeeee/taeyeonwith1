@@ -1,0 +1,126 @@
+{
+ "meta": {
+  "alerts": [
+   {
+    "level": "",
+    "text": "第四張正規專輯《Unspecial》發行，收錄12首歌，包含同名主打歌與〈No Rules〉、〈Taxi〉、〈WDYLM〉。",
+    "url": "https://www.verse.com.tw/article/taeyeon-2027-tour-announcement",
+    "when": "11/30"
+   },
+   {
+    "level": "warn",
+    "text": "首爾場在 Melon Ticket 開賣：12/1 晚上8點粉絲俱樂部會員先購、12/2 海外預購、12/3 全面開賣。",
+    "url": "https://www.koreajoongangdaily.com/entertainment/girls-generations-taeyeon-to-kick-off-asia-tour-with-seoul-concerts-in-january/12979157",
+    "when": "12/1–12/3"
+   },
+   {
+    "level": "warn",
+    "text": "台北場售票時間、票價和售票平台還沒公布，主辦是遠雄創藝，請追蹤他們的臉書。",
+    "url": "https://news.cts.com.tw/cts/entertain/202611/202611183102481.html",
+    "when": "待公布"
+   }
+  ],
+  "headline": "F.L.Y. 亞洲巡演確定 2027年4月3日唱進台北大巨蛋，第四張正規專輯《Unspecial》11月30日發行。",
+  "updatedAt": "2026-11-19",
+  "_id": "status"
+ },
+ "tour": [
+  {
+   "city": "首爾",
+   "date": "2027-01-15",
+   "dateLabel": "1/15–17",
+   "endDate": "2027-01-17",
+   "status": "12/1 開賣",
+   "venue": "KSPO DOME",
+   "_id": "seoul"
+  },
+  {
+   "city": "澳門",
+   "date": "2027-01-30",
+   "dateLabel": "1/30–31",
+   "endDate": "2027-01-31",
+   "status": "即將登場",
+   "venue": "Galaxy Arena",
+   "_id": "macau"
+  },
+  {
+   "city": "曼谷",
+   "date": "2027-02-27",
+   "dateLabel": "2/27",
+   "status": "即將登場",
+   "venue": "Impact Arena",
+   "_id": "bangkok"
+  },
+  {
+   "city": "香港",
+   "date": "2027-03-27",
+   "dateLabel": "3/27–28",
+   "endDate": "2027-03-28",
+   "status": "即將登場",
+   "venue": "紅磡體育館",
+   "_id": "hongkong"
+  },
+  {
+   "city": "台北",
+   "date": "2027-04-03",
+   "dateLabel": "4/3",
+   "highlight": true,
+   "status": "售票待公布",
+   "venue": "台北大巨蛋",
+   "_id": "taipei"
+  },
+  {
+   "city": "東京",
+   "date": "2027-04-17",
+   "dateLabel": "4/17–18",
+   "endDate": "2027-04-18",
+   "status": "即將登場",
+   "venue": "Keio Arena",
+   "_id": "tokyo"
+  }
+ ],
+ "news": [
+  {
+   "category": "tour",
+   "date": "2026-11-18",
+   "source": "The Standard",
+   "summary": "官方宣傳圖確認為 3/27–3/28 兩場。",
+   "title": "香港場 2027年3月登上紅磡體育館",
+   "url": "https://www.thestandard.com.hk/entertainment/article/348856/Taeyeon-brings-two-night-concert-to-Hong-Kong-Coliseum-in-March-2027"
+  },
+  {
+   "category": "tour",
+   "date": "2026-11-18",
+   "source": "Korea JoongAng Daily",
+   "summary": "1月首爾 KSPO DOME 三場，之後澳門、曼谷、香港、台北、東京。",
+   "title": "第7次個人演唱會《F.L.Y.》公布：首爾開跑、亞洲6城",
+   "url": "https://www.koreajoongangdaily.com/entertainment/girls-generations-taeyeon-to-kick-off-asia-tour-with-seoul-concerts-in-january/12979157"
+  },
+  {
+   "category": "tour",
+   "date": "2026-11-18",
+   "source": "華視新聞",
+   "summary": "主辦遠雄創藝在臉書公告，售票細節之後公布。",
+   "title": "F.L.Y. 台北場確定 2027年4月3日在台北大巨蛋",
+   "url": "https://news.cts.com.tw/cts/entertain/202611/202611183102481.html"
+  },
+  {
+   "category": "music",
+   "date": "2026-11-18",
+   "source": "VERSE",
+   "summary": "收錄12首，含同名主打歌和先前公開的〈No Rules〉、〈Taxi〉、〈WDYLM〉。",
+   "title": "第四張正規專輯《Unspecial》11月30日發行",
+   "url": "https://www.verse.com.tw/article/taeyeon-2027-tour-announcement"
+  },
+  {
+   "category": "tv",
+   "date": "2026-08-15",
+   "source": "allkpop",
+   "summary": "Woni 說偶像們從練習生時期就聽泰妍的歌。",
+   "title": "《驚人的星期六》RESCENE Woni 當面演唱〈11:11〉",
+   "url": "https://www.allkpop.com/article/2026/08/rescenes-woni-reveals-admiration-for-taeyeon-and-performs-1111"
+  }
+ ],
+ "mvs": [],
+ "photos": []
+}
