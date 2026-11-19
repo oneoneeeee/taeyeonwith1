@@ -177,6 +177,73 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 
 </head>
 <body>
+<style>
+#bookintro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;cursor:pointer;overflow:hidden;
+  background:radial-gradient(circle at 50% 42%,#3a0d16 0,#160709 55%,#0a0708 100%);transition:opacity .8s ease .15s;-webkit-tap-highlight-color:transparent}
+#bookintro.bk-done{opacity:0;pointer-events:none}
+.bk-stage{perspective:1800px;transition:transform 1.1s cubic-bezier(.6,0,.2,1)}
+.bk{position:relative;width:min(58vw,300px);aspect-ratio:3/4;transform-style:preserve-3d;
+  transition:transform 1.3s cubic-bezier(.65,0,.25,1);animation:bkfloat 3.2s ease-in-out infinite}
+@keyframes bkfloat{50%{translate:0 -10px}}
+.bk-page{position:absolute;inset:0;border-radius:2px 8px 8px 2px;
+  background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0) 9%),#f2eadc;
+  box-shadow:3px 3px 0 #e2d8c6,6px 6px 0 #d2c6b1,9px 9px 0 #bfb29b,0 40px 70px rgba(0,0,0,.65);
+  display:grid;place-items:center;text-align:center;color:#2a1418}
+.bk-in{display:grid;gap:14px;padding:0 10%}
+.bk-in small{font:600 10px/1.4 system-ui,sans-serif;letter-spacing:.28em;color:#9a2a3a}
+.bk-in b{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-weight:400;font-size:clamp(26px,7vw,38px);line-height:1.05}
+.bk-in b i{font-size:.45em;letter-spacing:.3em;text-transform:uppercase;font-style:normal;vertical-align:middle}
+.bk-in span{font:13px/1.5 system-ui,sans-serif;color:#6b4a4f;border-top:1px solid #c9b9a4;padding-top:12px}
+.bk-cover{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transition:transform 1.5s cubic-bezier(.7,0,.25,1)}
+.bk-front,.bk-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px 8px 8px 2px}
+.bk-front{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.25) 45%,rgba(0,0,0,.78)),url("cover_2.jpg") center/cover,#1a0a0d;
+  box-shadow:inset 7px 0 12px rgba(0,0,0,.7),inset -1px 0 0 rgba(255,255,255,.12),0 40px 70px rgba(0,0,0,.65);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:9% 10%;color:#fff}
+.bk-front small{font:600 10px/1.4 system-ui,sans-serif;letter-spacing:.3em;color:#ff5a72}
+.bk-front b{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-weight:400;font-size:clamp(30px,9vw,46px);letter-spacing:.06em;line-height:1;margin-top:4px}
+.bk-front em{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-size:15px;opacity:.85;margin-top:10px}
+.bk-back{transform:rotateY(180deg);background:linear-gradient(270deg,rgba(0,0,0,.22),rgba(0,0,0,0) 10%),#e8dfcf;display:grid;place-items:center;color:#8a6a6f;font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-style:italic;font-size:15px;letter-spacing:.08em}
+.bk-hint{position:absolute;bottom:12%;left:0;right:0;text-align:center;color:#f4d9de;font:500 12px/1 system-ui,sans-serif;letter-spacing:.32em;animation:bkblink 1.8s ease-in-out infinite}
+@keyframes bkblink{50%{opacity:.25}}
+.bk-skip{position:absolute;top:18px;right:18px;background:none;border:1px solid rgba(255,255,255,.3);color:#f4d9de;border-radius:999px;padding:6px 14px;font:12px system-ui,sans-serif;cursor:pointer}
+#bookintro.bk-open .bk{animation:none;transform:translateX(50%)}
+#bookintro.bk-open .bk-cover{transform:rotateY(-178deg)}
+#bookintro.bk-open .bk-hint,#bookintro.bk-open .bk-skip{opacity:0;transition:opacity .3s}
+#bookintro.bk-zoom .bk-stage{transform:scale(2.6)}
+@media (max-width:520px){#bookintro.bk-open .bk{transform:translateX(50%) scale(.82)}}
+</style>
+<div id="bookintro" role="button" tabindex="0" aria-label="翻開泰妍應援站">
+  <div class="bk-stage"><div class="bk">
+    <div class="bk-page"><div class="bk-in">
+      <small>KIM TAEYEON · 김태연</small>
+      <b>every day<br><i>with</i> TAEYEON</b>
+      <span>F.L.Y. 2027.04.03<br>台北大巨蛋</span>
+    </div></div>
+    <div class="bk-cover">
+      <div class="bk-front"><small>SONE · 泰妍應援站</small><em>every day with</em><b>TAEYEON</b></div>
+      <div class="bk-back">since 2007</div>
+    </div>
+  </div></div>
+  <div class="bk-hint">點一下翻開 · TAP TO OPEN</div>
+  <button class="bk-skip" type="button">略過</button>
+</div>
+<script>
+(function(){
+  var o=document.getElementById("bookintro");if(!o)return;
+  var seen=null;try{seen=sessionStorage.getItem("bkseen")}catch(e){}
+  if(seen||matchMedia("(prefers-reduced-motion: reduce)").matches){o.remove();return}
+  var root=document.documentElement;root.style.overflow="hidden";
+  var busy=false;
+  function mark(){try{sessionStorage.setItem("bkseen","1")}catch(e){}}
+  function finish(ms){setTimeout(function(){o.remove();root.style.overflow=""},ms)}
+  function open(){if(busy)return;busy=true;mark();o.classList.add("bk-open");
+    setTimeout(function(){o.classList.add("bk-zoom","bk-done")},1550);finish(2500)}
+  o.addEventListener("click",open);
+  o.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
+  o.querySelector(".bk-skip").addEventListener("click",function(e){e.stopPropagation();if(busy)return;busy=true;mark();o.classList.add("bk-done");finish(900)});
+  o.focus();
+})();
+</script>
 <div class="cover-bg" aria-hidden="true"></div>
 <div class="wrap">
   <nav class="citybar" aria-label="City and language">
