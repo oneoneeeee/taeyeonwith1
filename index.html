@@ -186,6 +186,12 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 .cdu b{font-family:var(--display);font-size:clamp(1.9rem,6vw,3.2rem);font-weight:800;line-height:1;color:var(--rose);font-variant-numeric:tabular-nums}
 .cdu i{font-style:normal;font-size:.75rem;letter-spacing:.12em;color:var(--muted);margin-top:6px}
 @media (max-width:640px){.stub{grid-template-columns:1fr;grid-template-areas:"lb" "cd" "wh" "wn"}.stub .days{justify-content:space-between;gap:6px;margin:6px 0}.cdu{min-width:0;flex:1}}
+.remind{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:16px 18px;margin-bottom:12px;border-radius:16px;background:var(--rose-soft);border:1px solid var(--line)}
+.remind-t{display:grid;gap:2px}.remind-t b{font-size:1.02rem}.remind-t span{font-weight:700;color:var(--rose)}.remind-t small{color:var(--muted);font-size:.8rem}
+.remind-b{display:flex;flex-wrap:wrap;gap:8px}
+.rbtn{display:inline-block;padding:9px 16px;border-radius:999px;background:var(--rose);color:#fff!important;text-decoration:none;font-weight:700;font-size:.88rem}
+.rbtn.ghost{background:transparent;border:1px solid var(--rose);color:var(--rose)!important}
+@media (max-width:640px){.remind-b{width:100%}.rbtn{flex:1;text-align:center}}
 </style>
 
 </head>
@@ -279,6 +285,10 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 
   <section aria-labelledby="alerts-h">
     <h2 id="alerts-h" class="edw"><span>News</span></h2>
+    <div class="remind" id="remind">
+      <div class="remind-t"><b>🔔 回歸提醒</b><span>《Unspecial》11/30（一）17:00 台灣時間</span><small>會在前一天和前一小時提醒你</small></div>
+      <div class="remind-b"><a class="rbtn" href="unspecial.ics">加入 iPhone 行事曆</a><a class="rbtn ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E6%B3%B0%E5%A6%8D%E3%80%8AUnspecial%E3%80%8B%E5%9B%9E%E6%AD%B8%20%F0%9F%8E%A7&dates=20261130T090000Z/20261130T100000Z&details=%E7%AC%AC%E5%9B%9B%E5%BC%B5%E6%AD%A3%E8%A6%8F%E5%B0%88%E8%BC%AF%E3%80%8AUnspecial%E3%80%8B%E4%BB%8A%E5%A4%A9%E7%99%BC%E8%A1%8C%EF%BC%81%0Ahttps%3A%2F%2Foneoneeeee.github.io%2Ftaeyeonwith1%2F" target="_blank" rel="noopener">加入 Google 日曆</a></div>
+    </div>
     <div class="alerts" id="alerts"><div class="empty" data-i18n="alertsEmpty">搶票、新專輯發行這類重要日期會出現在這裡。</div></div>
   </section>
 
