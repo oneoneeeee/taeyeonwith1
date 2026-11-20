@@ -177,6 +177,15 @@ button.mv{font:inherit;text-align:left;cursor:pointer;width:100%}
 footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 .nophotos .head .note,.nophotos .links,.nophotos .filters,.nophotos #gallery{display:none!important}
 #phsec .head .note,#phsec .links,#phsec .filters,.ph span,#lbdel,#lbcap{display:none!important}
+.ticket{grid-template-columns:1fr!important}
+.stub{border-left:0!important;border-top:2px dashed var(--line);min-width:0!important;display:grid!important;grid-template-columns:auto 1fr;grid-template-areas:"lb cd" "wh cd" "wn cd";align-items:center;column-gap:28px;row-gap:4px}
+.stub::before,.stub::after{display:none!important}
+.stub .label{grid-area:lb}.stub .where{grid-area:wh}.stub .note{grid-area:wn}
+.stub .days{grid-area:cd;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;font-size:2rem}
+.cdu{display:flex;flex-direction:column;align-items:center;min-width:4.6rem;padding:10px 8px;border-radius:14px;background:rgba(0,0,0,.28);border:1px solid var(--line)}
+.cdu b{font-family:var(--display);font-size:clamp(1.9rem,6vw,3.2rem);font-weight:800;line-height:1;color:var(--rose);font-variant-numeric:tabular-nums}
+.cdu i{font-style:normal;font-size:.75rem;letter-spacing:.12em;color:var(--muted);margin-top:6px}
+@media (max-width:640px){.stub{grid-template-columns:1fr;grid-template-areas:"lb" "cd" "wh" "wn"}.stub .days{justify-content:space-between;gap:6px;margin:6px 0}.cdu{min-width:0;flex:1}}
 </style>
 
 </head>
@@ -451,10 +460,13 @@ function renderTour(stops){
   const tp=stops.find(s=>s._id===city);$("cdlabel").textContent=T("cd")(cityName(city));
   if(tp){
     const d=parseDay(tp.date);
-    if(d){const n=Math.round((d-now)/864e5);$("days").textContent=n>0?T("days")(n):n===0?T("today"):T("ended");$("when").textContent=fmt(tp.date)}
+    if(d){cdTarget=Date.parse(tp.date+"T19:00:00"+(CDTZ[tp._id]||"+08:00"));cdRun();$("when").textContent=fmt(tp.date)}
     $("where").textContent=[cityName(tp._id,tp.city),venueName(tp.venue||"")].filter(Boolean).join(" · ");
   }
 }
+const CDTZ={seoul:"+09:00",tokyo:"+09:00",bangkok:"+07:00"};let cdTarget=null,cdTimer=null;
+const CDU={zh:["天","時","分","秒"],ko:["일","시간","분","초"],ja:["日","時間","分","秒"],th:["วัน","ชม.","นาที","วิ"],en:["DAYS","HRS","MIN","SEC"]};
+function cdRun(){if(!cdTimer)cdTimer=setInterval(cdRun,1000);const e=$("days");if(cdTarget==null||isNaN(cdTarget))return;const s=Math.floor((cdTarget-Date.now())/1000);const u=CDU[(document.documentElement.lang||"zh").slice(0,2)]||CDU.zh;if(s<=0){e.textContent=s>-21600?T("today"):T("ended");return}const v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];e.innerHTML=v.map((x,i)=>'<span class="cdu"><b>'+(i?String(x).padStart(2,"0"):x)+'</b><i>'+u[i]+'</i></span>').join("")}
 function renderMeta(m){
   if(!m)return;
   $("headline").dataset.loaded="1";if(m.headline)$("headline").textContent=m.headline;
