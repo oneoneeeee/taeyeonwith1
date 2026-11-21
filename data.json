@@ -2,9 +2,15 @@
  "meta": {
   "alerts": [
    {
+    "level": "warn",
+    "text": "台北場售票時間、票價和售票平台還沒公布。泰妍個人官方會員 GL 已於 11/13 開通，想搶會員預購可先準備，最終規則以台灣主辦遠雄創藝公告為準。",
+    "url": "https://news.tvbs.com.tw/entertainment/jk-pop/4052922",
+    "when": "待公布"
+   },
+   {
     "level": "",
-    "text": "第四張正規專輯《Unspecial》發行，收錄12首歌，包含同名主打歌與〈No Rules〉、〈Taxi〉、〈WDYLM〉。",
-    "url": "https://www.verse.com.tw/article/taeyeon-2027-tour-announcement",
+    "text": "第四張正規專輯《Unspecial》發行（韓國時間晚上6點／台灣下午5點），收錄12首歌，包含同名主打歌與〈No Rules〉、〈Taxi〉、〈WDYLM〉。",
+    "url": "https://www.specialtimes.co.kr/news/articleView.html?idxno=488059",
     "when": "11/30"
    },
    {
@@ -12,17 +18,10 @@
     "text": "首爾場在 Melon Ticket 開賣：12/1 晚上8點粉絲俱樂部會員先購、12/2 海外預購、12/3 全面開賣。",
     "url": "https://www.koreajoongangdaily.com/entertainment/girls-generations-taeyeon-to-kick-off-asia-tour-with-seoul-concerts-in-january/12979157",
     "when": "12/1–12/3"
-   },
-   {
-    "level": "warn",
-    "text": "台北場售票時間、票價和售票平台還沒公布，主辦是遠雄創藝，請追蹤他們的臉書。",
-    "url": "https://news.cts.com.tw/cts/entertain/202611/202611183102481.html",
-    "when": "待公布"
    }
   ],
-  "headline": "F.L.Y. 亞洲巡演確定 2027年4月3日唱進台北大巨蛋，第四張正規專輯《Unspecial》11月30日發行。",
-  "updatedAt": "2026-11-19",
-  "_id": "status"
+  "headline": "F.L.Y. 台北大巨蛋 2027/4/3 售票時間、票價、平台仍待遠雄創藝公布；第四張正規專輯《Unspecial》11/30 晚上6點（韓國時間）發行。",
+  "updatedAt": "2026-11-21"
  },
  "tour": [
   {
@@ -81,12 +80,36 @@
  ],
  "news": [
   {
-   "category": "tour",
+   "category": "music",
+   "date": "2026-11-20",
+   "source": "Special Times",
+   "summary": "相隔《INVU》4年10個月的第四張正規專輯，共12首，台灣時間 11/30 下午5點可收聽；同月娜璉、CL、Wendy 也將回歸。",
+   "title": "《Unspecial》11/30 晚上6點（韓國時間）上線",
+   "url": "https://www.specialtimes.co.kr/news/articleView.html?idxno=488059"
+  },
+  {
+   "category": "ticket",
+   "date": "2026-11-19",
+   "source": "TVBS",
+   "summary": "SM 於 11/13 開通 TAEYEON OFFICIAL FANCLUB MEMBERSHIP (GL)；台北場售票平台、票價與開賣日都還沒公布。",
+   "title": "泰妍個人官方會員 GL 已開通，台北場預購規則待主辦公告",
+   "url": "https://news.tvbs.com.tw/entertainment/jk-pop/4052922"
+  },
+  {
+   "category": "sns",
+   "date": "2026-11-19",
+   "source": "Topstar News",
+   "summary": "泰妍在 Instagram 發布抱著玩偶的粉彩色調預告照，標註「Unspecial 11/30」。",
+   "title": "《Unspecial》夢幻風預告照公開",
+   "url": "https://www.topstarnews.net/news/articleView.html?idxno=16280934"
+  },
+  {
+   "category": "music",
    "date": "2026-11-18",
-   "source": "The Standard",
-   "summary": "官方宣傳圖確認為 3/27–3/28 兩場。",
-   "title": "香港場 2027年3月登上紅磡體育館",
-   "url": "https://www.thestandard.com.hk/entertainment/article/348856/Taeyeon-brings-two-night-concert-to-Hong-Kong-Coliseum-in-March-2027"
+   "source": "VERSE",
+   "summary": "收錄12首，含同名主打歌和先前公開的〈No Rules〉、〈Taxi〉、〈WDYLM〉。",
+   "title": "第四張正規專輯《Unspecial》11月30日發行",
+   "url": "https://www.verse.com.tw/article/taeyeon-2027-tour-announcement"
   },
   {
    "category": "tour",
@@ -99,18 +122,18 @@
   {
    "category": "tour",
    "date": "2026-11-18",
+   "source": "The Standard",
+   "summary": "官方宣傳圖確認為 3/27–3/28 兩場。",
+   "title": "香港場 2027年3月登上紅磡體育館",
+   "url": "https://www.thestandard.com.hk/entertainment/article/348856/Taeyeon-brings-two-night-concert-to-Hong-Kong-Coliseum-in-March-2027"
+  },
+  {
+   "category": "tour",
+   "date": "2026-11-18",
    "source": "華視新聞",
    "summary": "主辦遠雄創藝在臉書公告，售票細節之後公布。",
    "title": "F.L.Y. 台北場確定 2027年4月3日在台北大巨蛋",
    "url": "https://news.cts.com.tw/cts/entertain/202611/202611183102481.html"
-  },
-  {
-   "category": "music",
-   "date": "2026-11-18",
-   "source": "VERSE",
-   "summary": "收錄12首，含同名主打歌和先前公開的〈No Rules〉、〈Taxi〉、〈WDYLM〉。",
-   "title": "第四張正規專輯《Unspecial》11月30日發行",
-   "url": "https://www.verse.com.tw/article/taeyeon-2027-tour-announcement"
   },
   {
    "category": "tv",
