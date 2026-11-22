@@ -1,0 +1,16 @@
+{
+  "name": "To. TAEYEON",
+  "short_name": "To. TAEYEON",
+  "description": "太妍應援站：F.L.Y. 台北場倒數、最新消息、MV 與官方影片大全",
+  "lang": "zh-Hant-TW",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d0a0b",
+  "theme_color": "#0d0a0b",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

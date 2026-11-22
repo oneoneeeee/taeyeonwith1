@@ -32,6 +32,9 @@
 | `poster_2.jpg` | F.L.Y. 巡演宣傳圖（巡演日期下的小卡） |
 | `favicon.png`、`apple-touch-icon.png` | 網站圖示：泰妍簽名（白底黑字）。`index.html` 引用時帶 `?v=sig2`，換圖要改版本號 |
 | `theme-fly.css` | F.L.Y. 水下主題的全部樣式（只在 `<html data-theme="fly">` 時生效），見下方「主題」 |
+| `og-image.jpg`、`og-image-fly.jpg` | 分享預覽卡片（1200×630，由 `poster_2.jpg` 裁切＋「To. TAEYEON」字樣）。`<head>` 的 og:image／twitter:image 目前用 `og-image.jpg`（酒紅版）；**11/30 後可把 og:image、twitter:image 改成 `og-image-fly.jpg`**（水藍版，爬蟲看不到 JS，只能手動改） |
+| `manifest.webmanifest` | 加到手機主畫面設定（standalone、`#0d0a0b`，不做離線快取）；圖示 `icon-192.png`、`icon-512.png`、`icon-maskable-512.png`（由 `apple-touch-icon.png` 簽名圖放大，maskable 版內容縮在中央安全區） |
+| `*.webp` | 每張 `p*.jpg`、`cover_2.jpg`、`poster_2.jpg` 都有同名 `.webp`（品質 80；跑馬燈圖寬度上限 900px、背景 1920px）。原 jpg 保留當備援 |
 | `unspecial.ics` | 11/30《Unspecial》回歸的行事曆提醒（前一天、前一小時） |
 
 ## 網站各區塊（由上到下）
@@ -84,3 +87,9 @@ classic：紅黑專輯風（`--rose` 紅、深色布紋背景）；fly：水下�
 - 六場的售票時間公布後：在「重要日期」的提醒卡片加上各場售票的「加入行事曆」按鈕（售票前一天提醒）。
 - 官方公布開演時間後，更新倒數的 19:00。
 - 使用者可能之後會傳現場影片，做成電腦版的背景影片（手機維持專輯封面）。
+
+## 圖片與字型（加速）
+- **WebP**：網頁優先用 `.webp`，jpg 是備援。跑馬燈 `PH` 清單產生 `pNNN.webp` 網址，`<img>` 的 `onerror` 會退回同名 `.jpg`；燈箱 `#lbimg` 也一樣；`poster_2` 用 `<picture><source type="image/webp">`；`cover_2` 背景用 `image-set()`（前面保留一條純 jpg 的宣告當備援）。
+- **使用者傳新照片時也要產生同名 webp**（`pip install pillow`；`Image.save(name+".webp","WEBP",quality=80,method=6)`，跑馬燈圖寬度超過 900px 才縮小，不裁切、不改內容），再把寬高加進 `PH`。
+- 照片 alt：跑馬燈與燈箱沒有 caption 時是「太妍照片 N」（依顯示順序編號），跑馬燈重複的那一輪 alt=""。
+- **Google Fonts 字型清單**（`<head>` 的 link）：Bricolage Grotesque 800（大標題，700 也會用到 800）、Noto Sans TC 400/500/700、Noto Sans KR／JP／Thai 400/700、JetBrains Mono 500、Bodoni Moda 正體 500/700＋斜體 400（`.edw` 等雜誌字標題）。fly 主題的草寫字 **Great Vibes** 只在 fly 時由 `<head>` 主題小腳本動態插入 link。有 preconnect 到 fonts.googleapis.com 與 fonts.gstatic.com。新增字型／字重要記得更新這裡。

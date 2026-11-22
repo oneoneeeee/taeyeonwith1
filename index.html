@@ -10,6 +10,8 @@
 (function(){var d=document.documentElement,q=null;try{q=new URLSearchParams(location.search).get("theme")}catch(e){}
   var fly=q==="fly"||(q!=="classic"&&Date.now()>=Date.parse("2026-11-30T17:00:00+08:00"));
   if(!fly)return;d.setAttribute("data-theme","fly");
+  /* 草寫字 Great Vibes 只有 fly 主題用到，才載入 */
+  var l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap";document.head.appendChild(l);
   var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",matchMedia("(prefers-color-scheme: dark)").matches?"#0d4a6e":"#c4ecf6")})();
 </script>
 <meta name="description" content="泰妍應援站：最新消息、F.L.Y. 巡演倒數、MV 播放器與年表。">
@@ -17,9 +19,27 @@
 <link rel="icon" type="image/png" href="favicon.png?v=sig2">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=sig2">
 <meta name="apple-mobile-web-app-title" content="To. TAEYEON">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="To. TAEYEON">
+<meta property="og:title" content="To. TAEYEON">
+<meta property="og:description" content="太妍應援站：F.L.Y. 台北場倒數、最新消息、MV 與官方影片大全">
+<meta property="og:url" content="https://oneoneeeee.github.io/taeyeonwith1/">
+<meta property="og:image" content="https://oneoneeeee.github.io/taeyeonwith1/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="To. TAEYEON">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="To. TAEYEON">
+<meta name="twitter:description" content="太妍應援站：F.L.Y. 台北場倒數、最新消息、MV 與官方影片大全">
+<meta name="twitter:image" content="https://oneoneeeee.github.io/taeyeonwith1/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Thai:wght@400;700&family=JetBrains+Mono:wght@500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,400&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Thai:wght@400;700&family=JetBrains+Mono:wght@500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,400&display=swap">
 <style>
 *{box-sizing:border-box}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Layout: a concert-ticket hero with the countdown as its stub, then a news feed beside the tour setlist-style table */
@@ -46,7 +66,7 @@
   --glow:rgba(255,40,70,.22); --glow2:rgba(255,40,70,.10); --weave:rgba(255,255,255,.035);
   --ok:#6fd19c; --warn:#f0b263; color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;font-size:15px}
-.cover-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil),url("cover_2.jpg") center 30%/cover no-repeat,radial-gradient(60vmax 45vmax at 88% -8%,var(--glow),transparent 70%),radial-gradient(40vmax 30vmax at -10% 105%,var(--glow2),transparent 70%),repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg)}
+.cover-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veil),url("cover_2.jpg") center 30%/cover no-repeat,radial-gradient(60vmax 45vmax at 88% -8%,var(--glow),transparent 70%),radial-gradient(40vmax 30vmax at -10% 105%,var(--glow2),transparent 70%),repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg);background:var(--veil),image-set(url("cover_2.webp") type("image/webp"),url("cover_2.jpg") type("image/jpeg")) center 30%/cover no-repeat,radial-gradient(60vmax 45vmax at 88% -8%,var(--glow),transparent 70%),radial-gradient(40vmax 30vmax at -10% 105%,var(--glow2),transparent 70%),repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px),var(--bg)}
 .ticket,.tour,.alert,.mv,.add,.feed,.empty{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .feed{background:var(--pearl);border-radius:14px;padding-inline:14px}
 .filters button{background:var(--surface)}
@@ -246,7 +266,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 .bk-front{background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px),linear-gradient(135deg,#6a1522,#3e0b13);
   box-shadow:inset 10px 0 0 -4px rgba(0,0,0,.35),inset 12px 0 0 -4px rgba(255,255,255,.06),0 40px 70px rgba(0,0,0,.7);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#e9cf9a;text-align:center}
-.bk-win{width:62%;aspect-ratio:1;background:url("cover_2.jpg") center/cover,#140a0c;
+.bk-win{width:62%;aspect-ratio:1;background:url("cover_2.jpg") center/cover,#140a0c;background:image-set(url("cover_2.webp") type("image/webp"),url("cover_2.jpg") type("image/jpeg")) center/cover,#140a0c;
   box-shadow:inset 0 3px 8px rgba(0,0,0,.75),0 0 0 7px #4a0f18,0 0 0 8px rgba(233,207,154,.45),0 1px 0 9px rgba(0,0,0,.25)}
 .bk-front small{font:600 9px/1.4 system-ui,sans-serif;letter-spacing:.32em;opacity:.8;margin-top:6px}
 .bk-front b{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-weight:400;font-size:clamp(20px,6vw,28px);line-height:1.1;text-shadow:0 1px 0 rgba(0,0,0,.5)}
@@ -265,7 +285,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 </style>
 <div id="bookintro" role="button" tabindex="0" aria-label="翻開泰妍應援站相簿">
   <div class="bk-stage"><div class="bk">
-    <div class="bk-page"><figure class="bk-pol"><img src="poster_2.jpg" alt=""><figcaption>F.L.Y. · 2027.04.03 Taipei</figcaption></figure></div>
+    <div class="bk-page"><figure class="bk-pol"><picture><source srcset="poster_2.webp" type="image/webp"><img src="poster_2.jpg" alt="" decoding="async"></picture><figcaption>F.L.Y. · 2027.04.03 Taipei</figcaption></figure></div>
     <div class="bk-cover">
       <div class="bk-front"><div class="bk-win"></div><small style="padding-left:.32em">SONE</small><b>every day<i>with</i>TAEYEON</b></div>
       <div class="bk-back"><div><span>KIM TAEYEON · 김태연</span>since 2007</div></div>
@@ -481,7 +501,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
         <h2 id="tour-h" data-i18n="tourH">巡演場次</h2>
         <div class="tour" id="tour"><div class="empty">巡演日期會出現在這裡。</div></div>
         <div class="note" data-i18n="tourNote">紅色那列是你選的城市。日期以主辦公告為準。</div>
-        <button class="tourposter" id="tourposter" type="button"><img src="poster_2.jpg" alt="TAEYEON CONCERT F.L.Y." width="72" height="96"><div><b data-i18n="posterB">F.L.Y. 巡演宣傳圖</b><span data-i18n="posterS">點一下放大看</span></div></button>
+        <button class="tourposter" id="tourposter" type="button"><picture><source srcset="poster_2.webp" type="image/webp"><img src="poster_2.jpg" alt="TAEYEON CONCERT F.L.Y." width="72" height="96" loading="lazy" decoding="async"></picture><div><b data-i18n="posterB">F.L.Y. 巡演宣傳圖</b><span data-i18n="posterS">點一下放大看</span></div></button>
         <a class="note" href="https://weverse.io/taeyeon/notice/41091" target="_blank" rel="noopener" data-i18n="notice2">官方公告 ↗</a>
       </section>
 
@@ -642,7 +662,7 @@ function renderYrFilters(){const f=$("yrfilters");f.replaceChildren();const eras
   ["all",...eras].forEach(k=>{const b=el("button",null,T("yr")[k]);b.type="button";b.setAttribute("aria-pressed",String(yfilter===k));b.onclick=()=>{yfilter=k;renderYrFilters();renderGallery()};f.append(b)})}
 let liveOwner=false;
 function capOf(p){return [p.caption,p.credit,(liveOwner&&p.public!==true)?"🔒 只有你看得到":""].filter(Boolean).join(" · ")}
-const PH=[[400,600],[407,600],[901,600],[900,600],[900,600],[402,600],[392,600],[530,600],[899,600],[450,600],[502,600],[277,600],[486,600],[479,600],[400,399],[471,600],[378,600],[394,600],[429,600],[398,600],[398,600],[480,600],[400,600],[423,600],[820,600],[421,600],[400,600],[450,600],[450,300],[481,600],[455,600],[480,600],[386,600],[456,600],[459,600],[482,600],[903,600],[903,600],[640,425],[480,600],[480,600],[480,600],[487,600],[450,600],[480,600],[603,600],[450,600],[450,600],[430,600],[419,600],[450,600],[450,600],[451,600],[450,600],[450,600],[451,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[567,600],[338,600],[484,600],[480,600],[478,600],[480,600],[480,600],[480,600],[485,600],[480,600],[452,450],[600,600],[480,600],[338,600],[800,600],[512,600],[800,600],[800,600],[800,600],[450,600],[450,600],[450,600],[450,600],[600,600],[600,600],[484,600],[392,600],[443,600],[450,600],[480,600],[480,600],[450,600],[480,600],[450,600],[564,600],[338,600],[450,600],[480,600],[480,600],[480,600],[480,600],[480,600],[480,600],[450,600],[450,600],[337,600],[338,600],[480,600],[450,600],[400,600],[444,600],[600,600],[600,600],[454,600],[480,600],[480,600],[480,600],[480,600],[488,600],[460,600],[480,600],[602,600],[450,600],[451,600],[451,600],[338,600],[480,600],[450,600],[480,600],[600,600],[480,600]].map((d,i)=>({url:new URL("p"+String(i+1).padStart(3,"0")+".jpg",location.href).href,w:d[0],h:d[1],category:"daily",caption:"",public:true})).filter((p,i)=>![1,2,4].includes(i));
+const PH=[[400,600],[407,600],[901,600],[900,600],[900,600],[402,600],[392,600],[530,600],[899,600],[450,600],[502,600],[277,600],[486,600],[479,600],[400,399],[471,600],[378,600],[394,600],[429,600],[398,600],[398,600],[480,600],[400,600],[423,600],[820,600],[421,600],[400,600],[450,600],[450,300],[481,600],[455,600],[480,600],[386,600],[456,600],[459,600],[482,600],[903,600],[903,600],[640,425],[480,600],[480,600],[480,600],[487,600],[450,600],[480,600],[603,600],[450,600],[450,600],[430,600],[419,600],[450,600],[450,600],[451,600],[450,600],[450,600],[451,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[450,600],[567,600],[338,600],[484,600],[480,600],[478,600],[480,600],[480,600],[480,600],[485,600],[480,600],[452,450],[600,600],[480,600],[338,600],[800,600],[512,600],[800,600],[800,600],[800,600],[450,600],[450,600],[450,600],[450,600],[600,600],[600,600],[484,600],[392,600],[443,600],[450,600],[480,600],[480,600],[450,600],[480,600],[450,600],[564,600],[338,600],[450,600],[480,600],[480,600],[480,600],[480,600],[480,600],[480,600],[450,600],[450,600],[337,600],[338,600],[480,600],[450,600],[400,600],[444,600],[600,600],[600,600],[454,600],[480,600],[480,600],[480,600],[480,600],[488,600],[460,600],[480,600],[602,600],[450,600],[451,600],[451,600],[338,600],[480,600],[450,600],[480,600],[600,600],[480,600]].map((d,i)=>({url:new URL("p"+String(i+1).padStart(3,"0")+".webp",location.href).href,w:d[0],h:d[1],category:"daily",caption:"",public:true})).filter((p,i)=>![1,2,4].includes(i));
 function photoSrc(p){if(p.url&&/^\/_blob\/|^https:\/\//.test(p.url))return p.url;if(p.assetId&&/^[0-9a-f]{32}$/.test(p.assetId))return "/_blob/"+p.assetId;return null}
 function renderPhFilters(){
   const f=$("phfilters");f.replaceChildren();
@@ -658,14 +678,14 @@ function renderGallery(){
   const make=(p,i,dup)=>{
     const b=el("button","ph");b.type="button";b.setAttribute("aria-label",p.caption||T("photo"));
     if(dup){b.tabIndex=-1;b.setAttribute("aria-hidden","true")}
-    const im=new Image();im.loading="lazy";im.decoding="async";im.onerror=()=>b.remove();im.src=photoSrc(p);im.alt=dup?"":(p.caption||"");if(p.w&&p.h){im.width=p.w;im.height=p.h}
+    const im=new Image();im.loading="lazy";im.decoding="async";im.onerror=()=>{if(/\.webp$/.test(im.src))im.src=im.src.replace(/\.webp$/,".jpg");else b.remove()};im.src=photoSrc(p);im.alt=dup?"":(p.caption||"太妍照片 "+(i+1));if(p.w&&p.h){im.width=p.w;im.height=p.h}
     b.append(im,el("span",null,p.caption||""));b.onclick=()=>openLb(i);return b};
   const track=el("div","track");
   track.append(...shown.map((p,i)=>make(p,i,false)),...shown.map((p,i)=>make(p,i,true)));
   track.style.setProperty("--dur",Math.max(25,shown.length*5)+"s");
   g.replaceChildren(track);
 }
-function openLb(i){cur=(i+shown.length)%shown.length;const p=shown[cur];$("lbimg").src=photoSrc(p);$("lbimg").alt=p.caption||"";$("lbcap").textContent=capOf(p);$("lbdel").textContent="從相簿移除";$("lb").hidden=false;$("lbx").focus()}
+function openLb(i){cur=(i+shown.length)%shown.length;const p=shown[cur];$("lbimg").src=photoSrc(p);$("lbimg").alt=p.caption||("太妍照片 "+(cur+1));$("lbcap").textContent=capOf(p);$("lbdel").textContent="從相簿移除";$("lb").hidden=false;$("lbx").focus()}
 let mvs=[],mvf="all";
 function renderMvFilters(){const f=$("mvfilters");f.replaceChildren();["all",...Object.keys(T("mood")).filter(k=>mvs.some(m=>m.mood===k))].forEach(k=>{const b=el("button",null,k==="all"?T("all"):T("mood")[k]);b.type="button";b.setAttribute("aria-pressed",String(mvf===k));b.onclick=()=>{mvf=k;renderMvFilters();renderMvs();$("mvs").scrollTop=0};f.append(b)})}
 let ytp=null,ytReady=false,mvCur=null,mvPlaying=false;
@@ -784,7 +804,8 @@ async function setupUpload(db){
 }
 function closeLb(){$("lb").hidden=true;$("lbp").hidden=false;$("lbn").hidden=false;if($("lbdel").dataset.h==="")$("lbdel").hidden=false;delete $("lbdel").dataset.h}
 function navShow(on){$("lbp").hidden=!on;$("lbn").hidden=!on}
-$("tourposter").onclick=()=>{$("lbimg").src="poster_2.jpg";$("lbimg").alt="TAEYEON CONCERT F.L.Y.";$("lbcap").textContent="TAEYEON CONCERT F.L.Y.";navShow(false);$("lbdel").dataset.h=$("lbdel").hidden?"1":"";$("lbdel").hidden=true;$("lb").hidden=false;$("lbx").focus()};
+$("lbimg").onerror=function(){if(/\.webp$/.test(this.src))this.src=this.src.replace(/\.webp$/,".jpg")};
+$("tourposter").onclick=()=>{$("lbimg").src="poster_2.webp";$("lbimg").alt="TAEYEON CONCERT F.L.Y.";$("lbcap").textContent="TAEYEON CONCERT F.L.Y.";navShow(false);$("lbdel").dataset.h=$("lbdel").hidden?"1":"";$("lbdel").hidden=true;$("lb").hidden=false;$("lbx").focus()};
 $("lbx").onclick=closeLb;$("lbp").onclick=()=>openLb(cur-1);$("lbn").onclick=()=>openLb(cur+1);
 $("lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb()});
 document.addEventListener("keydown",e=>{if($("lb").hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")openLb(cur-1);if(e.key==="ArrowRight")openLb(cur+1)});
