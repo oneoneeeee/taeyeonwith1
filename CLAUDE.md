@@ -42,6 +42,8 @@
 7-1. **CONCERT**（Bodoni 標題，緊接在 TAENG LOG 後面）：2023、2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」。和 LIVE CLIP 是分開的兩個區塊。
 8. 巡演場次、時間軸等。
 
+**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），NEWS、MV 歌單、LIVE CLIP、TAENG LOG、CONCERT 要按按鈕才出現（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`、`#taenglog`、`#concert` 可以直接打開該分頁。
+
 ## 風格
 紅黑專輯風（`--rose` 紅、深色布紋背景）、標題用 Bodoni Moda 雜誌字（`.edw`）。手機寬度也要好看。
 
