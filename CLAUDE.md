@@ -93,6 +93,10 @@ classic：紅黑專輯風（`--rose` 紅、深色布紋背景）；fly：水下�
 每日更新排程在台北場售票資訊公布後，要把開賣時間（ISO 格式含 +08:00）、預購、票價、平台、實名制、開演時間填進 data.json 的 taipei ticket 欄位。
 每日排程若發現 탱나무숲／탱코덕 新的完整集數可加到 `relax.js`（該系列最前面）、新的 Dance Practice 可加到 `dance.js`（最前面）。
 
+## 瀏覽統計
+- 用 GoatCounter（不用 cookie，只統計頁面瀏覽），統計頁 https://taeyeonwith1.goatcounter.com
+- 計數程式在 `index.html`（和 `mv.html`）的 `</body>` 前：`<script data-goatcounter="https://taeyeonwith1.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>`，**不要刪掉**。
+
 ## 待辦
 - 台北場售票時間公布後：填 data.json 的 taipei `ticket`（台北場專區會自動顯示行事曆按鈕），並更新 fly 主題的 `#flyremind` 卡片（日期＋行事曆按鈕）。
 - 六場的售票時間公布後：在「重要日期」的提醒卡片加上各場售票的「加入行事曆」按鈕（售票前一天提醒）。

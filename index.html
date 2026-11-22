@@ -996,5 +996,6 @@ renderCities();applyStatic();renderTimeline();$("headline").textContent=T("loadi
   db.collection("news").orderBy("date","desc").limit(60).onSnapshot(s=>{news=s.docs.map(d=>d.data());renderFilters();renderNews()},()=>{});
 })();
 </script>
+<script data-goatcounter="https://taeyeonwith1.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
