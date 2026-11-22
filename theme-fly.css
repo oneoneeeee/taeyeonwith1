@@ -151,3 +151,8 @@
   .fly-surface i,.fly-bubbles i,.fly-intro-t{animation:none!important}
   .fly-bubbles{display:none!important}
 }
+
+/* ---------- 影片封面播放鍵（高畫質封面，點了才載入） ---------- */
+[data-theme="fly"] .ytcover{--ytpb:var(--rose);--ytpt:#fff}
+[data-theme="fly"] .ytcover:focus-visible{outline-color:var(--fly-cyan)}
+@media (prefers-color-scheme:dark){[data-theme="fly"] .ytcover{--ytpt:var(--fly-navy)}}

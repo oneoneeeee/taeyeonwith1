@@ -52,6 +52,7 @@
 **分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），重要日期、MV 歌單、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`（或 `#live`）、`#dance`、`#behind`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
 
 **影片區原則**：
+- 所有影片區（含 MV 歌單）的播放器改成「高畫質封面（maxresdefault → sddefault → hqdefault），點了才載入 iframe」：共用 `ytCover()`／`ytSlot()`（MV 歌單點了才建立 YT.Player），切分頁時把 iframe 換回封面。
 - 所有影片區只放官方頻道的完整版，不放 shorts、預告、片段；同一支影片只放在一個區。
 - 2016 Butterfly Kiss、2017 PERSONA 演唱會查過沒有官方影片。
 - 《Unspecial》主打 MV 發布後加到 `songs.js` 最後。

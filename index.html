@@ -140,6 +140,16 @@ section{display:grid;gap:14px;min-width:0}
 .mvplayer{display:grid;gap:10px}
 .mvframe{position:relative;width:100%;max-width:880px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 20px 50px -24px rgba(0,0,0,.6)}
 .mvframe>div,.mvframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ytcover{position:absolute;inset:0;width:100%;height:100%;padding:0;margin:0;border:0;background:#000;cursor:pointer;display:block;overflow:hidden;--ytpb:#ff0033;--ytpt:#fff}
+.ytcover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease,filter .3s}
+.ytcover::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.28));pointer-events:none}
+.ytcover svg{position:absolute;left:50%;top:50%;width:68px;height:48px;transform:translate(-50%,-50%);z-index:1;filter:drop-shadow(0 4px 14px rgba(0,0,0,.45));transition:transform .2s}
+.ytcover svg .pb{fill:var(--ytpb);fill-opacity:.9;transition:fill-opacity .2s}.ytcover svg .pt{fill:var(--ytpt)}
+.ytcover:hover svg .pb,.ytcover:focus-visible svg .pb{fill-opacity:1}
+.ytcover:hover svg{transform:translate(-50%,-50%) scale(1.08)}.ytcover:hover img{transform:scale(1.02);filter:brightness(1.05)}
+.ytcover:focus-visible{outline:3px solid var(--rose);outline-offset:-3px}
+@media (max-width:480px){.ytcover svg{width:56px;height:40px}}
+@media (prefers-reduced-motion:reduce){.ytcover img,.ytcover svg{transition:none}.ytcover:hover svg{transform:translate(-50%,-50%)}.ytcover:hover img{transform:none}}
 .mvbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;max-width:880px}
 .mvnow{display:grid;min-width:0}.mvnow b{font-size:1.05rem}.mvnow span{font-size:.82rem;color:var(--muted)}
 .mvctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -367,7 +377,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="filters" id="mvfilters" role="group" aria-label="篩選 MV"></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><div id="ytp"></div></div>
+      <div class="mvframe" id="mvframe" data-title="MV"></div>
       <div class="mvbar"><div class="mvnow"><b id="mvT"></b><span id="mvB"></span></div>
         <div class="mvctrl"><button type="button" id="mvprev" aria-label="prev">‹</button><button type="button" id="mvplay" class="main">▶</button><button type="button" id="mvnext" aria-label="next">›</button><a href="mv.html" id="mvfull" data-i18n="mvFull">完整播放器 ↗</a></div></div>
     </div>
@@ -379,7 +389,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div><h2 id="lc-h" class="edw"><span>Taeng Live</span></h2><div class="note" data-i18n="lcNote">官方 Live Clip，錄音室現場版，點清單就會在上方播放。</div></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="lcp" title="TAENG LIVE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe" id="lcp" data-title="TAENG LIVE"></div>
       <div class="mvbar"><div class="mvnow"><b id="lcT"></b><span id="lcB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -391,7 +401,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div><h2 id="dc-h" class="edw"><span>Taeng Dance</span></h2><div class="note" data-i18n="dcNote">舞蹈練習與舞台影片</div></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="dcp" title="TAENG DANCE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe" id="dcp" data-title="TAENG DANCE"></div>
       <div class="mvbar"><div class="mvnow"><b id="dcT"></b><span id="dcB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -404,7 +414,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="filters" id="bhtabs" role="group" aria-label="TAENG BEHIND"></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="bhp" title="TAENG BEHIND" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe" id="bhp" data-title="TAENG BEHIND"></div>
       <div class="mvbar"><div class="mvnow"><b id="bhT"></b><span id="bhB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -417,7 +427,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="filters" id="lgtabs" role="group" aria-label="TAENG LOG"></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="lgp" title="TAENG LOG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe" id="lgp" data-title="TAENG LOG"></div>
       <div class="mvbar"><div class="mvnow"><b id="lgT"></b><span id="lgB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -430,7 +440,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="filters" id="rxtabs" role="group" aria-label="TAENG TALK"></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="rxp" title="TAENG TALK" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe" id="rxp" data-title="TAENG TALK"></div>
       <div class="mvbar"><div class="mvnow"><b id="rxT"></b><span id="rxB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -443,7 +453,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="filters" id="cctabs" role="group" aria-label="CONCERT"></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="ccp" title="CONCERT" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe" id="ccp" data-title="CONCERT"></div>
       <div class="mvbar"><div class="mvnow"><b id="ccT"></b><span id="ccB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -673,17 +683,46 @@ function renderMvs(){
   $("mvplay").textContent=mvPlaying?"❚❚":"▶";
 }
 function playable(){return mvs.filter(m=>m.vid&&(mvf==="all"||m.mood===mvf))}
-function playMv(m,auto){mvCur=m;renderMvs();const bx=$("mvs"),on=bx.querySelector(".mv.on");if(on){const t=on.offsetTop-bx.offsetTop;if(t<bx.scrollTop||t+on.offsetHeight>bx.scrollTop+bx.clientHeight)bx.scrollTop=t-8}if(ytReady){auto?ytp.loadVideoById(m.vid):ytp.cueVideoById(m.vid)}}
+function playMv(m,auto){mvCur=m;renderMvs();const bx=$("mvs"),on=bx.querySelector(".mv.on");if(on){const t=on.offsetTop-bx.offsetTop;if(t<bx.scrollTop||t+on.offsetHeight>bx.scrollTop+bx.clientHeight)bx.scrollTop=t-8}if(auto)mvStart(m);else if(ytp&&ytReady)ytp.cueVideoById(m.vid);else mvCover()}
 function stepMv(d){const p=playable();if(!p.length)return;let i=p.indexOf(mvCur);i=i<0?0:(i+d+p.length)%p.length;playMv(p[i],true)}
+// MV 播放器：先顯示高畫質封面，點了才建立 YouTube 播放器（有 IFrame API 就用它來自動接下一首；沒有就退回一般 iframe）
+const mvFrame=$("mvframe");let mvPend=null;
+function mvSetPlaying(v){mvPlaying=v;$("mvplay").textContent=v?"❚❚":"▶"}
+function mvCover(){if(mvCur&&mvCur.vid)mvFrame.replaceChildren(ytCover(mvCur.vid,mvCur.title,()=>mvStart(mvCur)))}
+function mvStart(m){if(!m||!m.vid)return;
+  if(ytp&&ytReady){ytp.loadVideoById(m.vid);return}
+  if(ytp){mvPend=m.vid;return}
+  if(!(window.YT&&YT.Player)){mvFrame.replaceChildren(ytFrame(m.vid,m.title,"MV"));return}
+  const d=el("div");d.id="ytp";mvFrame.replaceChildren(d);
+  ytp=new YT.Player(d,{host:"https://www.youtube-nocookie.com",videoId:m.vid,playerVars:{rel:0,playsinline:1,autoplay:1},
+    events:{onReady:e=>{ytReady=true;if(mvPend){e.target.loadVideoById(mvPend);mvPend=null}else e.target.playVideo()},
+      onStateChange:e=>{mvSetPlaying(e.data===YT.PlayerState.PLAYING);if(e.data===YT.PlayerState.ENDED)stepMv(1)},
+      onError:()=>{stepMv(1)}}})}
+function mvStop(){if(ytp){try{ytp.destroy()}catch(e){}}ytp=null;ytReady=false;mvPend=null;mvSetPlaying(false);mvCover()}
+mvFrame._yt={stop(){if(ytp||mvFrame.querySelector("iframe"))mvStop()}};
+function mvInit(){if(mvCur&&mvs.includes(mvCur))return;mvCur=mvs.find(m=>m.vid==="4HG_CJzyX6A")||mvs.find(m=>m.vid)||null;if(mvCur){renderMvs();mvCover()}}
 $("mvprev").onclick=()=>stepMv(-1);$("mvnext").onclick=()=>stepMv(1);
-$("mvplay").onclick=()=>{if(!ytReady)return;if(!mvCur){stepMv(1);return}mvPlaying?ytp.pauseVideo():ytp.playVideo()};
-window.onYouTubeIframeAPIReady=function(){
-  const first=mvs.find(m=>m.vid==="4HG_CJzyX6A")||mvs.find(m=>m.vid);if(!first)return;mvCur=first;renderMvs();
-  ytp=new YT.Player("ytp",{host:"https://www.youtube-nocookie.com",videoId:first.vid,playerVars:{rel:0,playsinline:1},
-    events:{onReady:()=>{ytReady=true},onStateChange:e=>{mvPlaying=e.data===YT.PlayerState.PLAYING;$("mvplay").textContent=mvPlaying?"❚❚":"▶";if(e.data===YT.PlayerState.ENDED)stepMv(1)},
-      onError:()=>{stepMv(1)}}});
-};
+$("mvplay").onclick=()=>{if(!mvCur){stepMv(1);return}if(ytp){if(ytReady)mvPlaying?ytp.pauseVideo():ytp.playVideo();return}if(!mvFrame.querySelector("iframe"))mvStart(mvCur)};
+window.onYouTubeIframeAPIReady=function(){mvInit()};
 function lgSrc(v,auto){return "https://www.youtube-nocookie.com/embed/"+encodeURIComponent(v)+"?rel=0&playsinline=1"+(auto?"&autoplay=1":"")}
+// 高畫質封面（maxresdefault → sddefault → hqdefault），點了才載入 iframe；所有影片區共用
+const YT_ALLOW="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+const YT_SVG='<svg viewBox="0 0 68 48" aria-hidden="true" focusable="false"><path class="pb" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"/><path class="pt" d="M45 24 27 14v20z"/></svg>';
+function ytCover(id,title,onPlay){
+  const b=el("button","ytcover");b.type="button";b.setAttribute("aria-label","播放："+(title||""));b.title=title||"";
+  const im=document.createElement("img");im.alt="";im.loading="lazy";im.decoding="async";
+  const q=["maxresdefault","sddefault","hqdefault"];let i=0;const u=k=>"https://i.ytimg.com/vi/"+encodeURIComponent(id)+"/"+k+".jpg";
+  const next=()=>{if(i<q.length-1){i++;im.src=u(q[i])}};
+  im.onload=()=>{if(im.naturalWidth<=120)next()};im.onerror=next;im.src=u(q[0]);
+  b.append(im);b.insertAdjacentHTML("beforeend",YT_SVG);b.onclick=onPlay;return b}
+function ytFrame(id,title,label){const f=document.createElement("iframe");f.src=lgSrc(id,true);f.title=title||label||"YouTube";f.allow=YT_ALLOW;f.referrerPolicy="strict-origin-when-cross-origin";f.allowFullscreen=true;return f}
+// 一個播放器格：show＝顯示封面、play＝載入 autoplay iframe、stop＝換回封面（切分頁時用）
+function ytSlot(frame){if(!frame)return null;if(frame._yt)return frame._yt;const label=frame.dataset.title||"";
+  const S={id:null,title:"",
+    show(id,title){S.id=id;S.title=title;frame.replaceChildren(ytCover(id,title,()=>S.play(id,title)))},
+    play(id,title){S.id=id;S.title=title;const f=ytFrame(id,title,label);frame.replaceChildren(f);try{f.focus()}catch(e){}},
+    stop(){if(S.id&&frame.querySelector("iframe"))S.show(S.id,S.title)}};
+  frame._yt=S;return S}
 // 共用的「播放器＋可捲動清單＋分頁」：TAENG LOG、TAENG BEHIND、TAENG TALK、CONCERT、TAENG LIVE、TAENG DANCE 都用這個（各自狀態，互不干擾）
 function vidList(o){
   const items=o.items||[],st={tab:items[0]?items[0].s:"",cur:items[0]||null};
@@ -692,12 +731,12 @@ function vidList(o){
     if(!items.length){if(tabs)tabs.replaceChildren();box.replaceChildren(el("div","empty","—"));return}
     if(tabs)tabs.replaceChildren(...[...new Set(items.map(x=>x.s))].map(s=>{const b=el("button",null,s);b.type="button";b.setAttribute("aria-pressed",String(st.tab===s));b.onclick=()=>{st.tab=s;render();box.scrollTop=0};return b}));
     box.replaceChildren(...items.filter(x=>!o.tabs||x.s===st.tab).map(x=>{const a=el("button","mv"+(st.cur===x?" on":""));a.type="button";if(st.cur===x)a.setAttribute("aria-current","true");
-      a.onclick=()=>{st.cur=x;$(o.player).src=lgSrc(x.id,true);render()};
+      a.onclick=()=>{st.cur=x;const sl=ytSlot($(o.player));if(sl)sl.play(x.id,o.nowT(x));render()};
       const p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+x.id+"/hqdefault.jpg";p.alt="";p.loading="lazy";
       const d=el("div");d.style.minWidth="0";const t=el("div","tt");if(o.tag&&o.tag(x))t.append(el("span","tp",o.tag(x)));const ep=o.ep(x);if(ep)t.append(el("span","ep",ep));t.append(document.createTextNode(o.name(x)));d.append(t);if(x.b)d.append(el("div","bl",x.b));a.append(p,d);return a}));
     if(st.cur){$(o.title).textContent=o.nowT(st.cur);$(o.desc).textContent=o.nowB(st.cur)}
   }
-  if(st.cur&&$(o.player))$(o.player).src=lgSrc(st.cur.id,false);render();return render;
+  if(st.cur&&$(o.player))ytSlot($(o.player)).show(st.cur.id,o.nowT(st.cur));render();return render;
 }
 const renderLogs=vidList({items:typeof LOGS!=="undefined"?LOGS:[],tabs:"lgtabs",list:"lgs",player:"lgp",title:"lgT",desc:"lgB",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
 const renderConcerts=vidList({items:typeof CONCERTS!=="undefined"?CONCERTS:[],tabs:"cctabs",list:"ccs",player:"ccp",title:"ccT",desc:"ccB",tag:x=>x.tp?cityName("taipei","台北"):"",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
@@ -710,8 +749,7 @@ function showTab(k){
   if(k==="live")k="liveclip";
   const panels=[...document.querySelectorAll("[data-tab]")];if(!panels.some(p=>p.dataset.tab===k))k="news";
   panels.forEach(p=>{const on=p.dataset.tab===k;
-    if(!on&&!p.hidden){if(p.dataset.tab==="mv"&&ytReady&&ytp.pauseVideo)ytp.pauseVideo();
-      p.querySelectorAll("iframe").forEach(f=>{if(f.id!=="ytp"&&f.src)f.src=f.src.replace("&autoplay=1","")})}
+    if(!on&&!p.hidden)p.querySelectorAll(".mvframe").forEach(f=>{if(f._yt)f._yt.stop()});
     p.hidden=!on});
   document.querySelectorAll("#tabbar [data-go]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.go===k)));
 }
@@ -757,7 +795,7 @@ renderCities();applyStatic();renderTimeline();$("headline").textContent=T("loadi
 (async()=>{
   const timer=setTimeout(()=>{if($("headline").dataset.loaded!=="1")$("headline").textContent=T("fail")},10000);
   try{const r=await fetch("data.json?v="+Date.now());if(r.ok){const D=await r.json();clearTimeout(timer);
-    renderMeta(D.meta||null);renderTour(D.tour||[]);news=D.news||[];renderFilters();renderNews();mvs=(typeof SONGS!=="undefined"?SONGS:[]).slice().sort((a,b)=>b.y-a.y).map(x=>({title:x.t,year:x.y,mood:x.m,blurb:x.b,vid:x.id||null,url:x.id?null:"https://www.youtube.com/results?search_query="+encodeURIComponent(x.q||x.t)}));if(!mvs.length)mvs=D.mvs||[];renderMvFilters();renderMvs();loadYT();
+    renderMeta(D.meta||null);renderTour(D.tour||[]);news=D.news||[];renderFilters();renderNews();mvs=(typeof SONGS!=="undefined"?SONGS:[]).slice().sort((a,b)=>b.y-a.y).map(x=>({title:x.t,year:x.y,mood:x.m,blurb:x.b,vid:x.id||null,url:x.id?null:"https://www.youtube.com/results?search_query="+encodeURIComponent(x.q||x.t)}));if(!mvs.length)mvs=D.mvs||[];renderMvFilters();renderMvs();mvInit();loadYT();
     photos=D.photos||[];renderPhFilters();renderYrFilters();renderGallery()}}catch(e){}
   const db=await (window.claude?.use?.("db")??null);
   if(!db)return;
