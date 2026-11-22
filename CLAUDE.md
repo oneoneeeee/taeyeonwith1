@@ -20,7 +20,7 @@
 | `index.html` | 整個網站（HTML/CSS/JS 都在這一個檔案） |
 | `data.json` | 最新消息、巡演場次、提醒（meta / tour / news；`mvs`、`photos` 保持 `[]`） |
 | `songs.js` | MV 歌單 `SONGS`（格式見檔案開頭註解） |
-| `logs.js` | TAENG LOG 影片清單 `LOGS`（泰妍官方頻道 @taeyeonofficial 的「집 나간 탱log」與「TAENG LOG」系列，格式見檔案開頭註解） |
+| `logs.js` | TAENG LOG 影片清單 `LOGS`（泰妍官方頻道 @taeyeonofficial 的「집 나간 탱log」與「TAENG LOG」系列，格式見檔案開頭註解）。log 系列只放完整版，不放 Teaser／預告片。 |
 | `concerts.js` | CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
 | `liveclips.js` | LIVE CLIP 清單 `LIVECLIPS`（泰妍官方頻道的 Live Clip，依專輯由新到舊，不分頁） |
 | `mv.html` | 獨立的完整 MV 播放器，有「← 回到應援站」連結 |

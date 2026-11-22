@@ -5,7 +5,6 @@
 const LOGS = [
   {s:"집 나간 탱log", n:"in Bangkok", t:"집 나간 탱log in Bangkok (feat. 안녕, BANGKOK 2026)", id:"e4fPbvzfHNw", b:"曼谷旅行 vlog。"},
   {s:"집 나간 탱log", n:"in Tokyo", t:"집 나간 탱log in Tokyo (feat. 핑구x탱그)", id:"ZYeUxdMAg0c", b:"東京旅行 vlog。"},
-  {s:"집 나간 탱log", n:"Teaser", t:"집 나간 탱log Teaser", id:"-X9yWSu8unc", b:"離家出走系列的預告。"},
   {s:"TAENG LOG", n:"#22", t:"마데카솔 광고 비하인드", id:"gIp7O8Egpu8", b:"Madecassol 廣告拍攝幕後。"},
   {s:"TAENG LOG", n:"#21", t:"DAZED KOREA 2026 Summer Edition", id:"got7bNRHd3o", b:"DAZED KOREA 2026 夏季號畫報幕後。"},
   {s:"TAENG LOG", n:"#20", t:"W Korea Behind", id:"OmvEoBtvSsE", b:"W Korea 畫報幕後。"},
