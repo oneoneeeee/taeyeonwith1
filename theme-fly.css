@@ -1,0 +1,153 @@
+/* ==========================================================================
+   F.L.Y. 水下主題（theme-fly.css）
+   - 只有 <html data-theme="fly"> 時生效；舊的深酒紅主題（classic）樣式都在 index.html，不要動。
+   - 何時是 fly：見 index.html <head> 最前面的小腳本
+     （?theme=fly 強制、?theme=classic 強制舊風格、否則 2026-11-30 17:00 台灣時間後自動 fly）。
+   - 淺色：淺水藍 → 湖水藍 → 較深的藍；深色模式：整體偏深海。內容放在毛玻璃卡片上確保好讀。
+   ========================================================================== */
+
+/* 只屬於 fly 主題的元素，舊主題一律隱藏 */
+.fly-only{display:none!important}
+
+/* ---------- 配色（淺色） ---------- */
+:root[data-theme="fly"]{
+  --bg:#e3f5fa; --surface:rgba(255,255,255,.66); --ink:#08283f; --muted:#355b72;
+  --rose:#086b87; --rose-soft:rgba(127,227,240,.32); --line:rgba(8,60,92,.16); --pearl:rgba(255,255,255,.62);
+  --glow:rgba(127,227,240,.2); --glow2:rgba(127,227,240,.1); --weave:transparent;
+  --ok:#1f7a55; --warn:#9a5a0c;
+  --fly-cyan:#7fe3f0; --fly-navy:#05324a; --fly-card:rgba(255,255,255,.7); --fly-cardline:rgba(255,255,255,.85);
+  --fly-ticket:linear-gradient(135deg,rgba(6,76,114,.96),rgba(8,94,134,.94) 55%,rgba(14,106,146,.93));
+  --script:"Great Vibes","Allura","Snell Roundhand","Brush Script MT",cursive;
+  color-scheme:light;
+}
+/* ---------- 配色（深色模式：深海） ---------- */
+@media (prefers-color-scheme:dark){:root[data-theme="fly"]{
+  --bg:#031627; --surface:rgba(10,44,70,.62); --ink:#e6f8fc; --muted:#a5cadb;
+  --rose:#7fe3f0; --rose-soft:rgba(127,227,240,.14); --line:rgba(190,240,255,.16); --pearl:rgba(8,36,58,.62);
+  --ok:#6fd1a8; --warn:#f0c070;
+  --fly-card:rgba(4,26,44,.62); --fly-cardline:rgba(160,230,245,.18);
+  --fly-ticket:linear-gradient(135deg,rgba(8,70,104,.88),rgba(10,92,128,.82) 55%,rgba(14,108,142,.8));
+  color-scheme:dark}}
+
+/* ---------- 背景：整頁長漸層，越往下越深（不用 fixed，手機不卡） ---------- */
+[data-theme="fly"],[data-theme="fly"] body{min-height:100%}
+[data-theme="fly"] body{background:linear-gradient(180deg,#e8f8fc 0,#c4ecf6 12%,#8fd5e8 32%,#55b2d2 55%,#2d88b2 78%,#1a6690 100%) #1a6690;overflow-x:hidden}
+@media (prefers-color-scheme:dark){[data-theme="fly"] body{background:linear-gradient(180deg,#14608a 0,#0d4a6e 14%,#08354f 40%,#05223a 70%,#020e1b 100%) #020e1b}}
+[data-theme="fly"] .cover-bg{display:none}
+
+/* 水面光紋（頁面頂端，跟著捲走） */
+.fly-surface{position:absolute;left:0;top:0;width:100%;height:min(78vh,620px);overflow:hidden;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 35%,transparent);mask-image:linear-gradient(180deg,#000 0,#000 35%,transparent)}
+.fly-surface i{position:absolute;inset:-20% -30%;display:block;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='320'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.016' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 .75 0 0 0 0 .55 0 0 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:640px 320px;opacity:.55;animation:flyripple 14s ease-in-out infinite alternate;will-change:transform}
+.fly-surface i+i{background-size:880px 420px;opacity:.35;animation-duration:19s;animation-direction:alternate-reverse}
+.fly-surface::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 60% at 50% -10%,rgba(255,255,255,.75),transparent 60%),
+    linear-gradient(100deg,transparent 30%,rgba(255,255,255,.18) 38%,transparent 46%,transparent 58%,rgba(255,255,255,.12) 64%,transparent 72%)}
+@keyframes flyripple{0%{transform:translate3d(0,0,0) skewX(-4deg) scale(1)}50%{transform:translate3d(-4%,2%,0) skewX(3deg) scale(1.04)}100%{transform:translate3d(3%,-1%,0) skewX(-2deg) scale(1.02)}}
+@media (prefers-color-scheme:dark){.fly-surface i{opacity:.32}.fly-surface i+i{opacity:.2}.fly-surface::after{opacity:.45}}
+
+/* 氣泡（固定在畫面上、在內容後面，不擋任何東西） */
+.fly-bubbles{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.fly-bubbles i{position:absolute;bottom:-40px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95) 0 14%,rgba(255,255,255,.18) 30%,rgba(255,255,255,.05) 62%,rgba(255,255,255,.45) 70%,transparent 74%);
+  opacity:0;animation:flybubble var(--d) linear var(--w) infinite;will-change:transform,opacity}
+@keyframes flybubble{0%{transform:translate3d(0,0,0);opacity:0}10%{opacity:.85}50%{transform:translate3d(14px,-55vh,0)}90%{opacity:.7}100%{transform:translate3d(-8px,-112vh,0);opacity:0}}
+.fly-bubbles i:nth-child(1){--x:6%;--s:10px;--d:17s;--w:-2s}
+.fly-bubbles i:nth-child(2){--x:14%;--s:6px;--d:13s;--w:-9s}
+.fly-bubbles i:nth-child(3){--x:23%;--s:14px;--d:21s;--w:-5s}
+.fly-bubbles i:nth-child(4){--x:34%;--s:7px;--d:15s;--w:-12s}
+.fly-bubbles i:nth-child(5){--x:47%;--s:11px;--d:19s;--w:-3s}
+.fly-bubbles i:nth-child(6){--x:58%;--s:5px;--d:12s;--w:-7s}
+.fly-bubbles i:nth-child(7){--x:66%;--s:13px;--d:22s;--w:-15s}
+.fly-bubbles i:nth-child(8){--x:75%;--s:8px;--d:16s;--w:-1s}
+.fly-bubbles i:nth-child(9){--x:83%;--s:16px;--d:24s;--w:-10s}
+.fly-bubbles i:nth-child(10){--x:91%;--s:6px;--d:14s;--w:-6s}
+.fly-bubbles i:nth-child(11){--x:41%;--s:9px;--d:18s;--w:-14s}
+.fly-bubbles i:nth-child(12){--x:96%;--s:10px;--d:20s;--w:-4s}
+@media (max-width:640px){.fly-bubbles i:nth-child(n+7){display:none}}
+
+/* ---------- 版面：每個區塊都是毛玻璃卡片 ---------- */
+[data-theme="fly"] .wrap section,[data-theme="fly"] .citybar,[data-theme="fly"] .tabbar{
+  background:var(--fly-card);border:1px solid var(--fly-cardline);border-radius:20px;padding:18px;
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+  box-shadow:0 18px 40px -28px rgba(4,40,70,.55)}
+[data-theme="fly"] .citybar{padding:12px 14px}
+[data-theme="fly"] .tabbar{padding:10px 12px}
+@media (max-width:480px){[data-theme="fly"] .wrap section{padding:14px 12px;border-radius:16px}}
+[data-theme="fly"] .feed{background:transparent;padding-inline:0}
+[data-theme="fly"] .lb{background:rgba(2,22,38,.94)}
+[data-theme="fly"] .lb figcaption{color:#e6f8fc}
+
+/* 重點色：紅 → 亮白＋淡青 */
+[data-theme="fly"] .tabbar button[aria-pressed="true"],
+[data-theme="fly"] .cities button[aria-pressed="true"],
+[data-theme="fly"] .mvctrl button.main,
+[data-theme="fly"] .rbtn,[data-theme="fly"] .btn,[data-theme="fly"] .chip{
+  background:var(--fly-cyan);border-color:var(--fly-cyan);color:var(--fly-navy)!important;box-shadow:0 0 0 1px rgba(5,50,74,.12),0 6px 16px -8px rgba(40,190,220,.8)}
+[data-theme="fly"] .chip.ok{background:#bdf3d8;border-color:#bdf3d8}
+[data-theme="fly"] .chip.warn{background:#ffe2a8;border-color:#ffe2a8}
+[data-theme="fly"] .cities button[aria-pressed="true"] small{color:rgba(5,50,74,.8)}
+[data-theme="fly"] .tabbar button:hover,[data-theme="fly"] .mv:hover{border-color:var(--rose)}
+[data-theme="fly"] .rbtn.ghost{background:transparent;border:1px solid var(--rose);color:var(--rose)!important;box-shadow:none}
+[data-theme="fly"] .mv.on{border-color:var(--rose);background:var(--rose-soft);box-shadow:inset 3px 0 0 var(--rose)}
+/* 台北標籤：白底深藍字 */
+[data-theme="fly"] .mv .tp{background:#fff;color:var(--fly-navy);box-shadow:0 0 0 1px rgba(5,50,74,.35)}
+[data-theme="fly"] .stop.me{background:var(--rose-soft);box-shadow:inset 4px 0 0 var(--rose)}
+[data-theme="fly"] .t::before{border-color:var(--rose)}
+
+/* ---------- 字體：英文大標題改草寫，中文不變 ---------- */
+[data-theme="fly"] .edw{font-family:var(--script);border-bottom-color:var(--line);gap:0 .25em;padding-bottom:6px}
+[data-theme="fly"] .edw em,[data-theme="fly"] .edw span{font-family:var(--script);font-style:normal;font-weight:400;letter-spacing:0;text-transform:none}
+[data-theme="fly"] .edw span{font-size:1.05em}
+[data-theme="fly"] .edw span::first-letter{color:var(--rose)}
+[data-theme="fly"] .edw small{font-family:var(--body)}
+[data-theme="fly"] .cities button b{font-family:var(--display);letter-spacing:.06em}
+
+/* ---------- 票券卡：水藍票根 ---------- */
+[data-theme="fly"] .ticket{background:var(--fly-ticket);border:1.5px solid rgba(255,255,255,.75);border-radius:22px;color:#fff;
+  box-shadow:0 24px 50px -26px rgba(3,50,80,.75),inset 0 1px 0 rgba(255,255,255,.5);position:relative}
+[data-theme="fly"] .ticket::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(90% 70% at 85% -20%,rgba(255,255,255,.28),transparent 60%),radial-gradient(60% 50% at 0 110%,rgba(127,227,240,.22),transparent 70%)}
+[data-theme="fly"] .ticket>*{position:relative}
+[data-theme="fly"] .ticket .label,[data-theme="fly"] .ticket .updated,[data-theme="fly"] .ticket .note{color:rgba(232,250,255,.86)}
+[data-theme="fly"] .ticket-main p{color:rgba(240,252,255,.95)}
+[data-theme="fly"] .ticket-main h1{color:#fff}
+[data-theme="fly"] .ticket-main h1 span{font-family:var(--script);font-weight:400;letter-spacing:0;font-size:1.35em;line-height:1.15;display:inline-block;color:#fff;
+  text-shadow:0 0 18px rgba(127,227,240,.85),0 2px 0 rgba(3,50,80,.35);padding-left:.08em}
+[data-theme="fly"] .stub{background:rgba(255,255,255,.06);border-top:2px dashed rgba(255,255,255,.55)!important}
+[data-theme="fly"] .stub .where{color:#fff}
+[data-theme="fly"] .cdu{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+[data-theme="fly"] .cdu b{color:#fff;font-size:clamp(2rem,8.5vw,3.8rem);text-shadow:0 0 22px rgba(127,227,240,.95),0 0 4px rgba(127,227,240,.6)}
+[data-theme="fly"] .cdu i{color:#d6f6fb}
+[data-theme="fly"] .stub .days{color:#fff}
+[data-theme="fly"] .tourposter{background:var(--surface)}
+
+/* ---------- 回歸提醒框 → 台北場售票提醒占位卡 ---------- */
+[data-theme="fly"] #remind{display:none}
+[data-theme="fly"] .fly-bubbles.fly-only,[data-theme="fly"] .fly-surface.fly-only,[data-theme="fly"] .fly-intro.fly-only{display:block!important}
+[data-theme="fly"] .remind.fly-only{display:flex!important}
+[data-theme="fly"] .remind{background:var(--rose-soft);border:1px dashed var(--rose)}
+
+/* ---------- 開場：浮上水面（取代書本動畫） ---------- */
+[data-theme="fly"] #bookintro{background:radial-gradient(120% 80% at 50% 0,#d9f6fb 0,#8fd8ea 35%,#3a9ec7 75%,#1d7aa6 100%);
+  transition:opacity .9s ease,transform 1s cubic-bezier(.5,0,.3,1)}
+[data-theme="fly"] #bookintro.bk-done{opacity:0;transform:translateY(-8vh)}
+[data-theme="fly"] #bookintro .bk-stage,[data-theme="fly"] #bookintro .bk-hint{display:none}
+[data-theme="fly"] #bookintro .bk-skip{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(5,50,74,.18);z-index:2}
+.fly-intro{position:absolute;inset:0;pointer-events:none}
+.fly-intro .fly-surface{height:100%;-webkit-mask-image:none;mask-image:none;z-index:0}
+.fly-intro .fly-surface i{opacity:.7}
+.fly-intro-t{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;color:#fff;text-align:center;
+  animation:flyin 1.1s ease-out .15s both}
+.fly-intro-t b{font-family:var(--script);font-weight:400;font-size:clamp(84px,22vw,160px);line-height:1;
+  text-shadow:0 0 30px rgba(127,227,240,.95),0 4px 14px rgba(3,50,80,.35)}
+.fly-intro-t small{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.34em;color:#f2fcff;text-shadow:0 1px 6px rgba(3,50,80,.5);padding-left:.34em}
+@keyframes flyin{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+
+/* ---------- 減少動態：關掉所有動畫 ---------- */
+@media (prefers-reduced-motion:reduce){
+  .fly-surface i,.fly-bubbles i,.fly-intro-t{animation:none!important}
+  .fly-bubbles{display:none!important}
+}

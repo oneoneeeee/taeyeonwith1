@@ -28,6 +28,7 @@
 | `cover_2.jpg` | 背景：《Unspecial》紅色刺繡專輯封面 |
 | `poster_2.jpg` | F.L.Y. 巡演宣傳圖（巡演日期下的小卡） |
 | `favicon.png`、`apple-touch-icon.png` | 網站圖示：泰妍簽名（白底黑字）。`index.html` 引用時帶 `?v=sig2`，換圖要改版本號 |
+| `theme-fly.css` | F.L.Y. 水下主題的全部樣式（只在 `<html data-theme="fly">` 時生效），見下方「主題」 |
 | `unspecial.ics` | 11/30《Unspecial》回歸的行事曆提醒（前一天、前一小時） |
 
 ## 網站各區塊（由上到下）
@@ -49,8 +50,15 @@
 - **news（最新消息，`news`）**：放已發生的新聞報導。同一事件只留一則，有後續就合併到最新那則（更新日期、標題、來源、摘要），不另加新則。
 - 不要因為 alerts 有某件事，就再加一則內容相同的 news。
 
+## 主題
+- **classic**（深酒紅黑底，現在的樣子）：用到台灣時間 **2026-11-30 17:00**（《Unspecial》發行）為止。樣式在 `index.html` 的 `<style>`，不要為了 fly 去改。
+- **fly**（F.L.Y. 水下藍）：11/30 17:00 之後自動變成預設。淺色＝淺水藍→湖水藍漸層、深色模式＝深海；內容都放在毛玻璃卡片上；英文大標題（`.edw`、票券卡的 F.L.Y.）用草寫字 Great Vibes；頂端有水面光紋、少量氣泡（`prefers-reduced-motion` 時全部關掉）；開場改成「浮上水面」轉場（舊主題的書本動畫不變）。
+- **切換邏輯**：`index.html` `<head>` 最前面的小腳本決定。網址 `?theme=fly` → fly；`?theme=classic` → 強制舊風格；否則 `Date.now() >= 2026-11-30T17:00:00+08:00` 就 fly。fly 時在 `<html>` 加 `data-theme="fly"` 並改 `theme-color`。不用 localStorage 記，預覽完拿掉參數就回到原本的樣子。
+- **樣式位置**：fly 的樣式全部在 `theme-fly.css`，每條都以 `[data-theme="fly"]` 開頭；只屬於 fly 的元素加 `fly-only` class（舊主題自動隱藏），例如光紋 `.fly-surface`、氣泡 `.fly-bubbles`、開場 `.fly-intro`、售票提醒卡 `#flyremind`。
+- fly 主題下「重要日期」的《Unspecial》回歸提醒（`#remind`）會隱藏，改顯示 `#flyremind`「🎫 台北場售票提醒」占位卡。**台北場售票時間公布後，要在 `#flyremind` 補上日期，並加「加入 iPhone 行事曆（.ics）／Google 日曆」按鈕（沿用 `.remind-b` / `.rbtn`）。**
+
 ## 風格
-紅黑專輯風（`--rose` 紅、深色布紋背景）、標題用 Bodoni Moda 雜誌字（`.edw`）。手機寬度也要好看。
+classic：紅黑專輯風（`--rose` 紅、深色布紋背景）；fly：水下藍，重點色亮白＋淡青 `#7fe3f0`（見「主題」）、標題用 Bodoni Moda 雜誌字（`.edw`）。手機寬度也要好看。
 
 ## 每日自動更新
 排程「泰妍應援站每日更新」每天台灣時間 08:50 執行：搜尋新聞 → 更新 `data.json`（必要時 `songs.js`）→ commit「每日更新 YYYY-MM-DD」→ 直接 push 到 `main`。不要動 `index.html` 和圖片。
@@ -58,6 +66,7 @@
 每日更新排程若發現官方頻道新的 Live Clip 可加到 `liveclips.js`；2027《F.L.Y.》巡演紀錄出來後在 `concerts.js` 加 2027 分頁（放最前面），台北場放最前面。
 
 ## 待辦
+- 台北場售票時間公布後：更新 fly 主題的 `#flyremind` 卡片（日期＋行事曆按鈕）。
 - 六場的售票時間公布後：在「重要日期」的提醒卡片加上各場售票的「加入行事曆」按鈕（售票前一天提醒）。
 - 官方公布開演時間後，更新倒數的 19:00。
 - 使用者可能之後會傳現場影片，做成電腦版的背景影片（手機維持專輯封面）。
