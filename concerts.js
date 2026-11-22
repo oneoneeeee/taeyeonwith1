@@ -1,0 +1,39 @@
+// 泰妍官方 YouTube 頻道 TAEYEON Official（@taeyeonofficial）的演唱會巡演紀錄。每支一行：
+//   s = 巡演（分頁名稱，新的巡演放最前面）、n = 清單上的短標籤
+//   t = 原始標題（去掉 emoji）、id = YouTube 影片代碼（網址 watch?v= 後面那串）
+//   b = 一句自己寫的中文介紹（不確定就寫通用描述）
+//   tp = true 表示台北相關（清單上會標「台北」）；同一個巡演裡台北相關的放最前面
+const CONCERTS = [
+  {s:"2025 The TENSE", n:"'Disaster' @Taipei", t:"TAEYEON CONCERT - The TENSE 'Disaster' Stage Video @Taipei", id:"pjtnavw1_ys", b:"台北場〈Disaster〉的舞台影像。", tp:true},
+  {s:"2025 The TENSE", n:"'월식 (My Tragedy)' @Taipei", t:"TAEYEON CONCERT - The TENSE '월식 (My Tragedy)' Stage Video @Taipei", id:"km3N4IyLq7M", b:"台北場〈월식 (My Tragedy)〉的舞台影像。", tp:true},
+  {s:"2025 The TENSE", n:"in TAIPEI vlog", t:"TAEYEON CONCERT in TAIPEI vlog (저의 이 허접한(?) 브이로그는 계속됩니다)", id:"fpbYwJt-iOA", b:"泰妍自己拍的台北場 vlog。", tp:true},
+  {s:"2025 The TENSE", n:"Recap", t:"TAEYEON CONCERT - The TENSE Recap Video", id:"2PGCniI_z1k", b:"The TENSE 巡演精華回顧。"},
+  {s:"2025 The TENSE", n:"Trailer", t:"TAEYEON CONCERT - The TENSE Official Trailer", id:"coL08jQ-B1M", b:"The TENSE 演唱會官方預告。"},
+  {s:"2025 The TENSE", n:"'Ending Credits'", t:"TAEYEON CONCERT - The TENSE 'Ending Credits' Stage Video (Memory Box)", id:"KGeYdCyo-2o", b:"Memory Box 收錄的〈Ending Credits〉舞台影像。"},
+  {s:"2025 The TENSE", n:"in HONG KONG", t:"TAEYEON CONCERT - The TENSE in HONG KONG", id:"qWll4K2ceKU", b:"香港場的巡演紀錄。"},
+  {s:"2025 The TENSE", n:"in BANGKOK", t:"TAEYEON CONCERT - The TENSE in BANGKOK", id:"03FwI7Z2F7w", b:"曼谷場的巡演紀錄。"},
+  {s:"2025 The TENSE", n:"in SINGAPORE", t:"TAEYEON CONCERT - The TENSE in SINGAPORE", id:"xAsbTawJz7s", b:"新加坡場的巡演紀錄。"},
+  {s:"2025 The TENSE", n:"in MACAU", t:"TAEYEON CONCERT - The TENSE in MACAU", id:"7syc_q_rHww", b:"澳門場的巡演紀錄。"},
+  {s:"2025 The TENSE", n:"in MANILA & JAKARTA", t:"TAEYEON CONCERT - The TENSE in MANILA & JAKARTA", id:"O_7G9freUOA", b:"馬尼拉與雅加達場的巡演紀錄。"},
+  {s:"2025 The TENSE", n:"Rehearsal & D-DAY", t:"TAEYEON CONCERT - The TENSE Rehearsal & D-DAY Behind", id:"LKXLxP5FCJs", b:"彩排到開演當天的幕後。"},
+  {s:"2025 The TENSE", n:"Practice Behind", t:"TAEYEON CONCERT - The TENSE Dance Practice & Band Performance Practice Behind", id:"LzR6kp-hayI", b:"舞蹈練習和樂團合練的幕後。"},
+  {s:"2025 The TENSE", n:"'Hot Mess' Practice", t:"'Hot Mess' Dance Practice (The TENSE Ver.)", id:"UQm8ulHOs24", b:"〈Hot Mess〉演唱會版的舞蹈練習。"},
+  {s:"2025 The TENSE", n:"Meeting & VCR", t:"TAEYEON CONCERT - The TENSE Concert Meeting & VCR Shooting Behind", id:"kRzjFZVbRe4", b:"演唱會企劃會議和 VCR 拍攝幕後。"},
+  {s:"2025 The TENSE", n:"D-14 MD", t:"D-14 탱콘 MD 대공개", id:"eoVELQ1_4wc", b:"開演前兩週，演唱會周邊大公開。"},
+  {s:"2025 The TENSE", n:"Happy B-day", t:"Happy B-day 김태연 하길 잘했다", id:"pIjE7df6M6M", b:"生日特別影片。"},
+  {s:"2025 The TENSE", n:"[PREVIEW] Message", t:"[PREVIEW] Message from TAEYEON (Memory Box)", id:"XnPQTEZCWdE", b:"Memory Box 收錄的泰妍留言搶先看。"},
+  {s:"2025 The TENSE", n:"[PREVIEW] Unfold", t:"[PREVIEW] Unfold The TENSE (Memory Box)", id:"-EXF4eTQVqY", b:"Memory Box 收錄內容搶先看。"},
+  {s:"2025 The TENSE", n:"Memory Box Trailer", t:"TAEYEON CONCERT - The TENSE Memory Box Blu-ray & Digital Code Trailer", id:"TktPuxXDLkA", b:"Memory Box 藍光與數位版預告。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.06 in TAIPEI", t:"TAEYEON CONCERT - The ODD Of LOVE EP.06 in TAIPEI (대만 지금 엄청! 촉촉해요!)", id:"InpMbJ3IgN0", b:"2023 台北場的巡演紀錄。", tp:true},
+  {s:"2023 The ODD Of LOVE", n:"Recap", t:"TAEYEON CONCERT - The ODD Of LOVE Recap Video", id:"oPx0YDBtWMs", b:"The ODD Of LOVE 巡演精華回顧。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.01", t:"TAEYEON CONCERT - The ODD Of LOVE EP.01 D-Day Behind", id:"ehIrPB25gB8", b:"首爾開演當天的幕後。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.02", t:"TAEYEON CONCERT - The ODD Of LOVE EP.02 VCR & Poster Shooting + MD meeting Behind", id:"qU_QsJXzGDM", b:"VCR、海報拍攝和周邊會議幕後。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.03", t:"TAEYEON CONCERT - The ODD Of LOVE EP.03 Dance Practice Behind", id:"pSfWuK5Gl4E", b:"舞蹈練習幕後。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.04", t:"TAEYEON CONCERT - The ODD Of LOVE EP.04 Rehearsal Behind", id:"ehElaOqFBdI", b:"彩排幕後。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.05", t:"TAEYEON CONCERT - The ODD Of LOVE EP.05 in HONGKONG", id:"zMwntfY2ydI", b:"香港場的巡演紀錄。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.07", t:"TAEYEON CONCERT - The ODD Of LOVE EP.07 in TOKYO", id:"zIyPIc4l9rc", b:"東京場的巡演紀錄。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.08", t:"TAEYEON CONCERT - The ODD Of LOVE EP.08 in JAKARTA", id:"ucTJNqiB46U", b:"雅加達場的巡演紀錄。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.09", t:"TAEYEON CONCERT - The ODD Of LOVE EP.09 in MANILA", id:"uYA7FOxz1Tk", b:"馬尼拉場的巡演紀錄。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.10", t:"TAEYEON CONCERT - The ODD Of LOVE EP.10 in BANGKOK", id:"I5zkhsrjq3Y", b:"曼谷場的巡演紀錄。"},
+  {s:"2023 The ODD Of LOVE", n:"EP.11", t:"TAEYEON CONCERT - The ODD Of LOVE EP.11 in SINGAPORE", id:"QgNRvzTytAs", b:"新加坡場的巡演紀錄。"},
+];
