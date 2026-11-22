@@ -20,5 +20,6 @@ const SONGS = [
   {t:"INVU", y:2022, m:"bright", id:"AbZH7XWDW_k", b:"第三張正規專輯主打，冷豔的氣場。"},
   {t:"Can't Control Myself", y:2022, m:"bright", id:"RccDIpx4ZMM", b:"INVU 後續曲，帶點懸疑感。"},
   {t:"To. X", y:2023, m:"bright", id:"5_n6t9G2TUQ", b:"迷你五輯主打，酷酷地說再見。"},
-  {t:"Letter To Myself", y:2024, m:"soft", id:"wqN1vLPX-no", b:"迷你六輯主打，寫給自己的信。"}
+  {t:"Letter To Myself", y:2024, m:"soft", id:"wqN1vLPX-no", b:"迷你六輯主打，寫給自己的信。"},
+  {t:"The Unspecial（專輯預告）", y:2026, m:"soft", id:"8h2mkPn7-pA", b:"第四張正規專輯《Unspecial》的電影感預告片，11/30 發行。"}
 ];
