@@ -3,6 +3,7 @@
 //   t = 原始標題（去掉 emoji）、id = YouTube 影片代碼（網址 watch?v= 後面那串）
 //   b = 一句自己寫的中文介紹（不確定就寫通用描述）
 //   tp = true 表示台北相關（清單上會標「台北」）；同一個巡演裡台北相關的放最前面
+//   y = 年份（選填）；「回歸直播」分頁放回歸倒數直播重播，新的放最前面
 const CONCERTS = [
   {s:"2025 The TENSE", n:"'Disaster' @Taipei", t:"TAEYEON CONCERT - The TENSE 'Disaster' Stage Video @Taipei", id:"pjtnavw1_ys", b:"台北場〈Disaster〉的舞台影像。", tp:true},
   {s:"2025 The TENSE", n:"'월식 (My Tragedy)' @Taipei", t:"TAEYEON CONCERT - The TENSE '월식 (My Tragedy)' Stage Video @Taipei", id:"km3N4IyLq7M", b:"台北場〈월식 (My Tragedy)〉的舞台影像。", tp:true},
@@ -39,4 +40,6 @@ const CONCERTS = [
   {s:"2020 The UNSEEN", n:"'Better Babe' FOCUS CAM", t:"Better Babe Concert Ver.（FOCUS CAM）", id:"aoFFwIBGfZY", b:"The UNSEEN 演唱會〈Better Babe〉的個人直拍。"},
   {s:"2019 's...one", n:"'四季' Concert Ver.", t:"四季 (Four Seasons) Concert Ver.", id:"UQDPqJ631Yc", b:"'s...one 演唱會的〈四季〉舞台。"},
   {s:"2019 's...one", n:"'Blue' Concert Ver.", t:"Blue Concert Ver.", id:"H-KUzxsDxM4", b:"'s...one 演唱會的〈Blue〉舞台。"},
+  {s:"回歸直播", n:"Letter To Myself", t:"[Replay] 'Letter To Myself' Countdown Live", id:"mvIahYWKLhU", b:"《Letter To Myself》回歸倒數直播重播。", y:2024},
+  {s:"回歸直播", n:"To. X", t:"[Replay] 'To. X' Countdown Live", id:"pzwl4OghHmc", b:"《To. X》回歸倒數直播重播。", y:2023},
 ];

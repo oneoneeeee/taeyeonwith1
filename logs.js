@@ -1,5 +1,5 @@
 // 泰妍官方 YouTube 頻道 TAEYEON Official（@taeyeonofficial）的 log 系列。每支一行，同系列由新到舊：
-//   s = 系列（"집 나간 탱log" 旅行 vlog／"TAENG LOG" 幕後 vlog）、n = 集數或標籤
+//   s = 系列（"집 나간 탱log" 旅行 vlog／"TAENG LOG" 幕後 vlog／"INVlogU" 2022《INVU》時期 vlog）、n = 集數或標籤
 //   t = 原始標題（韓文，去掉 emoji）、id = YouTube 影片代碼（網址 watch?v= 後面那串）
 //   b = 一句自己寫的中文介紹（不確定就寫通用描述）
 const LOGS = [
@@ -27,4 +27,7 @@ const LOGS = [
   {s:"TAENG LOG", n:"#3", t:"퀸덤퍼즐 Behind The Scenes", id:"Y88WKaa__UY", b:"《Queendom Puzzle》幕後。"},
   {s:"TAENG LOG", n:"#2", t:"머리 자른 태연", id:"s6TECxy2JQE", b:"剪頭髮的泰妍。"},
   {s:"TAENG LOG", n:"#1", t:"놀토 브이로그 (with 실버버튼 언박싱)", id:"2NAxMz0bNys", b:"《驚人的星期六》vlog，順便開箱銀色按鈕。"},
+  {s:"INVlogU", n:"#03", t:"INVU 전시회 MD 제작 미팅 + HEAL ME 비하인드 + 자기애가 넘칠 뻔한 INVU 전시 탐방", id:"gkbB0heZBBg", b:"INVU 展覽周邊製作會議、〈HEAL ME〉幕後，再去逛展覽。"},
+  {s:"INVlogU", n:"#02", t:"킬링보이스 연습과 촬영 비하인드 + INVU 인기가요", id:"lZcjQADPZDY", b:"Killing Voice 練習與拍攝幕後，還有 INVU 打歌。"},
+  {s:"INVlogU", n:"#01", t:"탱 Control Myself 비하인드 + 캔컨마 티저, 광고 구경 나들이", id:"khbQi3P8aNs", b:"〈Can't Control Myself〉幕後，順便出門看預告和廣告。"},
 ];
