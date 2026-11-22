@@ -156,3 +156,13 @@
 [data-theme="fly"] .ytcover{--ytpb:var(--rose);--ytpt:#fff}
 [data-theme="fly"] .ytcover:focus-visible{outline-color:var(--fly-cyan)}
 @media (prefers-color-scheme:dark){[data-theme="fly"] .ytcover{--ytpt:var(--fly-navy)}}
+
+/* ---------- 新功能：今天聽什麼、找影片、台北場專區 ---------- */
+[data-theme="fly"] .randbtn{background:var(--fly-cyan);border-color:var(--fly-cyan);color:var(--fly-navy);box-shadow:0 6px 16px -8px rgba(40,190,220,.8)}
+[data-theme="fly"] .randbtn:hover{background:#fff;border-color:#fff;color:var(--fly-navy)}
+[data-theme="fly"] .srch{border-color:var(--fly-cardline);box-shadow:0 24px 50px -20px rgba(3,40,70,.6)}
+[data-theme="fly"] .sr:hover,[data-theme="fly"] .sr[aria-selected="true"]{box-shadow:inset 3px 0 0 var(--rose)}
+[data-theme="fly"] .tpcard{background:var(--surface);border:1px solid var(--fly-cardline);border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 14px 30px -24px rgba(4,40,70,.6)}
+[data-theme="fly"] .tp-info div{background:var(--pearl);border-color:var(--fly-cardline)}
+[data-theme="fly"] .tp-now{background:var(--pearl)}
+[data-theme="fly"] .stub .tplink{color:#fff;text-shadow:0 0 10px rgba(127,227,240,.7)}

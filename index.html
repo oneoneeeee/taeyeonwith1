@@ -241,8 +241,57 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 .rbtn{display:inline-block;padding:9px 16px;border-radius:999px;background:var(--rose);color:#fff!important;text-decoration:none;font-weight:700;font-size:.88rem}
 .rbtn.ghost{background:transparent;border:1px solid var(--rose);color:var(--rose)!important}
 @media (max-width:640px){.remind-b{width:100%}.rbtn{flex:1;text-align:center}}
+/* 今天聽什麼（MV 隨機播） */
+.mvtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.randbtn{font:inherit;font-size:.82rem;font-weight:700;border:1px solid var(--rose);background:var(--rose-soft);color:var(--rose);padding:4px 12px;border-radius:99px;cursor:pointer;transition:background .2s,color .2s}
+.randbtn:hover{background:var(--rose);color:#fff}
+/* 找影片：分頁列最右邊的 🔍，點開是搜尋框＋下拉結果 */
+.tabbar{position:relative;z-index:20}
+.tabbar button.srchbtn{margin-left:auto;padding:8px 13px;font-weight:400;letter-spacing:0}
+.tabbar button.srchbtn[aria-expanded="true"]{border-color:var(--rose)}
+.srch{position:absolute;left:0;right:0;top:calc(100% + 6px);display:grid;gap:8px;padding:10px;border-radius:16px;background:var(--bg);border:1px solid var(--line);box-shadow:0 24px 50px -20px rgba(0,0,0,.55)}
+.srch[hidden]{display:none}
+.srch input{font:inherit;font-size:16px;width:100%;box-sizing:border-box;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.srch input:focus{outline:2px solid var(--rose);outline-offset:1px}
+.srchres{max-height:min(60vh,430px);overflow-y:auto;overscroll-behavior:contain;display:grid;gap:4px}
+.srchres:empty{display:none}
+.sr{display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:center;padding:6px;border-radius:10px;border:1px solid transparent;cursor:pointer;color:var(--ink)}
+.sr:hover,.sr[aria-selected="true"]{background:var(--rose-soft);border-color:var(--rose)}
+.sr img{width:80px;height:45px;object-fit:cover;border-radius:6px;display:block;background:#000}
+.sr div{min-width:0;display:grid;gap:2px}
+.sr b{font-size:.9rem;line-height:1.35;font-weight:700;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sr small{font-size:.72rem;font-weight:700;color:var(--rose);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srnone{padding:12px;color:var(--muted);font-size:.9rem}
+/* F.L.Y. 台北場專區（TAENG DATE 裡，#taipei） */
+.tpcard{display:grid;gap:16px;padding:18px;margin-bottom:12px;border-radius:16px;background:var(--pearl);border:1px solid var(--line);scroll-margin-top:12px;min-width:0}
+.tpcard:focus{outline:none}
+.tp-h{display:grid;gap:3px}.tp-h b{font-size:1.1rem}.tp-h span{font-weight:700;color:var(--rose)}.tp-h small{color:var(--muted);font-size:.8rem}
+.tp-info{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:0}
+.tp-info div{padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);min-width:0}
+.tp-info dt{font-size:.74rem;color:var(--muted)}
+.tp-info dd{margin:2px 0 0;font-weight:700;line-height:1.45;overflow-wrap:anywhere}
+.tp-info dd.tba{color:var(--muted);font-weight:500}
+.tp-now{font-size:.88rem;line-height:1.6;padding:10px 12px;border-left:3px solid var(--warn);background:var(--surface);border-radius:8px}
+.tp-now a{font-size:.82rem;margin-left:6px}
+.tp-sec{display:grid;gap:6px;min-width:0}
+.tp-sec h3{font-size:1rem;margin:0}
+.tp-sec ul{margin:0;padding-left:1.2em;display:grid;gap:5px;font-size:.9rem;line-height:1.6}
+.tp-sec p{margin:0;font-size:.9rem;line-height:1.6}
+ul.tp-chk{list-style:none;padding:0}
+.tp-chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.tp-chk input{margin:.3em 0 0;width:18px;height:18px;flex:none;accent-color:var(--rose)}
+.tp-chk input:checked+span{color:var(--muted);text-decoration:line-through}
+.tp-src{font-size:.76rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px;border-top:1px dashed var(--line);padding-top:10px}
+.tp-src a{overflow-wrap:anywhere}
+.tplink{grid-area:tl;font-size:.8rem;font-weight:700;text-decoration:none;justify-self:start;margin-top:4px}
+.stub{grid-template-areas:"lb cd" "wh cd" "wn cd" "tl cd"}
+#tpcal small{flex-basis:100%}
+.tpgo{display:inline-block;font-size:.74rem;font-weight:700;margin-top:2px;text-decoration:none;white-space:nowrap}
+@media (max-width:640px){.stub{grid-template-areas:"lb" "cd" "wh" "wn" "tl"}.tp-info{grid-template-columns:1fr 1fr}.tpcard{padding:14px}}
+@media (max-width:360px){.tp-info{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.randbtn{transition:none}}
 </style>
-<link rel="stylesheet" href="theme-fly.css?v=1">
+<link rel="stylesheet" href="theme-fly.css?v=2">
 </head>
 <body>
 <style>
@@ -345,6 +394,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="days mono" id="days">—</div>
       <div class="where" id="where">台北大巨蛋</div>
       <div class="note mono" id="when"></div>
+      <a class="tplink" href="#taipei" data-i18n="tpLink">台北場專區 →</a>
     </div>
   </div>
 
@@ -375,6 +425,11 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
     <button type="button" data-go="taenglog">TAENG LOG</button>
     <button type="button" data-go="relax">TAENG TALK</button>
     <button type="button" data-go="concert">CONCERT</button>
+    <button type="button" class="srchbtn" id="srchbtn" aria-expanded="false" aria-controls="srch" data-i18n-aria="srchAria" aria-label="搜尋影片">🔍</button>
+    <div class="srch" id="srch" hidden>
+      <input type="search" id="srchq" role="combobox" aria-expanded="false" aria-controls="srchres" aria-autocomplete="list" autocomplete="off" enterkeyhint="search" data-i18n-ph="srchPh" data-i18n-aria="srchAria" aria-label="搜尋影片" placeholder="找影片：歌名、系列…（中／韓／英都可以）">
+      <div class="srchres" id="srchres" role="listbox" aria-label="搜尋結果"></div>
+    </div>
   </nav>
 
   <section aria-labelledby="alerts-h" data-tab="alerts" hidden>
@@ -388,13 +443,37 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
     <div class="remind fly-only" id="flyremind">
       <div class="remind-t"><b>🎫 台北場售票提醒</b><span>2027/4/3（六）台北大巨蛋</span><small>售票時間公布後會放在這裡，可一鍵加入行事曆</small></div>
     </div>
+    <div class="tpcard" id="taipei" tabindex="-1" aria-labelledby="tp-h">
+      <div class="tp-h"><b id="tp-h">🎫 F.L.Y. 台北場</b><span id="tpwhen">2027/4/3（六）· 台北大巨蛋</span><small>主辦：遠雄創藝｜還沒公布的寫「待公布」，主辦公告後會更新在這裡</small></div>
+      <dl class="tp-info" id="tpinfo"></dl>
+      <div class="tp-now" id="tpnow" hidden></div>
+      <div class="remind-b" id="tpcal" hidden></div>
+      <div class="tp-sec">
+        <h3>🚇 怎麼去</h3>
+        <p>臺北大巨蛋：臺北市信義區忠孝東路四段 515 號（<a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%87%BA%E5%8C%97%E5%A4%A7%E5%B7%A8%E8%9B%8B" target="_blank" rel="noopener">Google 地圖 ↗</a>）</p>
+        <ul>
+          <li><b>捷運</b>：板南線（藍線）「國父紀念館站」最近，5 號出口走地下連通道可直達大巨蛋 B1 入口；推嬰兒車或行動不便可走 4 號出口的無障礙電梯。</li>
+          <li><b>公車</b>：在「捷運國父紀念館站（忠孝）」或「捷運國父紀念館站（光復）」下車，走路就到。</li>
+          <li><b>開車</b>：館內停車位有限、活動日周邊容易塞，忠孝東路、光復南路多為禁止臨停路段，建議搭大眾運輸；要接送請約在可停靠的路段。</li>
+          <li><b>散場</b>：5 號出口人潮最集中，北捷曾在人多時暫停電扶梯、分流管制；北捷曾建議改走國父紀念館地下通廊到 3、4 號出口，或走到市政府站搭車，別全擠同一個出口。</li>
+          <li><b>入場</b>：大巨蛋有好幾個 Gate，依票區指定入口，出發前先看好票上的 Gate。</li>
+        </ul>
+        <small class="note">以上整理自過去大型活動的報導，演唱會當天以主辦和北捷公告為準。</small>
+      </div>
+      <div class="tp-sec">
+        <h3>✅ 搶票準備清單</h3>
+        <ul class="tp-chk" id="tpchk"></ul>
+        <small class="note">勾選只會記在這台裝置的瀏覽器裡。</small>
+      </div>
+      <div class="tp-src"><span>交通資料來源：</span><a href="https://news.tvbs.com.tw/sports/2411048" target="_blank" rel="noopener">TVBS 新聞 ↗</a><a href="https://udn.com/news/story/6656/9703355" target="_blank" rel="noopener">聯合新聞網 ↗</a><a href="https://www.cna.com.tw/news/aspt/202312020072.aspx" target="_blank" rel="noopener">中央社 ↗</a></div>
+    </div>
     <div class="alerts" id="alerts"><div class="empty" data-i18n="alertsEmpty">搶票、新專輯發行這類重要日期會出現在這裡。</div></div>
   </section>
 
   <section aria-labelledby="mv-h" data-tab="mv" hidden>
     <div class="head">
       <div><h2 id="mv-h" data-i18n="mvH">MV 歌單</h2><div class="note" data-i18n="mvNote">點卡片就會在上方播放，播完自動接下一首。</div></div>
-      <div class="filters" id="mvfilters" role="group" aria-label="篩選 MV"></div>
+      <div class="mvtools"><button type="button" class="randbtn" id="mvrand" data-i18n="rand">🎲 今天聽什麼</button><div class="filters" id="mvfilters" role="group" aria-label="篩選 MV"></div></div>
     </div>
     <div class="mvplayer">
       <div class="mvframe" id="mvframe" data-title="MV"></div>
@@ -536,6 +615,13 @@ ja:{datesH:"重要な日程",datesNote:"これから来る、準備が必要な�
 en:{datesH:"Key Dates",datesNote:"Coming up and worth preparing for: ticket sales, pre-orders, release times",lgH:"TAENG LOG",lcNote:"Official live clips — studio live versions.",ccNote:"2019–2025 tour films, with Taipei first, plus comeback countdown lives.",dcNote:"Dance practices & stage videos",rxNote:"Chats, beauty talks, specials & variety guest spots to relax with",bhNote:"MV, recording & jacket-shoot behind-the-scenes from every comeback, by album",lgNote:"Behind-the-scenes & travel vlogs from Taeyeon's official channel.",pick:"Choose your city & language",ticketAria:"Next concert",cd:c=>`Countdown to ${c}`,days:n=>n+(n===1?" day":" days"),today:"Today!",ended:"Ended",loading:"Loading the latest news…",fail:"Can't reach the data right now. Please reopen later.",nodb:"Sign in to claude.ai to see the latest news.",updated:"Last updated: ",alertsH:"Heads-up",alertsEmpty:"Key dates like ticket sales and album releases show up here.",notice:"See notice",note:"Note",phNote:"Hover to pause, tap a photo to enlarge.",fb:"Taeyeon fan page ↗",all:"All",pc:{stage:"Stage",shoot:"Photoshoot",daily:"Daily"},noPhotos:"No photos yet.",yr:{all:"All years",early:"2007–2014 Girls' Generation",solo:"2015–2019 Solo debut",recent:"2020–now"},photo:"Photo",mvH:"MV playlist",mvNote:"Tap a card to play it above; the next one starts automatically.",mvFull:"Full player ↗",mood:{soft:"Soft & calm",bright:"Upbeat"},official:"Official MV",search:"Search on YouTube",noMv:"No MVs yet.",newsH:"Latest news",newsNote:"News items are written in Chinese.",cat:{tour:"Concert",ticket:"Tickets",music:"Music",tv:"TV",sns:"Social",other:"Other"},noNews:"News updates automatically every day.",tourH:"Tour dates",tourNote:"The red row is your selected city. Dates follow the organizers' announcements.",noTour:"Tour dates will show up here.",posterB:"F.L.Y. tour poster",notice2:"Official notice ↗",posterS:"Tap to enlarge",tlH:"The journey",era:["Before debut","Girls' Generation leader","Solo artist"],close:"Close",prev:"Previous",next:"Next"}};
 S.hk=Object.assign({},S.zh,{pick:"選擇城市與語言",tourNote:"紅色嗰行係你揀嘅城市。日期以主辦公佈為準。",cd:c=>`距離${c}場`});
 if(document.documentElement.getAttribute("data-theme")==="fly")Object.assign(S.zh,{tourNote:"亮藍那列是你選的城市。日期以主辦公告為準。"}),Object.assign(S.hk,{tourNote:"藍色嗰行係你揀嘅城市。日期以主辦公佈為準。"}),Object.assign(S.ko,{tourNote:"파란 줄이 선택한 도시예요. 날짜는 주최 측 공지를 기준으로 해요."}),Object.assign(S.th,{tourNote:"แถวสีฟ้าคือเมืองที่เลือก วันที่อิงตามประกาศของผู้จัด"}),Object.assign(S.ja,{tourNote:"青い行が選んだ都市です。日程は主催者の発表に準じます。"}),Object.assign(S.en,{tourNote:"The blue row is your selected city. Dates follow the organizers' announcements."});
+/* 新功能的多語系字串：今天聽什麼、找影片、台北場專區連結 */
+Object.assign(S.zh,{rand:"🎲 今天聽什麼",srchAria:"搜尋影片",srchPh:"找影片：歌名、系列…（中／韓／英都可以）",srchNone:"找不到，換個關鍵字試試",tpLink:"台北場專區 →"});
+Object.assign(S.hk,{rand:"🎲 今日聽乜好",srchAria:"搜尋影片",srchPh:"搵影片：歌名、系列…（中／韓／英都得）",srchNone:"搵唔到，換個關鍵字試吓",tpLink:"台北場專區 →"});
+Object.assign(S.ko,{rand:"🎲 오늘 뭐 듣지?",srchAria:"영상 검색",srchPh:"영상 검색: 곡명, 시리즈… (한/중/영)",srchNone:"결과가 없어요. 다른 키워드로 찾아보세요",tpLink:"타이베이 공연 안내 →"});
+Object.assign(S.th,{rand:"🎲 วันนี้ฟังเพลงไหนดี",srchAria:"ค้นหาวิดีโอ",srchPh:"ค้นหาวิดีโอ: ชื่อเพลง ซีรีส์…",srchNone:"ไม่พบผลลัพธ์ ลองคำค้นอื่นดูนะ",tpLink:"ข้อมูลรอบไทเป →"});
+Object.assign(S.ja,{rand:"🎲 今日なに聴く？",srchAria:"動画を検索",srchPh:"動画を検索：曲名、シリーズ…（日中韓英OK）",srchNone:"見つかりませんでした。別のキーワードで試してみてね",tpLink:"台北公演ページ →"});
+Object.assign(S.en,{rand:"🎲 What to play today",srchAria:"Search videos",srchPh:"Search videos: song, series… (EN/KO/中文)",srchNone:"No matches — try another keyword",tpLink:"Taipei show guide →"});
 const TL=[
 {era:0},
 {d:"1989.03.09",i:{zh:["出生於韓國全州"],ko:["전주에서 태어남"],th:["เกิดที่เมืองช็อนจู ประเทศเกาหลีใต้"],ja:["韓国・全州で生まれる"],en:["Born in Jeonju, South Korea"]}},
@@ -586,6 +672,7 @@ function applyStatic(){
   document.documentElement.lang=LANGS[lang];
   document.querySelectorAll("[data-i18n]").forEach(e=>{const v=T(e.dataset.i18n);if(typeof v==="string")e.textContent=v});
   document.querySelectorAll("[data-i18n-aria]").forEach(e=>e.setAttribute("aria-label",T(e.dataset.i18nAria)));
+  document.querySelectorAll("[data-i18n-ph]").forEach(e=>{const v=T(e.dataset.i18nPh);if(typeof v==="string")e.placeholder=v});
   const nn=document.getElementById("newsnote");nn.hidden=!T("newsNote");
   const lb={lbx:"close",lbp:"prev",lbn:"next"};for(const k in lb){const e=document.getElementById(k);if(e)e.setAttribute("aria-label",T(lb[k]))}
   document.getElementById("cdlabel").textContent=T("cd")(cityName(city));
@@ -627,7 +714,8 @@ function renderTour(stops){
   box.replaceChildren(...stops.map(s=>{
     const r=el("div","stop"+(s._id===city?" me":""));
     r.append(el("div","d",s.dateLabel||fmt(s.date)));
-    const mid=el("div");mid.append(el("div","c",cityName(s._id,s.city)),el("div","v",venueName(s.venue||"")));r.append(mid);
+    const mid=el("div");mid.append(el("div","c",cityName(s._id,s.city)),el("div","v",venueName(s.venue||"")));
+    if(s._id==="taipei"){const a=el("a","tpgo",T("tpLink"));a.href="#taipei";mid.append(a)}r.append(mid);
     const end=parseDay(s.endDate||s.date);const past=end&&end<now;
     r.append(el("span","s"+(past?" past":""),past?T("ended"):statusText(s.status||"即將登場")));
     return r;
@@ -693,7 +781,7 @@ function renderMvs(){
   const box=$("mvs");const list=mvs.filter(m=>mvf==="all"||m.mood===mvf);
   if(!list.length){box.replaceChildren(el("div","empty",T("noMv")));return}
   box.replaceChildren(...list.map(m=>{let a;
-    if(m.vid){a=el("button","mv"+(mvCur===m?" on":""));a.type="button";a.onclick=()=>playMv(m,true)}
+    if(m.vid){a=el("button","mv"+(mvCur===m?" on":""));a.type="button";if(mvCur===m)a.setAttribute("aria-current","true");a.onclick=()=>playMv(m,true)}
     else{const u=safeUrl(m.url);a=el(u?"a":"div","mv");if(u){a.href=u;a.target="_blank";a.rel="noopener"}}
     let p;if(m.vid){p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+m.vid+"/hqdefault.jpg";p.alt="";p.loading="lazy"}else{p=el("div","play","▶");p.setAttribute("aria-hidden","true")}
     const d=el("div");d.style.minWidth="0";
@@ -721,6 +809,9 @@ function mvStart(m){if(!m||!m.vid)return;
 function mvStop(){if(ytp){try{ytp.destroy()}catch(e){}}ytp=null;ytReady=false;mvPend=null;mvSetPlaying(false);mvCover()}
 mvFrame._yt={stop(){if(ytp||mvFrame.querySelector("iframe"))mvStop()}};
 function mvInit(){if(mvCur&&mvs.includes(mvCur))return;mvCur=mvs.find(m=>m.vid==="4HG_CJzyX6A")||mvs.find(m=>m.vid)||null;if(mvCur){renderMvs();mvCover()}}
+// 🎲 今天聽什麼：從目前篩選（全部／抒情／輕快）的歌裡隨機挑一首，不會連續兩次同一首
+function randMv(){const p=playable();if(!p.length)return;const c=p.length>1?p.filter(m=>m!==mvCur):p;playMv(c[Math.floor(Math.random()*c.length)],true)}
+$("mvrand").onclick=randMv;
 $("mvprev").onclick=()=>stepMv(-1);$("mvnext").onclick=()=>stepMv(1);
 $("mvplay").onclick=()=>{if(!mvCur){stepMv(1);return}if(ytp){if(ytReady)mvPlaying?ytp.pauseVideo():ytp.playVideo();return}if(!mvFrame.querySelector("iframe"))mvStart(mvCur)};
 window.onYouTubeIframeAPIReady=function(){mvInit()};
@@ -756,26 +847,101 @@ function vidList(o){
       const d=el("div");d.style.minWidth="0";const t=el("div","tt");if(o.tag&&o.tag(x))t.append(el("span","tp",o.tag(x)));const ep=o.ep(x);if(ep)t.append(el("span","ep",ep));t.append(document.createTextNode(o.name(x)));d.append(t);if(x.b)d.append(el("div","bl",x.b));a.append(p,d);return a}));
     if(st.cur){$(o.title).textContent=o.nowT(st.cur);$(o.desc).textContent=o.nowB(st.cur)}
   }
-  if(st.cur&&$(o.player))ytSlot($(o.player)).show(st.cur.id,o.nowT(st.cur));render();return render;
+  if(st.cur&&$(o.player))ytSlot($(o.player)).show(st.cur.id,o.nowT(st.cur));render();
+  // 給搜尋用：切到該影片的小分頁、播放、清單捲到該項
+  render.pick=x=>{if(o.tabs&&x.s)st.tab=x.s;st.cur=x;render();const sl=ytSlot($(o.player));if(sl)sl.play(x.id,o.nowT(x));const box=$(o.list),on=box&&box.querySelector(".mv.on");if(on)box.scrollTop=Math.max(0,on.offsetTop-box.offsetTop-8)};
+  return render;
 }
-const renderLogs=vidList({items:typeof LOGS!=="undefined"?LOGS:[],tabs:"lgtabs",list:"lgs",player:"lgp",title:"lgT",desc:"lgB",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
-const renderConcerts=vidList({items:typeof CONCERTS!=="undefined"?CONCERTS:[],tabs:"cctabs",list:"ccs",player:"ccp",title:"ccT",desc:"ccB",tag:x=>x.tp?cityName("taipei","台北"):"",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
-const renderDance=vidList({items:typeof DANCE!=="undefined"?DANCE:[],list:"dcs",player:"dcp",title:"dcT",desc:"dcB",ep:x=>x.y?String(x.y):"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG DANCE"+(x.y?" · "+x.y:"")});
-const renderRelax=vidList({items:typeof RELAX!=="undefined"?RELAX:[],tabs:"rxtabs",list:"rxs",player:"rxp",title:"rxT",desc:"rxB",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
-const renderBehind=vidList({items:typeof BEHIND!=="undefined"?BEHIND:[],tabs:"bhtabs",list:"bhs",player:"bhp",title:"bhT",desc:"bhB",ep:()=>"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG BEHIND · "+x.s});
-const renderLiveClips=vidList({items:typeof LIVECLIPS!=="undefined"?LIVECLIPS:[],list:"lcs",player:"lcp",title:"lcT",desc:"lcB",ep:()=>"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG LIVE"+(x.a?" · "+x.a:"")});
+const VL={};
+const renderLogs=VL.taenglog=vidList({items:typeof LOGS!=="undefined"?LOGS:[],tabs:"lgtabs",list:"lgs",player:"lgp",title:"lgT",desc:"lgB",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
+const renderConcerts=VL.concert=vidList({items:typeof CONCERTS!=="undefined"?CONCERTS:[],tabs:"cctabs",list:"ccs",player:"ccp",title:"ccT",desc:"ccB",tag:x=>x.tp?cityName("taipei","台北"):"",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
+const renderDance=VL.dance=vidList({items:typeof DANCE!=="undefined"?DANCE:[],list:"dcs",player:"dcp",title:"dcT",desc:"dcB",ep:x=>x.y?String(x.y):"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG DANCE"+(x.y?" · "+x.y:"")});
+const renderRelax=VL.relax=vidList({items:typeof RELAX!=="undefined"?RELAX:[],tabs:"rxtabs",list:"rxs",player:"rxp",title:"rxT",desc:"rxB",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
+const renderBehind=VL.behind=vidList({items:typeof BEHIND!=="undefined"?BEHIND:[],tabs:"bhtabs",list:"bhs",player:"bhp",title:"bhT",desc:"bhB",ep:()=>"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG BEHIND · "+x.s});
+const renderLiveClips=VL.liveclip=vidList({items:typeof LIVECLIPS!=="undefined"?LIVECLIPS:[],list:"lcs",player:"lcp",title:"lcT",desc:"lcB",ep:()=>"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG LIVE"+(x.a?" · "+x.a:"")});
 // 分頁：平常只顯示「最新消息」，其他按按鈕才出現；網址 #mv、#concert… 可直接打開該分頁
 function showTab(k){
-  if(k==="live")k="liveclip";
+  if(k==="live")k="liveclip";let anchor=null;if(k==="taipei"){k="alerts";anchor="taipei"}
   const panels=[...document.querySelectorAll("[data-tab]")];if(!panels.some(p=>p.dataset.tab===k))k="news";
   panels.forEach(p=>{const on=p.dataset.tab===k;
     if(!on&&!p.hidden)p.querySelectorAll(".mvframe").forEach(f=>{if(f._yt)f._yt.stop()});
     p.hidden=!on});
   document.querySelectorAll("#tabbar [data-go]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.go===k)));
+  if(anchor)requestAnimationFrame(()=>{const a=$(anchor);if(a){a.scrollIntoView({block:"start",behavior:smoothB()});try{a.focus({preventScroll:true})}catch(e){}}});
 }
+function smoothB(){return matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}
+// 「台北場專區 →」連結：網址已經是 #taipei 時 hashchange 不會觸發，所以自己處理
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href="#taipei"]');if(!a)return;e.preventDefault();try{history.replaceState(null,"","#taipei")}catch(err){}showTab("taipei")});
 document.querySelectorAll("#tabbar [data-go]").forEach(b=>b.onclick=()=>{const k=b.dataset.go;showTab(k);try{history.replaceState(null,"",k==="news"?location.pathname+location.search:"#"+k)}catch(e){}});
 showTab(decodeURIComponent(location.hash.slice(1)));
 window.addEventListener("hashchange",()=>showTab(decodeURIComponent(location.hash.slice(1))));
+// ===== 🔍 找影片：搜尋所有影片資料檔（t 標題、n、s、a、b 介紹），點結果切到該區、該小分頁並播放 =====
+// 中文／韓文／英文歌名別名對照（只放確定的）：輸入其中一個，另外幾個也會一起找
+const SRCH_ALIAS=[
+  ["四季","사계","four seasons"],["火花","불티","spark"],["wendy","웬디"],
+  ["想對自己說的話","내게 들려주고 싶은 이야기","dear me"],["惡夢","악몽","nightmare"],["月蝕","월식","my tragedy"],
+  ["我愛你","사랑해요","i love you"],["台北","臺北","타이베이","taipei"],["泰妍","太妍","태연","taeyeon"]];
+const SRCH_SRC=[["mv","TAENG MV",typeof SONGS!=="undefined"?SONGS:[]],["liveclip","TAENG LIVE",typeof LIVECLIPS!=="undefined"?LIVECLIPS:[]],["dance","TAENG DANCE",typeof DANCE!=="undefined"?DANCE:[]],["behind","TAENG BEHIND",typeof BEHIND!=="undefined"?BEHIND:[]],["taenglog","TAENG LOG",typeof LOGS!=="undefined"?LOGS:[]],["relax","TAENG TALK",typeof RELAX!=="undefined"?RELAX:[]],["concert","CONCERT",typeof CONCERTS!=="undefined"?CONCERTS:[]]];
+function sNorm(v){return String(v||"").normalize("NFKC").toLowerCase().replace(/[’‘`]/g,"'").replace(/\s+/g," ").trim()}
+const SRCH_IDX=[];SRCH_SRC.forEach(([sec,label,arr])=>arr.forEach(x=>{if(!x||!x.id)return;
+  SRCH_IDX.push({sec,x,label:label+(x.s?" · "+x.s:"")+(x.n?" · "+x.n:x.a?" · "+x.a:x.y?" · "+x.y:""),title:x.t||"",ht:sNorm(x.t),hay:sNorm([x.t,x.n,x.s,x.a,x.b].filter(Boolean).join(" "))})}));
+function srchFind(q){q=sNorm(q);if(!q)return[];const terms=new Set([q]);
+  SRCH_ALIAS.forEach(g=>{if(g.some(a=>a===q||(q.length>=2&&a.includes(q))))g.forEach(a=>terms.add(a))});
+  const toks=q.split(" ").filter(Boolean),T2=[...terms];
+  const hit=[];SRCH_IDX.forEach(r=>{const inT=T2.some(t=>r.ht.includes(t));const ok=inT||T2.some(t=>r.hay.includes(t))||(toks.length>1&&toks.every(t=>r.hay.includes(t)));if(ok)hit.push([inT?0:1,r])});
+  return hit.sort((a,b)=>a[0]-b[0]).map(h=>h[1]).slice(0,30)}
+let srchRes=[],srchSel=-1;
+function srchOpen(){$("srch").hidden=false;$("srchbtn").setAttribute("aria-expanded","true");const q=$("srchq");q.focus();if(q.value)srchRun()}
+function srchClose(){$("srch").hidden=true;$("srchbtn").setAttribute("aria-expanded","false");$("srchq").setAttribute("aria-expanded","false");$("srchq").removeAttribute("aria-activedescendant")}
+function srchRun(){const q=$("srchq").value,box=$("srchres");srchSel=-1;$("srchq").removeAttribute("aria-activedescendant");
+  if(!sNorm(q)){srchRes=[];box.replaceChildren();$("srchq").setAttribute("aria-expanded","false");return}
+  srchRes=srchFind(q);$("srchq").setAttribute("aria-expanded","true");
+  if(!srchRes.length){box.replaceChildren(el("div","srnone",T("srchNone")));return}
+  box.replaceChildren(...srchRes.map((r,i)=>{const o=el("div","sr");o.id="sr"+i;o.setAttribute("role","option");o.setAttribute("aria-selected","false");
+    const im=document.createElement("img");im.src="https://i.ytimg.com/vi/"+encodeURIComponent(r.x.id)+"/mqdefault.jpg";im.alt="";im.loading="lazy";im.decoding="async";im.width=80;im.height=45;
+    const d=el("div");d.append(el("b",null,r.title),el("small",null,r.label));o.append(im,d);
+    o.onmousedown=e=>e.preventDefault();o.onclick=()=>srchGo(r);return o}))}
+function srchMark(i){const box=$("srchres"),opts=box.querySelectorAll(".sr");if(!opts.length)return;srchSel=(i+opts.length)%opts.length;
+  opts.forEach((o,j)=>o.setAttribute("aria-selected",String(j===srchSel)));const on=opts[srchSel];$("srchq").setAttribute("aria-activedescendant",on.id);
+  if(on.offsetTop<box.scrollTop)box.scrollTop=on.offsetTop;else if(on.offsetTop+on.offsetHeight>box.scrollTop+box.clientHeight)box.scrollTop=on.offsetTop+on.offsetHeight-box.clientHeight}
+function srchGo(r){srchClose();showTab(r.sec);try{history.replaceState(null,"","#"+r.sec)}catch(e){}
+  let fr;if(r.sec==="mv"){const m=mvs.find(v=>v.vid===r.x.id);if(m){if(mvf!=="all"&&m.mood!==mvf){mvf="all";renderMvFilters()}playMv(m,true)}fr=$("mvframe")}
+  else{const v=VL[r.sec];if(v&&v.pick)v.pick(r.x);fr=$({liveclip:"lcp",dance:"dcp",behind:"bhp",taenglog:"lgp",relax:"rxp",concert:"ccp"}[r.sec])}
+  if(fr)requestAnimationFrame(()=>fr.scrollIntoView({block:"center",behavior:smoothB()}))}
+$("srchbtn").onclick=()=>{$("srch").hidden?srchOpen():srchClose()};
+$("srchq").addEventListener("input",srchRun);
+$("srchq").addEventListener("keydown",e=>{
+  if(e.key==="Escape"){e.preventDefault();srchClose();$("srchbtn").focus()}
+  else if(e.key==="ArrowDown"){e.preventDefault();srchMark(srchSel+1)}
+  else if(e.key==="ArrowUp"){e.preventDefault();srchMark(srchSel<0?-1:srchSel-1)}
+  else if(e.key==="Enter"){e.preventDefault();const r=srchRes[srchSel<0?0:srchSel];if(r)srchGo(r)}});
+document.addEventListener("click",e=>{if(!$("srch").hidden&&!e.target.closest("#srch")&&!e.target.closest("#srchbtn"))srchClose()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("srch").hidden)srchClose()});
+
+// ===== 🎫 F.L.Y. 台北場專區：資料來自 data.json 的 tour（_id:"taipei"，含 ticket 欄位）與 meta.alerts 裡台北售票那則 =====
+const WD="日一二三四五六";
+function tpTime(v){const m=/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}))?/.exec(v||"");if(!m)return v||"";const d=new Date(+m[1],m[2]-1,+m[3]);
+  return `${+m[1]}/${+m[2]}/${+m[3]}（${WD[d.getDay()]}）`+(m[4]?` ${m[4]}:${m[5]}`:"")}
+function icsUtc(t){return new Date(t).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"")}
+function tpCal(onsale){const t=Date.parse(onsale);if(!/T\d{2}:\d{2}/.test(onsale||"")||isNaN(t))return null;
+  const s=icsUtc(t),e=icsUtc(t+3600000),site="https://oneoneeeee.github.io/taeyeonwith1/#taipei",title="泰妍 F.L.Y. 台北場開賣 🎫",desc="TAEYEON CONCERT F.L.Y. 2027/4/3 台北大巨蛋開賣！記得只在官方售票管道購票。";
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//To. TAEYEON//EN","CALSCALE:GREGORIAN","METHOD:PUBLISH","BEGIN:VEVENT","UID:taeyeon-fly-taipei-onsale-"+s+"@oneoneeeee.github.io","DTSTAMP:"+icsUtc(Date.now()),"DTSTART:"+s,"DTEND:"+e,"SUMMARY:"+title,"DESCRIPTION:"+desc+"\\n"+site,"URL:"+site,
+    "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:明天台北場開賣！先登入、確認付款方式","TRIGGER:-P1D","END:VALARM","BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:再一小時台北場開賣！","TRIGGER:-PT1H","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+  return{ics:"data:text/calendar;charset=utf-8,"+encodeURIComponent(ics),g:"https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(title)+"&dates="+s+"/"+e+"&details="+encodeURIComponent(desc+"\n"+site)}}
+const TP_CHK=[["acct",p=>"先註冊售票平台帳號（"+(p||"平台公布後更新")+"），完成手機與實名認證"],["pay",()=>"確認付款方式：信用卡額度、平台支援的卡別"],["gl",()=>"想搶會員預購：確認泰妍官方會員（GL）資格與預購規則，以主辦公告為準"],["net",()=>"開賣前準備穩定網路，提早登入、對好時間"],["news",()=>"追蹤主辦遠雄創藝與官方公告，留意售票時間、規則有沒有變"],["safe",()=>"只在官方售票管道買票，小心私下轉售和詐騙，不給別人帳號密碼"]];
+function tpChecked(){try{return JSON.parse(localStorage.getItem("ty-tpchk")||"[]")}catch(e){return[]}}
+function renderTaipei(D){
+  const tp=(D&&Array.isArray(D.tour)?D.tour:[]).find(s=>s._id==="taipei")||{},tk=tp.ticket||{},tba="待公布";
+  const venue=tp.venue||"台北大巨蛋",date=tp.date||"2027-04-03";$("tpwhen").textContent=tpTime(date)+" · "+venue;
+  const rows=[["日期",tpTime(date)],["場地",venue],["主辦","遠雄創藝"],["開演時間",tk.showtime],["開賣時間",tk.onsale?tpTime(tk.onsale):""],["會員預購",tk.presale?tpTime(tk.presale):""],["票價",tk.price],["售票平台",tk.platform],["實名制",tk.realname]];
+  $("tpinfo").replaceChildren(...rows.map(([k,v])=>{const d=el("div");const dd=el("dd",v?"":"tba",v||tba);d.append(el("dt",null,k),dd);return d}));
+  const al=((D&&D.meta&&D.meta.alerts)||[]).find(a=>/台北/.test(a.text||"")&&/售票|預購|開賣|票價/.test(a.text||""));const now=$("tpnow");
+  if(al){now.replaceChildren(el("b",null,"最新狀況"+(al.when?"（"+al.when+"）":"")+"："),document.createTextNode(al.text||""));const u=safeUrl(al.url);if(u){const a=el("a",null,"來源 ↗");a.href=u;a.target="_blank";a.rel="noopener";now.append(a)}now.hidden=false}else now.hidden=true;
+  const c=tpCal(tk.onsale),box=$("tpcal");
+  if(c){const a=el("a","rbtn","加入 iPhone 行事曆");a.href=c.ics;a.download="taeyeon-fly-taipei-onsale.ics";const g=el("a","rbtn ghost","加入 Google 日曆");g.href=c.g;g.target="_blank";g.rel="noopener";box.replaceChildren(el("small","note","開賣前一天、前一小時提醒你"),a,g);box.hidden=false}else{box.replaceChildren();box.hidden=true}
+  const done=tpChecked();$("tpchk").replaceChildren(...TP_CHK.map(([id,f])=>{const li=el("li"),lb=el("label"),cb=document.createElement("input");cb.type="checkbox";cb.checked=done.includes(id);
+    cb.onchange=()=>{const s=new Set(tpChecked());cb.checked?s.add(id):s.delete(id);try{localStorage.setItem("ty-tpchk",JSON.stringify([...s]))}catch(e){}};lb.append(cb,el("span",null,f(tk.platform)));li.append(lb);return li}))}
+renderTaipei(null);
 function loadYT(){if(window.YT||document.getElementById("ytapi"))return;const t=document.createElement("script");t.id="ytapi";t.src="https://www.youtube.com/iframe_api";document.head.append(t)}
 function dims(file){return new Promise(r=>{const u=URL.createObjectURL(file);const im=new Image();im.onload=()=>{r({w:im.naturalWidth,h:im.naturalHeight});URL.revokeObjectURL(u)};im.onerror=()=>{r({});URL.revokeObjectURL(u)};im.src=u})}
 async function setupUpload(db){
@@ -816,7 +982,7 @@ renderCities();applyStatic();renderTimeline();$("headline").textContent=T("loadi
 (async()=>{
   const timer=setTimeout(()=>{if($("headline").dataset.loaded!=="1")$("headline").textContent=T("fail")},10000);
   try{const r=await fetch("data.json?v="+Date.now());if(r.ok){const D=await r.json();clearTimeout(timer);
-    renderMeta(D.meta||null);renderTour(D.tour||[]);news=D.news||[];renderFilters();renderNews();mvs=(typeof SONGS!=="undefined"?SONGS:[]).slice().sort((a,b)=>b.y-a.y).map(x=>({title:x.t,year:x.y,mood:x.m,blurb:x.b,vid:x.id||null,url:x.id?null:"https://www.youtube.com/results?search_query="+encodeURIComponent(x.q||x.t)}));if(!mvs.length)mvs=D.mvs||[];renderMvFilters();renderMvs();mvInit();loadYT();
+    renderMeta(D.meta||null);renderTour(D.tour||[]);renderTaipei(D);news=D.news||[];renderFilters();renderNews();mvs=(typeof SONGS!=="undefined"?SONGS:[]).slice().sort((a,b)=>b.y-a.y).map(x=>({title:x.t,year:x.y,mood:x.m,blurb:x.b,vid:x.id||null,url:x.id?null:"https://www.youtube.com/results?search_query="+encodeURIComponent(x.q||x.t)}));if(!mvs.length)mvs=D.mvs||[];renderMvFilters();renderMvs();mvInit();loadYT();
     photos=D.photos||[];renderPhFilters();renderYrFilters();renderGallery()}}catch(e){}
   const db=await (window.claude?.use?.("db")??null);
   if(!db)return;

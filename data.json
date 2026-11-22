@@ -60,7 +60,15 @@
    "highlight": true,
    "status": "售票待公布",
    "venue": "台北大巨蛋",
-   "_id": "taipei"
+   "_id": "taipei",
+   "ticket": {
+    "onsale": "",
+    "presale": "",
+    "price": "",
+    "platform": "",
+    "realname": "",
+    "showtime": ""
+   }
   },
   {
    "city": "東京",

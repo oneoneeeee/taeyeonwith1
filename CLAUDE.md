@@ -18,7 +18,7 @@
 | 檔案 | 內容 |
 | --- | --- |
 | `index.html` | 整個網站（HTML/CSS/JS 都在這一個檔案） |
-| `data.json` | 最新消息、巡演場次、提醒（meta / tour / news；`mvs`、`photos` 保持 `[]`） |
+| `data.json` | 最新消息、巡演場次、提醒（meta / tour / news；`mvs`、`photos` 保持 `[]`）。tour 裡 `_id:"taipei"` 有 `ticket` 欄位（見下方「台北場 ticket 欄位」） |
 | `songs.js` | MV 歌單 `SONGS`（格式見檔案開頭註解） |
 | `logs.js` | TAENG LOG 影片清單 `LOGS`（泰妍官方頻道 @taeyeonofficial 的「집 나간 탱log」「TAENG LOG」「INVlogU」三個系列，格式見檔案開頭註解）。log 系列只放完整版，不放 Teaser／預告片。 |
 | `concerts.js` | CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE、2020 The UNSEEN、2019 's...one、最後是「回歸直播」（回歸倒數直播重播）；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
@@ -41,9 +41,10 @@
 1. **開場相簿動畫**（`#bookintro`）：酒紅布面相簿，封面小窗是專輯封面，寫「SONE」與「every day with TAEYEON」；點一下翻開，內頁是拍立得風的宣傳圖。同一個分頁只播一次（sessionStorage `bkseen`）。
 2. **城市／語言切換**：首爾 ko、澳門與香港 zh-HK、曼谷 th、台北 zh-TW、東京 ja，再加 EN。
 3. **票券區**：標題、headline、最後更新日期；下方橫向倒數「天／時／分／秒」（`cdRun()`）。開演時間官方未公布前暫定當地 19:00（`CDTZ` 為各城市時區）。
-4. **重要日期（data-tab=alerts）**（Bodoni 雜誌字標題「Key Dates」＋說明小字）：先是「🔔 回歸提醒」卡片（加入 iPhone 行事曆 `.ics`／Google 日曆），再來是 `meta.alerts`。
+4. **重要日期（data-tab=alerts）**（Bodoni 雜誌字標題「Key Dates」＋說明小字）：先是「🔔 回歸提醒」卡片（加入 iPhone 行事曆 `.ics`／Google 日曆），接著是「🎫 F.L.Y. 台北場」專區卡片（`#taipei`），最後是 `meta.alerts`。
+4-1. **F.L.Y. 台北場專區**（`<div class="tpcard" id="taipei">`，`renderTaipei(D)` 產生內容）：日期場地、主辦遠雄創藝、開演時間／開賣時間／會員預購／票價／售票平台／實名制（讀 data.json 台北 `ticket`，空字串顯示「待公布」）、「最新狀況」（`meta.alerts` 中文字含「台北」且含售票/預購/開賣/票價的那則）、`ticket.onsale` 是 ISO 時間時才出現「加入 iPhone 行事曆（data: URL 的 .ics，前一天＋前一小時提醒）／Google 日曆」按鈕；交通重點（國父紀念館站 5/4 號出口、公車站、停車、散場、入場 Gate；來源 TVBS、聯合新聞網、中央社，寫在卡片底部）；搶票準備清單（勾選存 localStorage `ty-tpchk`，平台未公布時寫「平台公布後更新」）。網址 `#taipei` 直接切到 TAENG DATE 並捲到卡片；票券卡倒數下方與巡演場次台北那列有「台北場專區 →」連結。
 5. **every day with TAEYEON**：照片跑馬燈，不顯示任何文字說明、篩選或連結；點照片放大。照片清單是 `index.html` 裡的 `PH` 陣列（寬高），用 `.filter((p,i)=>![...].includes(i))` 隱藏不要的（目前隱藏 p002、p003、p005，有 Sunny Date 浮水印）。
-6. **MV 歌單**：嵌入式播放器，播完自動下一首，讀 `songs.js`。
+6. **MV 歌單**：嵌入式播放器，播完自動下一首，讀 `songs.js`。標題右邊有「🎲 今天聽什麼」按鈕（`#mvrand`／`randMv()`）：從目前篩選（全部／抒情／輕快）的歌隨機挑一首直接播，不會連續兩次同一首，清單標示並捲到該首；文字是多語系字典的 `rand`。
 6-1. **TAENG LIVE**（原名 LIVE CLIP；Bodoni 標題「Taeng Live」，緊接在 MV 歌單後面）：官方 Live Clip（錄音室現場版），讀 `liveclips.js`（檔名、`LIVECLIPS` 變數、`data-tab="liveclip"` 都沿用舊名）；外觀與互動同 TAENG LOG（共用 `vidList()`），不分頁。
 6-2. **TAENG DANCE**（Bodoni 標題，在 TAENG LIVE 後面、TAENG LOG 前面）：舞蹈練習與舞台影片，讀 `dance.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），不分頁。
 6-3. **TAENG BEHIND**（Bodoni 標題，在 TAENG DANCE 後面、TAENG LOG 前面）：每次回歸的 MV、錄音、封面拍攝幕後，讀 `behind.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），小分頁依專輯切換。
@@ -54,12 +55,21 @@
 
 **分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：按鈕名稱依序為 TAENG NEWS、TAENG DATE、TAENG MV、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT（所有語言都顯示英文，按鈕沒有 data-i18n；區塊標題仍是「最新消息」「Key Dates」「MV 歌單」等，照語言切換）。平常只顯示 TAENG NEWS（最新消息，含巡演場次、時間軸），TAENG DATE（重要日期）、TAENG MV（MV 歌單）、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`（或 `#live`）、`#dance`、`#behind`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
 
+**🔍 找影片**（分頁列最右邊的 `#srchbtn`，點開 `#srch` 搜尋框＋下拉結果）：即時搜尋所有影片資料檔的 t、n、s、a、b（不分大小寫，NFKC 正規化），每筆顯示 mqdefault 縮圖、標題、所屬區（＋分頁名），最多 30 筆，標題符合的排前面；點一筆或 Enter → `showTab` 切到該區、切小分頁（`VL[區].pick(x)`，由 `vidList()` 提供；MV 用 `playMv`）、播放並捲到播放器，然後關閉。上下鍵選、Esc 關閉、點外面關閉；沒結果顯示「找不到，換個關鍵字試試」。**中韓英歌名別名表是 `index.html` 裡的 `SRCH_ALIAS`**（例如 四季／사계／Four Seasons、火花／불티／Spark、Wendy／웬디），只放確定的對照；搜尋相關多語系字串為 `srchAria`、`srchPh`、`srchNone`（在 `Object.assign(S.zh,…)` 那段）。
+
 **影片區原則**：
 - 所有影片區（含 MV 歌單）的播放器改成「高畫質封面（maxresdefault → sddefault → hqdefault），點了才載入 iframe」：共用 `ytCover()`／`ytSlot()`（MV 歌單點了才建立 YT.Player），切分頁時把 iframe 換回封面。
 - 所有影片區只放官方頻道的完整版，不放 shorts、預告、片段；同一支影片只放在一個區。
 - 2016 Butterfly Kiss、2017 PERSONA 演唱會查過沒有官方影片。
 - 《Unspecial》主打 MV 發布後加到 `songs.js` 最後。
 - 《Unspecial》回歸後，官方頻道的 MV／錄音／封面幕後完整版可加到 `behind.js` 新分頁「Unspecial」（放最前面），回歸倒數直播重播可加到 `concerts.js` 的回歸直播分頁最前面。
+
+## 台北場 ticket 欄位（data.json）
+`tour` 中 `_id:"taipei"` 的項目有 `ticket:{onsale, presale, price, platform, realname, showtime}`，全部是字串，空字串＝待公布（卡片顯示「待公布」）：
+- `onsale`：開賣時間，**ISO 格式含 +08:00**，例如 `"2027-01-10T12:00:00+08:00"`（有時間才會出現加入行事曆按鈕）
+- `presale`：會員預購（可用 ISO 時間，或簡短文字如「GL 會員 1/8 12:00」）
+- `price`：票價（例如「NT$ 6,880／5,880／…」）、`platform`：售票平台、`realname`：實名制規定（簡短）、`showtime`：開演時間（例如「19:00」）
+- **每日更新排程在台北場售票資訊公布後，要把開賣時間（ISO 格式含 +08:00）、預購、票價、平台、實名制、開演時間填進 data.json 的 taipei ticket 欄位**（用 Python json 讀寫，`ensure_ascii=False, indent=1`，其他欄位不要動）。
 
 ## alerts 與 news 的分工
 - **alerts（重要日期分頁，`meta.alerts`）**：只放尚未到期、需要使用者行動的日期（開賣、預購、發行）；不寫回歸提醒框已涵蓋的事件；過期就刪。
@@ -80,10 +90,11 @@ classic：紅黑專輯風（`--rose` 紅、深色布紋背景）；fly：水下�
 排程「泰妍應援站每日更新」每天台灣時間 08:50 執行：搜尋新聞 → 更新 `data.json`（必要時 `songs.js`）→ commit「每日更新 YYYY-MM-DD」→ 直接 push 到 `main`。不要動 `index.html` 和圖片。
 每日更新排程若發現官方頻道新的 TAENG LOG／탱log 影片，可加到 `logs.js`（同系列由新到舊，放該系列最前面）。
 每日更新排程若發現官方頻道新的 Live Clip 可加到 `liveclips.js`；2027《F.L.Y.》巡演紀錄出來後在 `concerts.js` 加 2027 分頁（放最前面），台北場放最前面。
+每日更新排程在台北場售票資訊公布後，要把開賣時間（ISO 格式含 +08:00）、預購、票價、平台、實名制、開演時間填進 data.json 的 taipei ticket 欄位。
 每日排程若發現 탱나무숲／탱코덕 新的完整集數可加到 `relax.js`（該系列最前面）、新的 Dance Practice 可加到 `dance.js`（最前面）。
 
 ## 待辦
-- 台北場售票時間公布後：更新 fly 主題的 `#flyremind` 卡片（日期＋行事曆按鈕）。
+- 台北場售票時間公布後：填 data.json 的 taipei `ticket`（台北場專區會自動顯示行事曆按鈕），並更新 fly 主題的 `#flyremind` 卡片（日期＋行事曆按鈕）。
 - 六場的售票時間公布後：在「重要日期」的提醒卡片加上各場售票的「加入行事曆」按鈕（售票前一天提醒）。
 - 官方公布開演時間後，更新倒數的 19:00。
 - 使用者可能之後會傳現場影片，做成電腦版的背景影片（手機維持專輯封面）。
