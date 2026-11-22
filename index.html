@@ -791,22 +791,22 @@ function renderMvs(){
   $("mvplay").textContent=mvPlaying?"❚❚":"▶";
 }
 function playable(){return mvs.filter(m=>m.vid&&(mvf==="all"||m.mood===mvf))}
-function playMv(m,auto){mvCur=m;renderMvs();const bx=$("mvs"),on=bx.querySelector(".mv.on");if(on){const t=on.offsetTop-bx.offsetTop;if(t<bx.scrollTop||t+on.offsetHeight>bx.scrollTop+bx.clientHeight)bx.scrollTop=t-8}if(auto)mvStart(m);else if(ytp&&ytReady)ytp.cueVideoById(m.vid);else mvCover()}
+function playMv(m,auto){mvCur=m;renderMvs();const bx=$("mvs"),on=bx.querySelector(".mv.on");if(on){const t=on.offsetTop-bx.offsetTop;if(t<bx.scrollTop||t+on.offsetHeight>bx.scrollTop+bx.clientHeight)bx.scrollTop=t-8}if(auto)mvStart(m);else mvStop()}
 function stepMv(d){const p=playable();if(!p.length)return;let i=p.indexOf(mvCur);i=i<0?0:(i+d+p.length)%p.length;playMv(p[i],true)}
 // MV 播放器：先顯示高畫質封面，點了才建立 YouTube 播放器（有 IFrame API 就用它來自動接下一首；沒有就退回一般 iframe）
 const mvFrame=$("mvframe");let mvPend=null;
 function mvSetPlaying(v){mvPlaying=v;$("mvplay").textContent=v?"❚❚":"▶"}
 function mvCover(){if(mvCur&&mvCur.vid)mvFrame.replaceChildren(ytCover(mvCur.vid,mvCur.title,()=>mvStart(mvCur)))}
-function mvStart(m){if(!m||!m.vid)return;
-  if(ytp&&ytReady){ytp.loadVideoById(m.vid);return}
-  if(ytp){mvPend=m.vid;return}
-  if(!(window.YT&&YT.Player)){mvFrame.replaceChildren(ytFrame(m.vid,m.title,"MV"));return}
+// 換歌一律重建播放器（舊播放器先拆掉），iframe 的 src 一定是這首；沒有 IFrame API 就用共用的 ytFrame
+function mvKill(){if(ytp){try{ytp.destroy()}catch(e){}}ytp=null;ytReady=false;mvPend=null}
+function mvStart(m){if(!m||!m.vid)return;mvKill();mvSetPlaying(false);
+  if(!(window.YT&&YT.Player)){const f=ytFrame(m.vid,m.title,"MV");mvFrame.replaceChildren(f);return}
   const d=el("div");d.id="ytp";mvFrame.replaceChildren(d);
-  ytp=new YT.Player(d,{host:"https://www.youtube-nocookie.com",videoId:m.vid,playerVars:{rel:0,playsinline:1,autoplay:1},
-    events:{onReady:e=>{ytReady=true;if(mvPend){e.target.loadVideoById(mvPend);mvPend=null}else e.target.playVideo()},
-      onStateChange:e=>{mvSetPlaying(e.data===YT.PlayerState.PLAYING);if(e.data===YT.PlayerState.ENDED)stepMv(1)},
-      onError:()=>{stepMv(1)}}})}
-function mvStop(){if(ytp){try{ytp.destroy()}catch(e){}}ytp=null;ytReady=false;mvPend=null;mvSetPlaying(false);mvCover()}
+  const p=ytp=new YT.Player(d,{host:"https://www.youtube-nocookie.com",videoId:m.vid,playerVars:{rel:0,playsinline:1,autoplay:1},
+    events:{onReady:e=>{if(ytp!==p)return;ytReady=true;e.target.playVideo()},
+      onStateChange:e=>{if(ytp!==p)return;mvSetPlaying(e.data===YT.PlayerState.PLAYING);if(e.data===YT.PlayerState.ENDED)stepMv(1)},
+      onError:()=>{if(ytp===p)stepMv(1)}}})}
+function mvStop(){mvKill();mvSetPlaying(false);mvCover()}
 mvFrame._yt={stop(){if(ytp||mvFrame.querySelector("iframe"))mvStop()}};
 function mvInit(){if(mvCur&&mvs.includes(mvCur))return;mvCur=mvs.find(m=>m.vid==="4HG_CJzyX6A")||mvs.find(m=>m.vid)||null;if(mvCur){renderMvs();mvCover()}}
 // 🎲 今天聽什麼：從目前篩選（全部／抒情／輕快）的歌裡隨機挑一首，不會連續兩次同一首
