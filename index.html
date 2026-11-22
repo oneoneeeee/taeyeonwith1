@@ -665,7 +665,7 @@ function renderMvs(){
   box.replaceChildren(...list.map(m=>{let a;
     if(m.vid){a=el("button","mv"+(mvCur===m?" on":""));a.type="button";a.onclick=()=>playMv(m,true)}
     else{const u=safeUrl(m.url);a=el(u?"a":"div","mv");if(u){a.href=u;a.target="_blank";a.rel="noopener"}}
-    let p;if(m.vid){p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+m.vid+"/mqdefault.jpg";p.alt="";p.loading="lazy"}else{p=el("div","play","▶");p.setAttribute("aria-hidden","true")}
+    let p;if(m.vid){p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+m.vid+"/hqdefault.jpg";p.alt="";p.loading="lazy"}else{p=el("div","play","▶");p.setAttribute("aria-hidden","true")}
     const d=el("div");d.style.minWidth="0";
     const t=el("div","tt",m.title||"");if(m.year)t.append(el("span","yr",String(m.year)));d.append(t);
     if(m.blurb)d.append(el("div","bl",m.blurb));d.append(el("div","src",m.vid?T("official"):T("search")));a.append(p,d);return a}));
@@ -693,7 +693,7 @@ function vidList(o){
     if(tabs)tabs.replaceChildren(...[...new Set(items.map(x=>x.s))].map(s=>{const b=el("button",null,s);b.type="button";b.setAttribute("aria-pressed",String(st.tab===s));b.onclick=()=>{st.tab=s;render();box.scrollTop=0};return b}));
     box.replaceChildren(...items.filter(x=>!o.tabs||x.s===st.tab).map(x=>{const a=el("button","mv"+(st.cur===x?" on":""));a.type="button";if(st.cur===x)a.setAttribute("aria-current","true");
       a.onclick=()=>{st.cur=x;$(o.player).src=lgSrc(x.id,true);render()};
-      const p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+x.id+"/mqdefault.jpg";p.alt="";p.loading="lazy";
+      const p=el("img","thumb");p.src="https://i.ytimg.com/vi/"+x.id+"/hqdefault.jpg";p.alt="";p.loading="lazy";
       const d=el("div");d.style.minWidth="0";const t=el("div","tt");if(o.tag&&o.tag(x))t.append(el("span","tp",o.tag(x)));const ep=o.ep(x);if(ep)t.append(el("span","ep",ep));t.append(document.createTextNode(o.name(x)));d.append(t);if(x.b)d.append(el("div","bl",x.b));a.append(p,d);return a}));
     if(st.cur){$(o.title).textContent=o.nowT(st.cur);$(o.desc).textContent=o.nowB(st.cur)}
   }

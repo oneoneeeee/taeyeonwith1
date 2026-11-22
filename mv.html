@@ -154,7 +154,7 @@ function render(){
   const box=$("list");box.replaceChildren();const list=filtered();
   if(!list.length){const e=document.createElement("div");e.className="empty";e.textContent=tab==="fav"?T("noFav"):T("none");box.append(e)}
   list.forEach(i=>{const s=SONGS[i];const r=document.createElement("div");r.className="song";if(i===cur)r.setAttribute("aria-current","true");
-    let th;if(s.id){th=document.createElement("img");th.className="th";th.loading="lazy";th.alt="";th.src="https://i.ytimg.com/vi/"+s.id+"/mqdefault.jpg"}else{th=document.createElement("span");th.className="th q";th.textContent="YT"}
+    let th;if(s.id){th=document.createElement("img");th.className="th";th.loading="lazy";th.alt="";th.src="https://i.ytimg.com/vi/"+s.id+"/hqdefault.jpg"}else{th=document.createElement("span");th.className="th q";th.textContent="YT"}
     const info=document.createElement(s.id?"button":"a");info.className="info";
     if(s.id){info.type="button";info.onclick=()=>{queue=[];playIdx(i,true)}}else{info.href="https://www.youtube.com/results?search_query="+encodeURIComponent(s.q);info.target="_blank";info.rel="noopener"}
     const b=document.createElement("b");b.textContent=s.t;const sm=document.createElement("small");sm.textContent=s.y+(s.id?"":" · "+T("yt"))+(s.b?" · "+s.b:"");info.append(b,sm);
