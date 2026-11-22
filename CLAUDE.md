@@ -52,7 +52,7 @@
 
 ## 主題
 - **classic**（深酒紅黑底，現在的樣子）：用到台灣時間 **2026-11-30 17:00**（《Unspecial》發行）為止。樣式在 `index.html` 的 `<style>`，不要為了 fly 去改。
-- **fly**（F.L.Y. 水下藍）：11/30 17:00 之後自動變成預設。淺色＝淺水藍→湖水藍漸層、深色模式＝深海；內容都放在毛玻璃卡片上；英文大標題（`.edw`、票券卡的 F.L.Y.）用草寫字 Great Vibes；頂端有水面光紋、少量氣泡（`prefers-reduced-motion` 時全部關掉）；開場改成「浮上水面」轉場（舊主題的書本動畫不變）。
+- **fly**（F.L.Y. 水下藍）：11/30 17:00 之後自動變成預設。淺色＝淺水藍→湖水藍漸層、深色模式＝深海；內容都放在毛玻璃卡片上；英文大標題（`.edw`、票券卡的 F.L.Y.）用草寫字 Great Vibes；頂端有水面光紋、少量氣泡（`prefers-reduced-motion` 時全部關掉）；開場改成「浮上水面」轉場（舊主題的書本動畫不變）。開場動畫每個分頁每種主題只播一次（sessionStorage `bkseen` / `bkseen-fly` 分開記），`?theme=fly` 預覽時每次都播（`prefers-reduced-motion` 時不播）。
 - **切換邏輯**：`index.html` `<head>` 最前面的小腳本決定。網址 `?theme=fly` → fly；`?theme=classic` → 強制舊風格；否則 `Date.now() >= 2026-11-30T17:00:00+08:00` 就 fly。fly 時在 `<html>` 加 `data-theme="fly"` 並改 `theme-color`。不用 localStorage 記，預覽完拿掉參數就回到原本的樣子。
 - **樣式位置**：fly 的樣式全部在 `theme-fly.css`，每條都以 `[data-theme="fly"]` 開頭；只屬於 fly 的元素加 `fly-only` class（舊主題自動隱藏），例如光紋 `.fly-surface`、氣泡 `.fly-bubbles`、開場 `.fly-intro`、售票提醒卡 `#flyremind`。
 - fly 主題下「重要日期」的《Unspecial》回歸提醒（`#remind`）會隱藏，改顯示 `#flyremind`「🎫 台北場售票提醒」占位卡。**台北場售票時間公布後，要在 `#flyremind` 補上日期，並加「加入 iPhone 行事曆（.ics）／Google 日曆」按鈕（沿用 `.remind-b` / `.rbtn`）。**

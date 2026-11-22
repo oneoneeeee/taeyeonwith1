@@ -268,12 +268,15 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 <script>
 (function(){
   var o=document.getElementById("bookintro");if(!o)return;
-  var seen=null;try{seen=sessionStorage.getItem("bkseen")}catch(e){}
+  var root=document.documentElement,isFly=root.getAttribute("data-theme")==="fly";
+  /* 「已看過」依主題分開記：舊主題 bkseen、fly 主題 bkseen-fly；?theme=fly 預覽時每次都播，不讀也不寫 */
+  var key=isFly?"bkseen-fly":"bkseen",preview=false;try{preview=isFly&&new URLSearchParams(location.search).get("theme")==="fly"}catch(e){}
+  var seen=null;if(!preview){try{seen=sessionStorage.getItem(key)}catch(e){}}
   if(seen||matchMedia("(prefers-reduced-motion: reduce)").matches){o.remove();return}
-  var root=document.documentElement;root.style.overflow="hidden";
+  root.style.overflow="hidden";
   var busy=false;
-  if(root.getAttribute("data-theme")==="fly"){ /* F.L.Y. 主題：浮上水面轉場，約 2 秒自動結束；舊主題不會進到這裡 */
-    try{sessionStorage.setItem("bkseen","1")}catch(e){}
+  if(isFly){ /* F.L.Y. 主題：浮上水面轉場，約 2 秒自動結束；舊主題不會進到這裡 */
+    if(!preview){try{sessionStorage.setItem(key,"1")}catch(e){}}
     o.setAttribute("aria-label","略過開場");
     var end=function(e){if(e)e.stopPropagation();if(busy)return;busy=true;clearTimeout(tm);o.classList.add("bk-done");
       setTimeout(function(){o.remove();root.style.overflow=""},1000)};
