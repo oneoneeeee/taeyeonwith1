@@ -49,7 +49,7 @@
 7-1. **CONCERT**（Bodoni 標題，緊接在 TAENG TALK 後面）：2019–2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」；最後一個分頁「回歸直播」放回歸倒數直播重播。和 TAENG LIVE 是分開的兩個區塊。
 8. 巡演場次、時間軸等。
 
-**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），重要日期、MV 歌單、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`（或 `#live`）、`#dance`、`#behind`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
+**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：按鈕名稱依序為 TAENG NEWS、TAENG DATE、TAENG MV、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT（所有語言都顯示英文，按鈕沒有 data-i18n；區塊標題仍是「最新消息」「Key Dates」「MV 歌單」等，照語言切換）。平常只顯示 TAENG NEWS（最新消息，含巡演場次、時間軸），TAENG DATE（重要日期）、TAENG MV（MV 歌單）、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`（或 `#live`）、`#dance`、`#behind`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
 
 **影片區原則**：
 - 所有影片區（含 MV 歌單）的播放器改成「高畫質封面（maxresdefault → sddefault → hqdefault），點了才載入 iframe」：共用 `ytCover()`／`ytSlot()`（MV 歌單點了才建立 YT.Player），切分頁時把 iframe 換回封面。
