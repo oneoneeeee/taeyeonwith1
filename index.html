@@ -140,6 +140,7 @@ section{display:grid;gap:14px;min-width:0}
 button.mv{font:inherit;text-align:left;cursor:pointer;width:100%}
 .mv.on{border-color:var(--rose);background:var(--rose-soft)}
 .mv img.thumb{width:64px;height:36px;border-radius:6px;object-fit:cover;display:block}
+.mvscroll{max-height:460px;overflow-y:auto;overscroll-behavior:contain;padding:2px 4px 2px 0}
 .lglist{max-height:440px;overflow-y:auto;overscroll-behavior:contain;padding:2px 4px 2px 0;max-width:880px}
 .mv .tp{display:inline-block;font-size:.68rem;font-weight:700;line-height:1;color:#fff;background:var(--rose);border-radius:99px;padding:3px 7px;margin-right:6px;vertical-align:1px}
 .mv .ep{font-family:var(--mono);font-size:.72rem;color:var(--rose);font-weight:700;margin-right:6px}
@@ -322,7 +323,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
       <div class="mvbar"><div class="mvnow"><b id="mvT"></b><span id="mvB"></span></div>
         <div class="mvctrl"><button type="button" id="mvprev" aria-label="prev">‹</button><button type="button" id="mvplay" class="main">▶</button><button type="button" id="mvnext" aria-label="next">›</button><a href="mv.html" id="mvfull" data-i18n="mvFull">完整播放器 ↗</a></div></div>
     </div>
-    <div class="mvs" id="mvs"><div class="empty">MV 載入中…</div></div>
+    <div class="mvs mvscroll" id="mvs"><div class="empty">MV 載入中…</div></div>
   </section>
 
   <section aria-labelledby="lc-h">
@@ -566,7 +567,7 @@ function renderGallery(){
 }
 function openLb(i){cur=(i+shown.length)%shown.length;const p=shown[cur];$("lbimg").src=photoSrc(p);$("lbimg").alt=p.caption||"";$("lbcap").textContent=capOf(p);$("lbdel").textContent="從相簿移除";$("lb").hidden=false;$("lbx").focus()}
 let mvs=[],mvf="all";
-function renderMvFilters(){const f=$("mvfilters");f.replaceChildren();["all",...Object.keys(T("mood")).filter(k=>mvs.some(m=>m.mood===k))].forEach(k=>{const b=el("button",null,k==="all"?T("all"):T("mood")[k]);b.type="button";b.setAttribute("aria-pressed",String(mvf===k));b.onclick=()=>{mvf=k;renderMvFilters();renderMvs()};f.append(b)})}
+function renderMvFilters(){const f=$("mvfilters");f.replaceChildren();["all",...Object.keys(T("mood")).filter(k=>mvs.some(m=>m.mood===k))].forEach(k=>{const b=el("button",null,k==="all"?T("all"):T("mood")[k]);b.type="button";b.setAttribute("aria-pressed",String(mvf===k));b.onclick=()=>{mvf=k;renderMvFilters();renderMvs();$("mvs").scrollTop=0};f.append(b)})}
 let ytp=null,ytReady=false,mvCur=null,mvPlaying=false;
 function renderMvs(){
   const box=$("mvs");const list=mvs.filter(m=>mvf==="all"||m.mood===mvf);
@@ -582,7 +583,7 @@ function renderMvs(){
   $("mvplay").textContent=mvPlaying?"❚❚":"▶";
 }
 function playable(){return mvs.filter(m=>m.vid&&(mvf==="all"||m.mood===mvf))}
-function playMv(m,auto){mvCur=m;renderMvs();if(ytReady){auto?ytp.loadVideoById(m.vid):ytp.cueVideoById(m.vid)}}
+function playMv(m,auto){mvCur=m;renderMvs();const bx=$("mvs"),on=bx.querySelector(".mv.on");if(on){const t=on.offsetTop-bx.offsetTop;if(t<bx.scrollTop||t+on.offsetHeight>bx.scrollTop+bx.clientHeight)bx.scrollTop=t-8}if(ytReady){auto?ytp.loadVideoById(m.vid):ytp.cueVideoById(m.vid)}}
 function stepMv(d){const p=playable();if(!p.length)return;let i=p.indexOf(mvCur);i=i<0?0:(i+d+p.length)%p.length;playMv(p[i],true)}
 $("mvprev").onclick=()=>stepMv(-1);$("mvnext").onclick=()=>stepMv(1);
 $("mvplay").onclick=()=>{if(!ytReady)return;if(!mvCur){stepMv(1);return}mvPlaying?ytp.pauseVideo():ytp.playVideo()};
