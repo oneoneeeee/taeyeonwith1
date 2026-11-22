@@ -339,7 +339,7 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
     <button type="button" data-go="news" data-i18n="newsH">最新消息</button>
     <button type="button" data-go="alerts" data-i18n="datesH">重要日期</button>
     <button type="button" data-go="mv" data-i18n="mvH">MV 歌單</button>
-    <button type="button" data-go="liveclip">LIVE CLIP</button>
+    <button type="button" data-go="liveclip">TAENG LIVE</button>
     <button type="button" data-go="dance">TAENG DANCE</button>
     <button type="button" data-go="taenglog">TAENG LOG</button>
     <button type="button" data-go="relax">TAENG TALK</button>
@@ -375,10 +375,10 @@ footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);paddi
 
   <section aria-labelledby="lc-h" data-tab="liveclip" hidden>
     <div class="head">
-      <div><h2 id="lc-h" class="edw"><span>Live Clip</span></h2><div class="note" data-i18n="lcNote">官方 Live Clip，錄音室現場版，點清單就會在上方播放。</div></div>
+      <div><h2 id="lc-h" class="edw"><span>Taeng Live</span></h2><div class="note" data-i18n="lcNote">官方 Live Clip，錄音室現場版，點清單就會在上方播放。</div></div>
     </div>
     <div class="mvplayer">
-      <div class="mvframe"><iframe id="lcp" title="LIVE CLIP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="mvframe"><iframe id="lcp" title="TAENG LIVE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
       <div class="mvbar"><div class="mvnow"><b id="lcT"></b><span id="lcB"></span></div>
         <div class="mvctrl"><a href="https://www.youtube.com/@taeyeonofficial" target="_blank" rel="noopener">TAEYEON Official ↗</a></div></div>
     </div>
@@ -669,7 +669,7 @@ window.onYouTubeIframeAPIReady=function(){
       onError:()=>{stepMv(1)}}});
 };
 function lgSrc(v,auto){return "https://www.youtube-nocookie.com/embed/"+encodeURIComponent(v)+"?rel=0&playsinline=1"+(auto?"&autoplay=1":"")}
-// 共用的「播放器＋可捲動清單＋分頁」：TAENG LOG、CONCERT、LIVE CLIP 都用這個（各自狀態，互不干擾）
+// 共用的「播放器＋可捲動清單＋分頁」：TAENG LOG、CONCERT、TAENG LIVE 都用這個（各自狀態，互不干擾）
 function vidList(o){
   const items=o.items||[],st={tab:items[0]?items[0].s:"",cur:items[0]||null};
   function render(){
@@ -688,9 +688,10 @@ const renderLogs=vidList({items:typeof LOGS!=="undefined"?LOGS:[],tabs:"lgtabs",
 const renderConcerts=vidList({items:typeof CONCERTS!=="undefined"?CONCERTS:[],tabs:"cctabs",list:"ccs",player:"ccp",title:"ccT",desc:"ccB",tag:x=>x.tp?cityName("taipei","台北"):"",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
 const renderDance=vidList({items:typeof DANCE!=="undefined"?DANCE:[],list:"dcs",player:"dcp",title:"dcT",desc:"dcB",ep:x=>x.y?String(x.y):"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG DANCE"+(x.y?" · "+x.y:"")});
 const renderRelax=vidList({items:typeof RELAX!=="undefined"?RELAX:[],tabs:"rxtabs",list:"rxs",player:"rxp",title:"rxT",desc:"rxB",ep:x=>x.n,name:x=>x.t,nowT:x=>x.s+" "+x.n,nowB:x=>x.t});
-const renderLiveClips=vidList({items:typeof LIVECLIPS!=="undefined"?LIVECLIPS:[],list:"lcs",player:"lcp",title:"lcT",desc:"lcB",ep:()=>"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"Live Clip"+(x.a?" · "+x.a:"")});
+const renderLiveClips=vidList({items:typeof LIVECLIPS!=="undefined"?LIVECLIPS:[],list:"lcs",player:"lcp",title:"lcT",desc:"lcB",ep:()=>"",name:x=>x.t,nowT:x=>x.t,nowB:x=>"TAENG LIVE"+(x.a?" · "+x.a:"")});
 // 分頁：平常只顯示「最新消息」，其他按按鈕才出現；網址 #mv、#concert… 可直接打開該分頁
 function showTab(k){
+  if(k==="live")k="liveclip";
   const panels=[...document.querySelectorAll("[data-tab]")];if(!panels.some(p=>p.dataset.tab===k))k="news";
   panels.forEach(p=>{const on=p.dataset.tab===k;
     if(!on&&!p.hidden){if(p.dataset.tab==="mv"&&ytReady&&ytp.pauseVideo)ytp.pauseVideo();
