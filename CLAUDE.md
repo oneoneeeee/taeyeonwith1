@@ -34,7 +34,7 @@
 1. **開場相簿動畫**（`#bookintro`）：酒紅布面相簿，封面小窗是專輯封面，寫「SONE」與「every day with TAEYEON」；點一下翻開，內頁是拍立得風的宣傳圖。同一個分頁只播一次（sessionStorage `bkseen`）。
 2. **城市／語言切換**：首爾 ko、澳門與香港 zh-HK、曼谷 th、台北 zh-TW、東京 ja，再加 EN。
 3. **票券區**：標題、headline、最後更新日期；下方橫向倒數「天／時／分／秒」（`cdRun()`）。開演時間官方未公布前暫定當地 19:00（`CDTZ` 為各城市時區）。
-4. **NEWS**（Bodoni 雜誌字標題）：先是「🔔 回歸提醒」卡片（加入 iPhone 行事曆 `.ics`／Google 日曆），再來是 `meta.alerts`。
+4. **重要日期（data-tab=alerts）**（Bodoni 雜誌字標題「Key Dates」＋說明小字）：先是「🔔 回歸提醒」卡片（加入 iPhone 行事曆 `.ics`／Google 日曆），再來是 `meta.alerts`。
 5. **every day with TAEYEON**：照片跑馬燈，不顯示任何文字說明、篩選或連結；點照片放大。照片清單是 `index.html` 裡的 `PH` 陣列（寬高），用 `.filter((p,i)=>![...].includes(i))` 隱藏不要的（目前隱藏 p002、p003、p005，有 Sunny Date 浮水印）。
 6. **MV 歌單**：嵌入式播放器，播完自動下一首，讀 `songs.js`。
 6-1. **LIVE CLIP**（Bodoni 標題，緊接在 MV 歌單後面）：官方 Live Clip（錄音室現場版），讀 `liveclips.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），不分頁。
@@ -42,7 +42,12 @@
 7-1. **CONCERT**（Bodoni 標題，緊接在 TAENG LOG 後面）：2023、2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」。和 LIVE CLIP 是分開的兩個區塊。
 8. 巡演場次、時間軸等。
 
-**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），NEWS、MV 歌單、LIVE CLIP、TAENG LOG、CONCERT 要按按鈕才出現（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`、`#taenglog`、`#concert` 可以直接打開該分頁。
+**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），重要日期、MV 歌單、LIVE CLIP、TAENG LOG、CONCERT 要按按鈕才出現（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`、`#taenglog`、`#concert` 可以直接打開該分頁。
+
+## alerts 與 news 的分工
+- **alerts（重要日期分頁，`meta.alerts`）**：只放尚未到期、需要使用者行動的日期（開賣、預購、發行）；不寫回歸提醒框已涵蓋的事件；過期就刪。
+- **news（最新消息，`news`）**：放已發生的新聞報導。同一事件只留一則，有後續就合併到最新那則（更新日期、標題、來源、摘要），不另加新則。
+- 不要因為 alerts 有某件事，就再加一則內容相同的 news。
 
 ## 風格
 紅黑專輯風（`--rose` 紅、深色布紋背景）、標題用 Bodoni Moda 雜誌字（`.edw`）。手機寬度也要好看。
@@ -53,6 +58,6 @@
 每日更新排程若發現官方頻道新的 Live Clip 可加到 `liveclips.js`；2027《F.L.Y.》巡演紀錄出來後在 `concerts.js` 加 2027 分頁（放最前面），台北場放最前面。
 
 ## 待辦
-- 六場的售票時間公布後：在 NEWS 的提醒卡片加上各場售票的「加入行事曆」按鈕（售票前一天提醒）。
+- 六場的售票時間公布後：在「重要日期」的提醒卡片加上各場售票的「加入行事曆」按鈕（售票前一天提醒）。
 - 官方公布開演時間後，更新倒數的 19:00。
 - 使用者可能之後會傳現場影片，做成電腦版的背景影片（手機維持專輯封面）。
