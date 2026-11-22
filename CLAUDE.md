@@ -21,8 +21,10 @@
 | `data.json` | 最新消息、巡演場次、提醒（meta / tour / news；`mvs`、`photos` 保持 `[]`） |
 | `songs.js` | MV 歌單 `SONGS`（格式見檔案開頭註解） |
 | `logs.js` | TAENG LOG 影片清單 `LOGS`（泰妍官方頻道 @taeyeonofficial 的「집 나간 탱log」與「TAENG LOG」系列，格式見檔案開頭註解）。log 系列只放完整版，不放 Teaser／預告片。 |
-| `concerts.js` | CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
+| `concerts.js` | CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE、2020 The UNSEEN、2019 's...one；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
 | `liveclips.js` | LIVE CLIP 清單 `LIVECLIPS`（泰妍官方頻道的 Live Clip，依專輯由新到舊，不分頁） |
+| `dance.js` | TAENG DANCE 清單 `DANCE`（`{t, y, id, b}`，舞蹈練習與舞台影片，由新到舊，不分頁） |
+| `relax.js` | TAENG RELAX 清單 `RELAX`（`{s, n, t, id, b}`，分頁「탱나무숲」聊天談心、「탱코덕」美妝，同系列由新到舊，只放完整集數） |
 | `mv.html` | 獨立的完整 MV 播放器，有「← 回到應援站」連結 |
 | `p001.jpg`–`p136.jpg` | 跑馬燈照片，已依風格排序 |
 | `cover_2.jpg` | 背景：《Unspecial》紅色刺繡專輯封面 |
@@ -39,11 +41,18 @@
 5. **every day with TAEYEON**：照片跑馬燈，不顯示任何文字說明、篩選或連結；點照片放大。照片清單是 `index.html` 裡的 `PH` 陣列（寬高），用 `.filter((p,i)=>![...].includes(i))` 隱藏不要的（目前隱藏 p002、p003、p005，有 Sunny Date 浮水印）。
 6. **MV 歌單**：嵌入式播放器，播完自動下一首，讀 `songs.js`。
 6-1. **LIVE CLIP**（Bodoni 標題，緊接在 MV 歌單後面）：官方 Live Clip（錄音室現場版），讀 `liveclips.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），不分頁。
+6-2. **TAENG DANCE**（Bodoni 標題，在 LIVE CLIP 後面、TAENG LOG 前面）：舞蹈練習與舞台影片，讀 `dance.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），不分頁。
 7. **TAENG LOG**（Bodoni 標題）：泰妍官方頻道的幕後與旅行 vlog，讀 `logs.js`；youtube-nocookie 嵌入播放器＋可捲動清單，用小分頁切換「집 나간 탱log」「TAENG LOG」，預設載入第一支但不自動播放。
-7-1. **CONCERT**（Bodoni 標題，緊接在 TAENG LOG 後面）：2023、2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」。和 LIVE CLIP 是分開的兩個區塊。
+7-0. **TAENG RELAX**（Bodoni 標題，在 TAENG LOG 後面、CONCERT 前面）：聊天談心（탱나무숲）和美妝篇（탱코덕），讀 `relax.js`；外觀與互動同 TAENG LOG，小分頁切換兩個系列。
+7-1. **CONCERT**（Bodoni 標題，緊接在 TAENG RELAX 後面）：2019–2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」。和 LIVE CLIP 是分開的兩個區塊。
 8. 巡演場次、時間軸等。
 
-**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），重要日期、MV 歌單、LIVE CLIP、TAENG LOG、CONCERT 要按按鈕才出現（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`、`#taenglog`、`#concert` 可以直接打開該分頁。
+**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：平常只顯示「最新消息」（含巡演場次、時間軸），重要日期、MV 歌單、LIVE CLIP、TAENG DANCE、TAENG LOG、TAENG RELAX、CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`、`#dance`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
+
+**影片區原則**：
+- 所有影片區只放官方頻道的完整版，不放 shorts、預告、片段；同一支影片只放在一個區。
+- 2016 Butterfly Kiss、2017 PERSONA 演唱會查過沒有官方影片。
+- 《Unspecial》主打 MV 發布後加到 `songs.js` 最後。
 
 ## alerts 與 news 的分工
 - **alerts（重要日期分頁，`meta.alerts`）**：只放尚未到期、需要使用者行動的日期（開賣、預購、發行）；不寫回歸提醒框已涵蓋的事件；過期就刪。
@@ -64,6 +73,7 @@ classic：紅黑專輯風（`--rose` 紅、深色布紋背景）；fly：水下�
 排程「泰妍應援站每日更新」每天台灣時間 08:50 執行：搜尋新聞 → 更新 `data.json`（必要時 `songs.js`）→ commit「每日更新 YYYY-MM-DD」→ 直接 push 到 `main`。不要動 `index.html` 和圖片。
 每日更新排程若發現官方頻道新的 TAENG LOG／탱log 影片，可加到 `logs.js`（同系列由新到舊，放該系列最前面）。
 每日更新排程若發現官方頻道新的 Live Clip 可加到 `liveclips.js`；2027《F.L.Y.》巡演紀錄出來後在 `concerts.js` 加 2027 分頁（放最前面），台北場放最前面。
+每日排程若發現 탱나무숲／탱코덕 新的完整集數可加到 `relax.js`（該系列最前面）、新的 Dance Practice 可加到 `dance.js`（最前面）。
 
 ## 待辦
 - 台北場售票時間公布後：更新 fly 主題的 `#flyremind` 卡片（日期＋行事曆按鈕）。

@@ -17,7 +17,6 @@ const CONCERTS = [
   {s:"2025 The TENSE", n:"in MANILA & JAKARTA", t:"TAEYEON CONCERT - The TENSE in MANILA & JAKARTA", id:"O_7G9freUOA", b:"馬尼拉與雅加達場的巡演紀錄。"},
   {s:"2025 The TENSE", n:"Rehearsal & D-DAY", t:"TAEYEON CONCERT - The TENSE Rehearsal & D-DAY Behind", id:"LKXLxP5FCJs", b:"彩排到開演當天的幕後。"},
   {s:"2025 The TENSE", n:"Practice Behind", t:"TAEYEON CONCERT - The TENSE Dance Practice & Band Performance Practice Behind", id:"LzR6kp-hayI", b:"舞蹈練習和樂團合練的幕後。"},
-  {s:"2025 The TENSE", n:"'Hot Mess' Practice", t:"'Hot Mess' Dance Practice (The TENSE Ver.)", id:"UQm8ulHOs24", b:"〈Hot Mess〉演唱會版的舞蹈練習。"},
   {s:"2025 The TENSE", n:"Meeting & VCR", t:"TAEYEON CONCERT - The TENSE Concert Meeting & VCR Shooting Behind", id:"kRzjFZVbRe4", b:"演唱會企劃會議和 VCR 拍攝幕後。"},
   {s:"2025 The TENSE", n:"D-14 MD", t:"D-14 탱콘 MD 대공개", id:"eoVELQ1_4wc", b:"開演前兩週，演唱會周邊大公開。"},
   {s:"2025 The TENSE", n:"Happy B-day", t:"Happy B-day 김태연 하길 잘했다", id:"pIjE7df6M6M", b:"生日特別影片。"},
@@ -36,4 +35,8 @@ const CONCERTS = [
   {s:"2023 The ODD Of LOVE", n:"EP.09", t:"TAEYEON CONCERT - The ODD Of LOVE EP.09 in MANILA", id:"uYA7FOxz1Tk", b:"馬尼拉場的巡演紀錄。"},
   {s:"2023 The ODD Of LOVE", n:"EP.10", t:"TAEYEON CONCERT - The ODD Of LOVE EP.10 in BANGKOK", id:"I5zkhsrjq3Y", b:"曼谷場的巡演紀錄。"},
   {s:"2023 The ODD Of LOVE", n:"EP.11", t:"TAEYEON CONCERT - The ODD Of LOVE EP.11 in SINGAPORE", id:"QgNRvzTytAs", b:"新加坡場的巡演紀錄。"},
+  {s:"2020 The UNSEEN", n:"'Dear Me' Concert Ver.", t:"想對自己說的話 (Dear Me) Concert Ver.", id:"3lY_iEKTAz4", b:"The UNSEEN 演唱會的〈想對自己說的話〉舞台。"},
+  {s:"2020 The UNSEEN", n:"'Better Babe' FOCUS CAM", t:"Better Babe Concert Ver.（FOCUS CAM）", id:"aoFFwIBGfZY", b:"The UNSEEN 演唱會〈Better Babe〉的個人直拍。"},
+  {s:"2019 's...one", n:"'四季' Concert Ver.", t:"四季 (Four Seasons) Concert Ver.", id:"UQDPqJ631Yc", b:"'s...one 演唱會的〈四季〉舞台。"},
+  {s:"2019 's...one", n:"'Blue' Concert Ver.", t:"Blue Concert Ver.", id:"H-KUzxsDxM4", b:"'s...one 演唱會的〈Blue〉舞台。"},
 ];
