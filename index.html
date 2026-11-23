@@ -424,7 +424,7 @@ ul.tp-chk{list-style:none;padding:0}
     <button type="button" data-go="behind">TAENG BEHIND</button>
     <button type="button" data-go="taenglog">TAENG LOG</button>
     <button type="button" data-go="relax">TAENG TALK</button>
-    <button type="button" data-go="concert">CONCERT</button>
+    <button type="button" data-go="concert">TAENG CONCERT</button>
     <button type="button" class="srchbtn" id="srchbtn" aria-expanded="false" aria-controls="srch" data-i18n-aria="srchAria" aria-label="搜尋影片">🔍</button>
     <div class="srch" id="srch" hidden>
       <input type="search" id="srchq" role="combobox" aria-expanded="false" aria-controls="srchres" aria-autocomplete="list" autocomplete="off" enterkeyhint="search" data-i18n-ph="srchPh" data-i18n-aria="srchAria" aria-label="搜尋影片" placeholder="找影片：歌名、系列…（中／韓／英都可以）">
@@ -548,8 +548,8 @@ ul.tp-chk{list-style:none;padding:0}
 
   <section aria-labelledby="cc-h" data-tab="concert" hidden>
     <div class="head">
-      <div><h2 id="cc-h" class="edw"><span>Concert</span></h2><div class="note" data-i18n="ccNote">2019–2025 巡演紀錄，台北場放最前面，還有回歸倒數直播。</div></div>
-      <div class="filters" id="cctabs" role="group" aria-label="CONCERT"></div>
+      <div><h2 id="cc-h" class="edw"><span>Taeng Concert</span></h2><div class="note" data-i18n="ccNote">2019–2025 巡演紀錄，台北場放最前面，還有回歸倒數直播。</div></div>
+      <div class="filters" id="cctabs" role="group" aria-label="TAENG CONCERT"></div>
     </div>
     <div class="mvplayer">
       <div class="mvframe" id="ccp" data-title="CONCERT"></div>
@@ -834,7 +834,7 @@ function ytSlot(frame){if(!frame)return null;if(frame._yt)return frame._yt;const
     play(id,title){S.id=id;S.title=title;const f=ytFrame(id,title,label);frame.replaceChildren(f);try{f.focus()}catch(e){}},
     stop(){if(S.id&&frame.querySelector("iframe"))S.show(S.id,S.title)}};
   frame._yt=S;return S}
-// 共用的「播放器＋可捲動清單＋分頁」：TAENG LOG、TAENG BEHIND、TAENG TALK、CONCERT、TAENG LIVE、TAENG DANCE 都用這個（各自狀態，互不干擾）
+// 共用的「播放器＋可捲動清單＋分頁」：TAENG LOG、TAENG BEHIND、TAENG TALK、TAENG CONCERT、TAENG LIVE、TAENG DANCE 都用這個（各自狀態，互不干擾）
 function vidList(o){
   const items=o.items||[],st={tab:items[0]?items[0].s:"",cur:items[0]||null};
   function render(){
@@ -881,7 +881,7 @@ const SRCH_ALIAS=[
   ["四季","사계","four seasons"],["火花","불티","spark"],["wendy","웬디"],
   ["想對自己說的話","내게 들려주고 싶은 이야기","dear me"],["惡夢","악몽","nightmare"],["月蝕","월식","my tragedy"],
   ["我愛你","사랑해요","i love you"],["台北","臺北","타이베이","taipei"],["泰妍","太妍","태연","taeyeon"]];
-const SRCH_SRC=[["mv","TAENG MV",typeof SONGS!=="undefined"?SONGS:[]],["liveclip","TAENG LIVE",typeof LIVECLIPS!=="undefined"?LIVECLIPS:[]],["dance","TAENG DANCE",typeof DANCE!=="undefined"?DANCE:[]],["behind","TAENG BEHIND",typeof BEHIND!=="undefined"?BEHIND:[]],["taenglog","TAENG LOG",typeof LOGS!=="undefined"?LOGS:[]],["relax","TAENG TALK",typeof RELAX!=="undefined"?RELAX:[]],["concert","CONCERT",typeof CONCERTS!=="undefined"?CONCERTS:[]]];
+const SRCH_SRC=[["mv","TAENG MV",typeof SONGS!=="undefined"?SONGS:[]],["liveclip","TAENG LIVE",typeof LIVECLIPS!=="undefined"?LIVECLIPS:[]],["dance","TAENG DANCE",typeof DANCE!=="undefined"?DANCE:[]],["behind","TAENG BEHIND",typeof BEHIND!=="undefined"?BEHIND:[]],["taenglog","TAENG LOG",typeof LOGS!=="undefined"?LOGS:[]],["relax","TAENG TALK",typeof RELAX!=="undefined"?RELAX:[]],["concert","TAENG CONCERT",typeof CONCERTS!=="undefined"?CONCERTS:[]]];
 function sNorm(v){return String(v||"").normalize("NFKC").toLowerCase().replace(/[’‘`]/g,"'").replace(/\s+/g," ").trim()}
 const SRCH_IDX=[];SRCH_SRC.forEach(([sec,label,arr])=>arr.forEach(x=>{if(!x||!x.id)return;
   SRCH_IDX.push({sec,x,label:label+(x.s?" · "+x.s:"")+(x.n?" · "+x.n:x.a?" · "+x.a:x.y?" · "+x.y:""),title:x.t||"",ht:sNorm(x.t),hay:sNorm([x.t,x.n,x.s,x.a,x.b].filter(Boolean).join(" "))})}));

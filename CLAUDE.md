@@ -21,7 +21,7 @@
 | `data.json` | 最新消息、巡演場次、提醒（meta / tour / news；`mvs`、`photos` 保持 `[]`）。tour 裡 `_id:"taipei"` 有 `ticket` 欄位（見下方「台北場 ticket 欄位」） |
 | `songs.js` | MV 歌單 `SONGS`（格式見檔案開頭註解） |
 | `logs.js` | TAENG LOG 影片清單 `LOGS`（泰妍官方頻道 @taeyeonofficial 的「집 나간 탱log」「TAENG LOG」「INVlogU」三個系列，格式見檔案開頭註解）。log 系列只放完整版，不放 Teaser／預告片。 |
-| `concerts.js` | CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE、2020 The UNSEEN、2019 's...one、最後是「回歸直播」（回歸倒數直播重播）；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
+| `concerts.js` | TAENG CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE、2020 The UNSEEN、2019 's...one、最後是「回歸直播」（回歸倒數直播重播）；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
 | `liveclips.js` | TAENG LIVE（原 LIVE CLIP）清單 `LIVECLIPS`（泰妍官方頻道的 Live Clip，依專輯由新到舊，不分頁） |
 | `dance.js` | TAENG DANCE 清單 `DANCE`（`{t, y, id, b}`，舞蹈練習與舞台影片，由新到舊，不分頁） |
 | `relax.js` | TAENG TALK 清單 `RELAX`（`{s, n, t, id, b}`，分頁「탱나무숲」聊天談心、「탱코덕」美妝、「特別企劃」、「綜藝客串」（節目官方頻道），同系列由新到舊，只放完整集數） |
@@ -49,11 +49,11 @@
 6-2. **TAENG DANCE**（Bodoni 標題，在 TAENG LIVE 後面、TAENG LOG 前面）：舞蹈練習與舞台影片，讀 `dance.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），不分頁。
 6-3. **TAENG BEHIND**（Bodoni 標題，在 TAENG DANCE 後面、TAENG LOG 前面）：每次回歸的 MV、錄音、封面拍攝幕後，讀 `behind.js`；外觀與互動同 TAENG LOG（共用 `vidList()`），小分頁依專輯切換。
 7. **TAENG LOG**（Bodoni 標題）：泰妍官方頻道的幕後與旅行 vlog，讀 `logs.js`；youtube-nocookie 嵌入播放器＋可捲動清單，用小分頁切換「집 나간 탱log」「TAENG LOG」「INVlogU」（2022《INVU》時期的 vlog），預設載入第一支但不自動播放。
-7-0. **TAENG TALK**（Bodoni 標題，在 TAENG LOG 後面、CONCERT 前面）：聊天談心（탱나무숲）、美妝篇（탱코덕）、特別企劃、綜藝客串（節目官方頻道的完整集數），讀 `relax.js`；外觀與互動同 TAENG LOG，小分頁切換四個系列。
-7-1. **CONCERT**（Bodoni 標題，緊接在 TAENG TALK 後面）：2019–2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」；最後一個分頁「回歸直播」放回歸倒數直播重播。和 TAENG LIVE 是分開的兩個區塊。
+7-0. **TAENG TALK**（Bodoni 標題，在 TAENG LOG 後面、TAENG CONCERT 前面）：聊天談心（탱나무숲）、美妝篇（탱코덕）、特別企劃、綜藝客串（節目官方頻道的完整集數），讀 `relax.js`；外觀與互動同 TAENG LOG，小分頁切換四個系列。
+7-1. **TAENG CONCERT**（Bodoni 標題，緊接在 TAENG TALK 後面）：2019–2025 巡演紀錄，讀 `concerts.js`；小分頁切換巡演，台北相關放最前面並標「台北」；最後一個分頁「回歸直播」放回歸倒數直播重播。和 TAENG LIVE 是分開的兩個區塊。
 8. 巡演場次、時間軸等。
 
-**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：按鈕名稱依序為 TAENG NEWS、TAENG DATE、TAENG MV、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT（所有語言都顯示英文，按鈕沒有 data-i18n；區塊標題仍是「最新消息」「Key Dates」「MV 歌單」等，照語言切換）。平常只顯示 TAENG NEWS（最新消息，含巡演場次、時間軸），TAENG DATE（重要日期）、TAENG MV（MV 歌單）、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`（或 `#live`）、`#dance`、`#behind`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
+**分頁按鈕**（`#tabbar`，在照片跑馬燈下面）：按鈕名稱依序為 TAENG NEWS、TAENG DATE、TAENG MV、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、TAENG CONCERT（所有語言都顯示英文，按鈕沒有 data-i18n；區塊標題仍是「最新消息」「Key Dates」「MV 歌單」等，照語言切換）。平常只顯示 TAENG NEWS（最新消息，含巡演場次、時間軸），TAENG DATE（重要日期）、TAENG MV（MV 歌單）、TAENG LIVE、TAENG DANCE、TAENG BEHIND、TAENG LOG、TAENG TALK、TAENG CONCERT 要按按鈕才出現（按鈕依此順序）（`data-tab` 區塊＋`showTab()`）。切走時會停掉影片。網址加 `#alerts`、`#mv`、`#liveclip`（或 `#live`）、`#dance`、`#behind`、`#taenglog`、`#relax`、`#concert` 可以直接打開該分頁。
 
 **🔍 找影片**（分頁列最右邊的 `#srchbtn`，點開 `#srch` 搜尋框＋下拉結果）：即時搜尋所有影片資料檔的 t、n、s、a、b（不分大小寫，NFKC 正規化），每筆顯示 mqdefault 縮圖、標題、所屬區（＋分頁名），最多 30 筆，標題符合的排前面；點一筆或 Enter → `showTab` 切到該區、切小分頁（`VL[區].pick(x)`，由 `vidList()` 提供；MV 用 `playMv`）、播放並捲到播放器，然後關閉。上下鍵選、Esc 關閉、點外面關閉；沒結果顯示「找不到，換個關鍵字試試」。**中韓英歌名別名表是 `index.html` 裡的 `SRCH_ALIAS`**（例如 四季／사계／Four Seasons、火花／불티／Spark、Wendy／웬디），只放確定的對照；搜尋相關多語系字串為 `srchAria`、`srchPh`、`srchNone`（在 `Object.assign(S.zh,…)` 那段）。
 

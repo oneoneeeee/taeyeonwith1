@@ -9,6 +9,7 @@ const LIVECLIPS = [
   {t:"To. X", a:"To. X", id:"r_ve6Iw1O_A", b:"迷你五輯同名主打的現場版。"},
   {t:"All For Nothing", a:"To. X", id:"jXOQ9LG83uw", b:"迷你五輯收錄曲的現場版。"},
   {t:"Fabulous", a:"To. X", id:"705BcZyCfzk", b:"迷你五輯收錄曲的現場版。"},
+  {t:"Priority Stage Video（MAX 昌珉、太妍、WINTER）", a:"", id:"KY-Dgpwthe8", b:"2023 年和 MAX 昌珉、WINTER 一起的舞台影片。"},
   {t:"INVU", a:"INVU", id:"8SrtnehtGh0", b:"正規三輯同名主打的現場版。"},
   {t:"어른아이 (Toddler)", a:"INVU", id:"EaIb4RzAvEI", b:"正規三輯收錄曲的現場版。"},
   {t:"그런 밤 (Some Nights)", a:"INVU", id:"a7NoogZ2eFo", b:"正規三輯收錄曲的現場版，適合夜晚聽。"},

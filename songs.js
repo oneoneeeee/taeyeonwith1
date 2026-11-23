@@ -3,9 +3,6 @@
 //   b = 一句介紹（中文，自己寫，不放歌詞），可留空。
 //   《Unspecial》主打 MV 發布後加到最後面。
 const SONGS = [
-  {t:"사랑해요 (I Love You)", y:2010, m:"soft", id:"mHjBPEsY_vQ", b:"韓劇《雅典娜：戰爭女神》OST，早期的經典抒情。"},
-  {t:"BYE", y:2013, m:"soft", id:"YgbQE84cm8M", b:"電影《Mr. GO》OST。"},
-  {t:"BYE（中文版）", y:2013, m:"soft", id:"fA29kfkghB4", b:"〈BYE〉的中文版本。"},
   {t:"I (feat. Verbal Jint)", y:2015, m:"bright", id:"4OrCA1OInoo", b:"個人出道曲，清爽又有希望感。"},
   {t:"Rain", y:2016, m:"soft", id:"eHir_vB1RUI", b:"SM STATION 第一首，下雨天必聽。"},
   {t:"Starlight (feat. DEAN)", y:2016, m:"bright", id:"eNmL4JiGxZQ", b:"和 DEAN 合作，甜甜的戀愛歌。"},
