@@ -1,7 +1,8 @@
-// 泰妍官方 YouTube 頻道 TAEYEON Official（@taeyeonofficial）的 Live Clip。每支一行，依專輯由新到舊：
+// 泰妍的官方現場演唱影片（TAEYEON Official 頻道的 Live Clip，以及 dingo 等官方節目頻道的完整現場）。每支一行，依專輯由新到舊：
 //   t = 歌名、a = 所屬專輯（不確定就留空字串）、id = YouTube 影片代碼（網址 watch?v= 後面那串）
 //   b = 一句自己寫的中文介紹（不放歌詞）
 const LIVECLIPS = [
+  {t:"Killing Voice（dingo）", a:"", id:"5ch94AaPZRQ", b:"dingo music 的 Killing Voice，一口氣唱完〈I〉〈11:11〉〈INVU〉等十多首代表曲的完整現場。"},
   {t:"Blur", a:"Letter To Myself", id:"ov3-8gKI80g", b:"〈Blur〉的現場版演唱。"},
   {t:"Disaster", a:"Letter To Myself", id:"GE8wQuR0Frg", b:"〈Disaster〉的現場版演唱。"},
   {t:"Letter To Myself", a:"Letter To Myself", id:"OyBO0nLrrq0", b:"迷你六輯同名主打的現場版。"},
