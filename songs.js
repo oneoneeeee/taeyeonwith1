@@ -28,12 +28,12 @@ const SONGS = [
   {t:"Hate that...（KEY feat. 太妍）", y:2021, m:"soft", id:"sz2Dmo1_BjM", b:"KEY 的歌，泰妍參與合唱。"},
   {t:"Can't Control Myself", y:2022, m:"bright", id:"RccDIpx4ZMM", b:"INVU 後續曲，帶點懸疑感。"},
   {t:"INVU", y:2022, m:"bright", id:"AbZH7XWDW_k", b:"第三張正規專輯主打，冷豔的氣場。"},
-  {t:"INVU（ZHU Remix）", y:2022, m:"bright", id:"QacMhZBAxmM", b:"〈INVU〉的 Remix 版本。"},
   {t:"The Cure（SM 群星合唱）", y:2023, m:"soft", id:"Gn7pr7RGPoM", b:"SM 歌手們一起合唱的歌曲。"},
   {t:"To. X", y:2023, m:"bright", id:"5_n6t9G2TUQ", b:"迷你五輯主打，酷酷地說再見。"},
   {t:"악몽 (Nightmare)（Lyric Video）", y:2023, m:"soft", id:"zM8txXJSpQs", b:"迷你五輯收錄曲的歌詞影片。"},
   {t:"To. X（IMLAY Remix）", y:2024, m:"bright", id:"_BS_PEPrXKA", b:"〈To. X〉的 Remix 版本。"},
   {t:"Heaven", y:2024, m:"soft", id:"oE8hAQie8fw", b:"2024 年的單曲。"},
   {t:"Letter To Myself", y:2024, m:"soft", id:"wqN1vLPX-no", b:"迷你六輯主打，寫給自己的信。"},
-  {t:"인사 (Panorama)", y:2025, m:"soft", id:"xGhaNqnjgr4", b:"2025 年的單曲。"}
+  {t:"인사 (Panorama)", y:2025, m:"soft", id:"xGhaNqnjgr4", b:"2025 年的單曲。"},
+  {t:"晚餐歌 (만찬가)（J-POP REMAKE）", y:2026, m:"soft", id:"H0GbvPY_Yl8", b:"J-POP REMAKE 企劃第一彈，翻唱 tuki. 的〈晚餐歌〉。"}
 ];
