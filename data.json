@@ -3,6 +3,12 @@
   "alerts": [
    {
     "level": "warn",
+    "text": "《Unspecial》回歸倒數直播：台灣時間 11/30 下午4點（韓國時間 5點），在 YouTube、TikTok、Weverse 泰妍頻道同步播出，專輯一小時後上線。",
+    "url": "https://www.youtube.com/post/UgkxS_Cgy7eAgEzCHPz__aoeVl2y_lNQazfT",
+    "when": "11/30 16:00"
+   },
+   {
+    "level": "warn",
     "text": "台北場售票時間、票價和售票平台還沒公布。泰妍個人官方會員 GL 已於 11/13 開通，想搶會員預購可先準備，最終規則以台灣主辦遠雄創藝公告為準。",
     "url": "https://news.tvbs.com.tw/entertainment/jk-pop/4052922",
     "when": "待公布"
