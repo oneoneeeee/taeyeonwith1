@@ -880,7 +880,7 @@ window.addEventListener("hashchange",()=>showTab(decodeURIComponent(location.has
 const SRCH_ALIAS=[
   ["四季","사계","four seasons"],["火花","불티","spark"],["wendy","웬디"],
   ["想對自己說的話","내게 들려주고 싶은 이야기","dear me"],["惡夢","악몽","nightmare"],["月蝕","월식","my tragedy"],
-  ["我愛你","사랑해요","i love you"],["台北","臺北","타이베이","taipei"],["泰妍","太妍","태연","taeyeon"],["晚餐歌","晩餐歌","만찬가","bansanka","banquet song"]];
+  ["我愛你","사랑해요","i love you"],["台北","臺北","타이베이","taipei"],["泰妍","太妍","태연","taeyeon"],["夜晚的理由","저녁의 이유","all night long"],["晚餐歌","晩餐歌","만찬가","bansanka","banquet song"]];
 const SRCH_SRC=[["mv","TAENG MV",typeof SONGS!=="undefined"?SONGS:[]],["liveclip","TAENG LIVE",typeof LIVECLIPS!=="undefined"?LIVECLIPS:[]],["dance","TAENG DANCE",typeof DANCE!=="undefined"?DANCE:[]],["behind","TAENG BEHIND",typeof BEHIND!=="undefined"?BEHIND:[]],["taenglog","TAENG LOG",typeof LOGS!=="undefined"?LOGS:[]],["relax","TAENG TALK",typeof RELAX!=="undefined"?RELAX:[]],["concert","TAENG CONCERT",typeof CONCERTS!=="undefined"?CONCERTS:[]]];
 function sNorm(v){return String(v||"").normalize("NFKC").toLowerCase().replace(/[’‘`]/g,"'").replace(/\s+/g," ").trim()}
 const SRCH_IDX=[];SRCH_SRC.forEach(([sec,label,arr])=>arr.forEach(x=>{if(!x||!x.id)return;

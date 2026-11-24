@@ -20,6 +20,7 @@ const SONGS = [
   {t:"四季 (Four Seasons)", y:2019, m:"soft", id:"4HG_CJzyX6A", b:"橫掃韓國音源榜的代表作。"},
   {t:"VOICE（日文）", y:2019, m:"soft", id:"35sE0gp72SU", b:"日本單曲。"},
   {t:"火花 (Spark)", y:2019, m:"bright", id:"eP4ga_fNm-E", b:"《Purpose》主打，紅色系的強烈舞台感。"},
+  {t:"夜晚的理由 All Night Long (feat. LUCAS of NCT)（官方音源）", y:2019, m:"soft", id:"2g2-fSG47A4", b:"《Purpose》收錄曲，和 NCT LUCAS 合作的夜晚情歌。"},
   {t:"想對自己說的話 (Dear Me)", y:2020, m:"soft", id:"bho0m505qVA", b:"《Purpose》改版收錄，寫給自己的溫柔歌。"},
   {t:"Happy", y:2020, m:"bright", id:"Raj-AuQgCTg", b:"明亮溫暖的單曲。"},
   {t:"#GirlsSpkOut (feat. ちゃんみな)（日文）", y:2020, m:"bright", id:"XT7Oh6vTY1Q", b:"日本迷你一輯主打，和 ちゃんみな 合作。"},
