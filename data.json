@@ -18,10 +18,16 @@
     "text": "首爾場在 Melon Ticket 開賣：12/1 晚上8點粉絲俱樂部會員先購、12/2 海外預購、12/3 全面開賣。",
     "url": "https://www.koreajoongangdaily.com/entertainment/girls-generations-taeyeon-to-kick-off-asia-tour-with-seoul-concerts-in-january/12979157",
     "when": "12/1–12/3"
+   },
+   {
+    "level": "",
+    "text": "東京場（4/17–18 Keio Arena）日本先行抽選進行中，至 12/6 23:59 截止（日本時間），透過少女時代日本官方會員、SMTOWN OFFICIAL JAPAN 報名；票價 15,800／20,800 日圓。",
+    "url": "https://l-tike.com/taeyeon/",
+    "when": "~12/6"
    }
   ],
   "headline": "F.L.Y. 台北大巨蛋 2027/4/3 售票時間、票價、平台仍待遠雄創藝公布；第四張正規專輯《Unspecial》11/30 晚上6點（韓國時間）發行。",
-  "updatedAt": "2026-11-25"
+  "updatedAt": "2026-11-26"
  },
  "tour": [
   {
@@ -81,12 +87,20 @@
    "date": "2027-04-17",
    "dateLabel": "4/17–18",
    "endDate": "2027-04-18",
-   "status": "即將登場",
+   "status": "先行抽選中",
    "venue": "Keio Arena",
    "_id": "tokyo"
   }
  ],
  "news": [
+  {
+   "date": "2026-11-25",
+   "category": "music",
+   "title": "《Unspecial》LP 黑膠版預告公開，2027年1月發行",
+   "summary": "泰妍 11/25 零點在官方社群公開第四張正規專輯《Unspecial》LP 版的預告內容，黑膠版預計 2027 年 1 月 6 日發行，和 11/30 的實體專輯分開推出。",
+   "source": "TopStarNews",
+   "url": "https://www.topstarnews.net/news/articleView.html?idxno=16285607"
+  },
   {
    "category": "music",
    "date": "2026-11-23",
