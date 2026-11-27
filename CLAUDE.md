@@ -27,7 +27,7 @@
 | `relax.js` | TAENG TALK 清單 `RELAX`（`{s, n, t, id, b}`，分頁「탱나무숲」聊天談心、「탱코덕」美妝、「特別企劃」、「綜藝客串」（節目官方頻道），同系列由新到舊，只放完整集數） |
 | `behind.js` | TAENG BEHIND 清單 `BEHIND`（`{s, t, id, b}`，每次回歸的 MV／錄音／封面拍攝幕後完整版，依專輯分頁，分頁由新到舊：Panorama、Letter To Myself、Heaven、To. X） |
 | `mv.html` | 獨立的完整 MV 播放器，有「← 回到應援站」連結 |
-| `p001.jpg`–`p136.jpg` | 跑馬燈照片，已依風格排序 |
+| `p001.jpg`–`p152.jpg` | 跑馬燈照片，已依風格排序 |
 | `cover_2.jpg` | 背景：《Unspecial》紅色刺繡專輯封面 |
 | `poster_2.jpg` | F.L.Y. 巡演宣傳圖（巡演日期下的小卡） |
 | `favicon.png`、`apple-touch-icon.png` | 網站圖示：泰妍簽名（白底黑字）。`index.html` 引用時帶 `?v=sig2`，換圖要改版本號 |
