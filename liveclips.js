@@ -18,6 +18,7 @@ const LIVECLIPS = [
   {t:"Galaxy", a:"What Do I Call You", id:"u-62YXsDybE", b:"迷你四輯收錄曲的現場版。"},
   {t:"Playlist", a:"What Do I Call You", id:"fNYxBpBo050", b:"迷你四輯收錄曲的現場版。"},
   {t:"Sorrow（日文，Studio Live Ver.）", a:"#GirlsSpkOut", id:"rZO7Fe-6pxo", b:"日本迷你一輯收錄曲的錄音室現場版。"},
+  {t:"Indestructible（Japan Showcase Tour 2018）", a:"", id:"0WoVtfnOuwI", b:"2018 年日本 Showcase Tour 的〈Indestructible〉現場（非官方上傳，使用者指定加入）。"},
   {t:"기억을 걷는 시간 Time Walking Through Memories（柳熙烈的寫生簿）", a:"", id:"dWaALXL8h4U", b:"2017 年上 KBS《柳熙烈的寫生簿》翻唱 Nell 的〈기억을 걷는 시간〉，安靜又動人的現場。"},
   {t:"11:11（Live Acoustic Version）", a:"11:11", id:"WLJyhhNCHi0", b:"吉他伴奏的現場版，像在耳邊說話。"},
 ];

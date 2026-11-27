@@ -60,6 +60,7 @@
 **影片區原則**：
 - 所有影片區（含 MV 歌單）的播放器改成「高畫質封面（maxresdefault → sddefault → hqdefault），點了才載入 iframe」：共用 `ytCover()`／`ytSlot()`（MV 歌單點了才建立 YT.Player），切分頁時把 iframe 換回封面。
 - 所有影片區只放官方頻道的完整版，不放 shorts、預告、片段；同一支影片只放在一個區。
+- 例外：`liveclips.js` 的〈Indestructible〉（Japan Showcase Tour 2018，id `0WoVtfnOuwI`）是非官方頻道上傳，使用者 2026-11-27 明確要求破例加入，不要刪掉。
 - 2016 Butterfly Kiss、2017 PERSONA 演唱會查過沒有官方影片。
 - 《Unspecial》主打 MV 發布後加到 `songs.js` 最後。
 - 《Unspecial》回歸後，官方頻道的 MV／錄音／封面幕後完整版可加到 `behind.js` 新分頁「Unspecial」（放最前面），回歸倒數直播重播可加到 `concerts.js` 的回歸直播分頁最前面。
