@@ -21,7 +21,7 @@
 | `data.json` | 最新消息、巡演場次、提醒（meta / tour / news；`mvs`、`photos` 保持 `[]`）。tour 裡 `_id:"taipei"` 有 `ticket` 欄位（見下方「台北場 ticket 欄位」） |
 | `songs.js` | MV 歌單 `SONGS`（格式見檔案開頭註解） |
 | `logs.js` | TAENG LOG 影片清單 `LOGS`（泰妍官方頻道 @taeyeonofficial 的「집 나간 탱log」「TAENG LOG」「INVlogU」三個系列，格式見檔案開頭註解）。log 系列只放完整版，不放 Teaser／預告片。 |
-| `concerts.js` | TAENG CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE、2020 The UNSEEN、2019 's...one、最後是「回歸直播」（回歸倒數直播重播）；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
+| `concerts.js` | TAENG CONCERT 巡演紀錄 `CONCERTS`（泰妍官方頻道，分頁 `s`：2025 The TENSE、2023 The ODD Of LOVE、2020 The UNSEEN、2019 's...one、2018 Japan Showcase、最後是「回歸直播」（回歸倒數直播重播）；`tp:true` 為台北相關，放各分頁最前面並標「台北」） |
 | `liveclips.js` | TAENG LIVE（原 LIVE CLIP）清單 `LIVECLIPS`（泰妍官方頻道的 Live Clip，依專輯由新到舊，不分頁） |
 | `dance.js` | TAENG DANCE 清單 `DANCE`（`{t, y, id, b}`，舞蹈練習與舞台影片，由新到舊，不分頁） |
 | `relax.js` | TAENG TALK 清單 `RELAX`（`{s, n, t, id, b}`，分頁「탱나무숲」聊天談心、「탱코덕」美妝、「特別企劃」、「綜藝客串」（節目官方頻道），同系列由新到舊，只放完整集數） |
@@ -60,7 +60,7 @@
 **影片區原則**：
 - 所有影片區（含 MV 歌單）的播放器改成「高畫質封面（maxresdefault → sddefault → hqdefault），點了才載入 iframe」：共用 `ytCover()`／`ytSlot()`（MV 歌單點了才建立 YT.Player），切分頁時把 iframe 換回封面。
 - 所有影片區只放官方頻道的完整版，不放 shorts、預告、片段；同一支影片只放在一個區。
-- 例外：`liveclips.js` 的〈Indestructible〉（Japan Showcase Tour 2018，id `0WoVtfnOuwI`）是非官方頻道上傳，使用者 2026-11-27 明確要求破例加入，不要刪掉。
+- 例外：`concerts.js` 分頁「2018 Japan Showcase」的〈Indestructible〉（Japan Showcase Tour 2018，id `0WoVtfnOuwI`）是非官方頻道上傳，使用者 2026-11-27 明確要求破例加入，不要刪掉。
 - 2016 Butterfly Kiss、2017 PERSONA 演唱會查過沒有官方影片。
 - 《Unspecial》主打 MV 發布後加到 `songs.js` 最後。
 - 《Unspecial》回歸後，官方頻道的 MV／錄音／封面幕後完整版可加到 `behind.js` 新分頁「Unspecial」（放最前面），回歸倒數直播重播可加到 `concerts.js` 的回歸直播分頁最前面。
