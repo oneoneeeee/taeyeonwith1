@@ -138,13 +138,18 @@
 [data-theme="fly"] #bookintro .bk-skip{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(5,50,74,.18);z-index:2}
 .fly-intro{position:absolute;inset:0;pointer-events:none}
 .fly-intro .fly-surface{height:100%;-webkit-mask-image:none;mask-image:none;z-index:0}
-.fly-intro .fly-surface i{opacity:.7}
+/* 開場只留一層光紋、只做平移（不斜切、不縮放），比較不吃效能 */
+.fly-intro .fly-surface i{opacity:.7;animation:flydrift 6s ease-in-out infinite alternate}
+.fly-intro .fly-surface i+i{display:none}
+@keyframes flydrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-6%,2%,0)}}
+/* 文字等草寫字型載好（.fly-go，最多等 0.6 秒）才開始浮上來，避免中途換字型跳一下 */
 .fly-intro-t{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;color:#fff;text-align:center;
-  animation:flyin 1.1s ease-out .15s both}
+  opacity:0;will-change:transform,opacity}
+.fly-go .fly-intro-t{animation:flyin 1.1s ease-out .05s both}
 .fly-intro-t b{font-family:var(--script);font-weight:400;font-size:clamp(84px,22vw,160px);line-height:1;
   text-shadow:0 0 30px rgba(127,227,240,.95),0 4px 14px rgba(3,50,80,.35)}
 .fly-intro-t small{font:700 12px/1.4 system-ui,sans-serif;letter-spacing:.34em;color:#fff;text-shadow:0 1px 2px rgba(2,40,66,.75),0 1px 10px rgba(3,50,80,.65);padding-left:.34em}
-@keyframes flyin{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes flyin{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:none}}
 
 /* ---------- 減少動態：關掉所有動畫 ---------- */
 @media (prefers-reduced-motion:reduce){

@@ -11,7 +11,7 @@
   var fly=q==="fly"||(q!=="classic"&&Date.now()>=Date.parse("2026-11-30T17:00:00+08:00"));
   if(!fly)return;d.setAttribute("data-theme","fly");
   /* 草寫字 Great Vibes 只有 fly 主題用到，才載入 */
-  var l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap";document.head.appendChild(l);
+  var l=document.createElement("link");l.id="gvfont";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap";document.head.appendChild(l);
   var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",matchMedia("(prefers-color-scheme: dark)").matches?"#0d4a6e":"#c4ecf6")})();
 </script>
 <meta name="description" content="泰妍應援站：最新消息、F.L.Y. 巡演倒數、MV 播放器與年表。">
@@ -291,7 +291,7 @@ ul.tp-chk{list-style:none;padding:0}
 @media (max-width:360px){.tp-info{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.randbtn{transition:none}}
 </style>
-<link rel="stylesheet" href="theme-fly.css?v=2">
+<link rel="stylesheet" href="theme-fly.css?v=3">
 </head>
 <body>
 <style>
@@ -359,7 +359,11 @@ ul.tp-chk{list-style:none;padding:0}
     o.setAttribute("aria-label","略過開場");
     var end=function(e){if(e)e.stopPropagation();if(busy)return;busy=true;clearTimeout(tm);o.classList.add("bk-done");
       setTimeout(function(){o.remove();root.style.overflow=""},1000)};
-    var tm=setTimeout(end,1900);
+    /* 等 Great Vibes 載好再讓文字浮上來（最多等 0.6 秒），總長約 2 秒不變 */
+    var go=false,tm,start=function(){if(go)return;go=true;o.classList.add("fly-go");tm=setTimeout(end,1800)};
+    var gl=document.getElementById("gvfont"),fl=function(){try{document.fonts.load('1em "Great Vibes"').then(start,start)}catch(e){start()}};
+    if(!gl)start();else if(gl.sheet)fl();else{gl.addEventListener("load",fl);gl.addEventListener("error",start)}
+    setTimeout(start,600);
     o.addEventListener("click",end);
     o.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "||e.key==="Escape"){e.preventDefault();end()}});
     o.querySelector(".bk-skip").addEventListener("click",end);
