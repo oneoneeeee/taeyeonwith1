@@ -291,7 +291,7 @@ ul.tp-chk{list-style:none;padding:0}
 @media (max-width:360px){.tp-info{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.randbtn{transition:none}}
 </style>
-<link rel="stylesheet" href="theme-fly.css?v=3">
+<link rel="stylesheet" href="theme-fly.css?v=4">
 </head>
 <body>
 <style>
@@ -356,9 +356,9 @@ ul.tp-chk{list-style:none;padding:0}
   var busy=false;
   if(isFly){ /* F.L.Y. 主題：浮上水面轉場，約 2 秒自動結束；舊主題不會進到這裡 */
     if(!preview){try{sessionStorage.setItem(key,"1")}catch(e){}}
-    o.setAttribute("aria-label","略過開場");
+    o.setAttribute("aria-label","略過開場");root.classList.add("fly-intro-on");
     var end=function(e){if(e)e.stopPropagation();if(busy)return;busy=true;clearTimeout(tm);o.classList.add("bk-done");
-      setTimeout(function(){o.remove();root.style.overflow=""},1000)};
+      setTimeout(function(){o.remove();root.style.overflow="";root.classList.remove("fly-intro-on")},900)};
     /* 等 Great Vibes 載好再讓文字浮上來（最多等 0.6 秒），總長約 2 秒不變 */
     var go=false,tm,start=function(){if(go)return;go=true;o.classList.add("fly-go");tm=setTimeout(end,1800)};
     var gl=document.getElementById("gvfont"),fl=function(){try{document.fonts.load('1em "Great Vibes"').then(start,start)}catch(e){start()}};
